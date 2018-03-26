@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Black Region Detection|Feature Selection</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>Black Region Detection</h1>
+    <h2>Feature Selection</h2>
+    <p>The following Graph shows the behavior of price levels and the gradients.</p>
+    <img src="{{url_for('static', filename='anomalies/feature_lection_image1.png')}}"/>
+
+    <p>The following Graph shows the behavior of four features that we are interested in.</p>
+    <ol>
+        <li>Price</li>
+        <li>Gradient of Price</li>
+        <li>Conditional Heteroscedasticity</li>
+        <li>Gradient of Conditional Heteroscedasticity</li>
+    </ol>
+    <img src="{{url_for('static', filename='anomalies/feature_lection_image2.png')}}"/>
+
+    <br/>
+    <p>Let's calculate the Local Outlier Factors for the selected Features.</p>
+    <ol>
+        <li>Gradient of Price</li>
+        <li>Gradient of Conditional Heteroscedasticity</li>
+    </ol>
+    <p>To Proceed with Local Outlier Calculation Mapper, Click Next.</p>
+    <form action="/anomalies/detectlofmapper" method="get">
+        <button class="btn" type="submit">Next>></button>
+    </form>
+</body>
+</html>

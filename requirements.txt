@@ -1,0 +1,7 @@
+Flask==0.12.1
+matplotlib
+six
+pandas
+statsmodels
+arch
+sklearn
