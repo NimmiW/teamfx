@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Black Region Detection|Input</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Black Region Detection</h1>
+    <h2>Input</h2>
+    <p>The process pipeline to detect black regions is shown below.</p>
+    <center>
+        <img src="{{url_for('static', filename='anomalies/design_pipline.png')}}" style="width:25%"/>
+    </center>
+    <p>Let's detect black regions before do backtesting. Enter the currency pair and the time range to proceed with solution pipeline to detect black regions.</p>
+    <div class="form-group">
+      <form action="/anomalies/selectfeatures" method="post">
+        <div class="form-group">
+          <label for="currency">Currency:</label>
+          <select class="form-control" name="currency_pair">
+            <option value="EURUSD">EUR/USD</option>
+            <option value="GBPUSD">GBP/USD</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="year">Year:</label>
+          <select class="form-control" name="year">
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="from">From:</label>
+          <select class="form-control" name="from_month">
+             <option value="1">January</option>
+             <option value="2">February</option>
+             <option value="3">March</option>
+             <option value="4">April</option>
+             <option value="5">May</option>
+             <option value="6">June</option>
+             <option value="7">July</option>
+             <option value="8">August</option>
+             <option value="9">September</option>
+             <option value="10">October</option>
+             <option value="11">November</option>
+             <option value="12">December</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="to">To:</label>
+
+          <select class="form-control" name="to_month">
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input class="btn btn-success" type = "submit" value = "submit" />
+        </div>
+      </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,3 +1,4 @@
+from flask import Flask,redirect, url_for, request
 import pandas as pd
 import numpy as np
 from pandas import to_datetime,read_csv
@@ -7,14 +8,14 @@ from statsmodels.tsa.arima_model import ARIMA
 from arch import arch_model
 import matplotlib.pyplot as plt
 
+
 def feature_selecion():
 
-    start_date = '2016-06-01'
-    end_date = '2016-07-01'
-    data_file ="static/data/GBPUSD/DAT_MT_GBPUSD_M1_2016.csv"
-    news = ["Brexit","US presidential election 2012"]
-    currency = ["GBP/USD","EUR/USD"]
-    example_number = 0
+    start_date = request.form["year"] + "-" + request.form["from_month"] + "-01"
+    end_date = request.form["year"] + "-" + str(int(request.form["to_month"])+1) + "-01"
+    data_file ="static/data/"+request.form["currency_pair"]+"/DAT_MT_"+request.form["currency_pair"]+"_M1_"+request.form["year"] +".csv"
+    #news = ["Brexit","US presidential election 2012"]
+
 
     #price
     data = read_csv(data_file)
@@ -27,10 +28,11 @@ def feature_selecion():
 
     #price and the gradient
     fig = plt.figure()
+    #fig.tight_layout()
 
     ax3 = fig.add_subplot(211)
     ax3.plot(series)
-    ax3.set_title(currency[example_number] + ' prices during ' +  news[example_number] + ' time period')
+    ax3.set_title(request.form["currency_pair"] + ' prices')
     ax3.set_xlabel('Time')
     ax3.set_ylabel('Price')
 
@@ -132,10 +134,11 @@ def feature_selecion():
     #ax1 = fig.add_subplot(221)
 
     fig = plt.figure()
+    #fig.tight_layout()
 
     ax3 = fig.add_subplot(221)
     ax3.plot(series)
-    ax3.set_title(currency[example_number] + ' prices during '+ news[example_number]+' time period')
+    ax3.set_title(request.form["currency_pair"] + ' prices')
     ax3.set_xlabel('Time')
     ax3.set_ylabel('Price')
 
@@ -148,7 +151,7 @@ def feature_selecion():
 
     ax1 = fig.add_subplot(223)
     ax1.plot(np_array_dates, gradients)
-    ax1.set_title('Gradients: ' + currency[example_number] + ' prices during ' + news[example_number])
+    ax1.set_title('Gradients: ' + request.form["currency_pair"] + ' prices')
     ax1.set_xlabel('Time')
     ax1.set_ylabel('Gradient')
 

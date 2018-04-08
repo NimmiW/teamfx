@@ -1,6 +1,7 @@
 from flask import Flask, render_template, make_response
 from brd import black_region_detection
 from anomalies import feature_selection, local_outlier_factor, local_outlier_factor_reducer, anomaly_identification
+from anomalies.input import get_input
 
 
 app = Flask(__name__)
@@ -15,19 +16,19 @@ def hello_world():
 def html():
     return render_template('hello.html')
 
-@app.route('/chart/<pair>')
-def chart(pair):
-    return render_template('chart.html', pair = pair)
-
 @app.route("/brd/<num>")
 def brd(num):
     return render_template('brd/brd.html', black_regions = black_region_detection.detect(num))
 
-#--------------------------------------------------------anomalies Routes----------------------------------------------------#
 
-@app.route("/anomalies/selectfeatures")
+#--------------------------------------------------------anomalies Routes----------------------------------------------------#
+@app.route("/anomalies/input")
+def get_input():
+    return render_template('anomalies/get_input.html')
+
+@app.route("/anomalies/selectfeatures", methods = ['POST', 'GET'])
 def feature_selecion():
-    return render_template('anomalies/feature_selection.html', status = feature_selection.feature_selecion())
+    return render_template('anomalies/feature_selection.html', status=feature_selection.feature_selecion())
 
 @app.route("/anomalies/detectlofmapper")
 def detect_lof_mapper():
