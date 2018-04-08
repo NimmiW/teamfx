@@ -21,6 +21,11 @@ def brd(num):
 
 
 #--------------------------------------------------------anomalies Routes----------------------------------------------------#
+
+@app.route("/anomalies/")
+def index():
+    return render_template('anomalies/index.html')
+
 @app.route("/anomalies/input")
 def get_input():
     return render_template('anomalies/get_input.html')
