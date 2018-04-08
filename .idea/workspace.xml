@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="696a0610-7701-4ca9-897c-ccaecbb04191" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/feature_lection_image1.png" afterPath="$PROJECT_DIR$/static/anomalies/feature_lection_image1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/feature_lection_image2.png" afterPath="$PROJECT_DIR$/static/anomalies/feature_lection_image2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/brd/test.png" afterPath="$PROJECT_DIR$/static/brd/test.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/anomaly_identification.py" afterPath="$PROJECT_DIR$/anomalies/anomaly_identification.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/feature_selection.py" afterPath="$PROJECT_DIR$/anomalies/feature_selection.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/anomalies/input/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/anomalies/input/get_input.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/anomalies/input/month_range_selector.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/features.csv" afterPath="$PROJECT_DIR$/static/anomalies/features.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/merged_local_outlier_factor_file.csv" afterPath="$PROJECT_DIR$/static/anomalies/merged_local_outlier_factor_file.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/anomalies.html" afterPath="$PROJECT_DIR$/templates/anomalies/anomalies.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/feature_selection.html" afterPath="$PROJECT_DIR$/templates/anomalies/feature_selection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html" afterPath="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html" afterPath="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="33" column="24" lean-forward="true" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
+            <state relative-caret-position="51">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
@@ -81,7 +72,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="local_outlier_factor_reducer.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="local_outlier_factor_reducer.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
@@ -96,16 +87,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="21" column="6" lean-forward="false" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="month_range_selector.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/anomalies/input/month_range_selector.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="1" lean-forward="false" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -171,12 +152,12 @@
         <option value="$PROJECT_DIR$/anomalies/config.py" />
         <option value="$PROJECT_DIR$/anomalies/anomaly_identification.py" />
         <option value="$PROJECT_DIR$/anomalies/feature_selection.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/templates/anomalies/get_input.html" />
         <option value="$PROJECT_DIR$/templates/anomalies/feature_selection.html" />
         <option value="$PROJECT_DIR$/templates/anomalies/anomalies.html" />
         <option value="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html" />
         <option value="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -217,18 +198,12 @@
               <item name="teamfx" type="b2602c69:ProjectViewProjectNode" />
               <item name="teamfx" type="462c0819:PsiDirectoryNode" />
               <item name="anomalies" type="462c0819:PsiDirectoryNode" />
-              <item name="input" type="462c0819:PsiDirectoryNode" />
+              <item name="evaluator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="teamfx" type="b2602c69:ProjectViewProjectNode" />
               <item name="teamfx" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teamfx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="teamfx" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="anomalies" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="teamfx" type="b2602c69:ProjectViewProjectNode" />
@@ -316,8 +291,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2602118" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2602118" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -644,9 +620,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="44" lean-forward="false" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -682,16 +656,6 @@
           <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="33" column="24" lean-forward="true" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -735,6 +699,16 @@
         <state relative-caret-position="200">
           <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,7 +1,6 @@
 from flask import Flask, render_template, make_response
 from brd import black_region_detection
 from anomalies import feature_selection, local_outlier_factor, local_outlier_factor_reducer, anomaly_identification
-from anomalies.input import get_input
 
 
 app = Flask(__name__)
