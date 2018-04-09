@@ -7,13 +7,38 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-  return 'Hello, World!'
+    return render_template('index.html')
 
+#--------------------------------------------------------Theme----------------------------------------------------------#
 
+@app.route('/charts')
+def charts():
+    return render_template('charts.html')
+
+@app.route('/tables')
+def tables():
+    return render_template('tables.html')
+
+@app.route('/cards')
+def cards():
+    return render_template('cards.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+@app.route('/forgotpassword')
+def forgot_password():
+    return render_template('forgot-password.html')
+
+@app.route('/blank')
+def blank():
+    return render_template('blank.html')
 #--------------------------------------------------------Test Routes----------------------------------------------------#
-@app.route('/html')
-def html():
-    return render_template('hello.html')
 
 @app.route("/brd/<num>")
 def brd(num):
