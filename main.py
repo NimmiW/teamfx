@@ -9,41 +9,40 @@ app = Flask(__name__)
 def hello_world():
     return render_template('index.html')
 
-#--------------------------------------------------------Theme----------------------------------------------------------#
-
-@app.route('/charts')
-def charts():
-    return render_template('charts.html')
-
-@app.route('/tables')
-def tables():
-    return render_template('tables.html')
-
-@app.route('/cards')
-def cards():
-    return render_template('cards.html')
 
 @app.route('/login')
 def login():
     return render_template('login.html')
 
-@app.route('/register')
-def register():
-    return render_template('register.html')
 
-@app.route('/forgotpassword')
-def forgot_password():
-    return render_template('forgot-password.html')
-
-@app.route('/blank')
-def blank():
-    return render_template('blank.html')
 #--------------------------------------------------------Test Routes----------------------------------------------------#
 
 @app.route("/brd/<num>")
 def brd(num):
-    return render_template('brd/brd.html', black_regions = black_region_detection.detect(num))
+    labels, values = black_region_detection.detect(num)
+    print(labels)
+    print(values)
+    return render_template('brd/brd.html', labels = labels, values = values)
 
+
+@app.route('/brd/charts')
+def charts():
+    return render_template('brd/charts.html')
+
+@app.route('/brd/charts_1')
+def brd_():
+    #labels = ["2012-01-01 00:00:00","2012-02-01 00:10:00","2012-03-01","2012-04-01","2012-04-03","2012-04-08","2012-07-01","2012-08-01",
+    #          "2012-09-01","2012-10-01","2012-11-01","2012-12-01"]
+    #values = [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451]
+    #length=len(values)
+    labels, values, length = black_region_detection.get_data()
+    print(labels)
+    print(values)
+    return render_template('brd/brd.html', labels = labels, values = values, length=length)
+
+@app.route('/brd/tables')
+def tables():
+    return render_template('brd/tables.html')
 
 #--------------------------------------------------------anomalies Routes----------------------------------------------------#
 

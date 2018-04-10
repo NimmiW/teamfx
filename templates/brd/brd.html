@@ -1,27 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Black regions</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin - Start Bootstrap Template</title>
+    <!-- Bootstrap core CSS-->
+    <link href="{{url_for('static', filename='theme/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="{{url_for('static', filename='theme/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet"
+          type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="{{url_for('static', filename='theme/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="{{url_for('static', filename='theme/css/sb-admin.css')}}" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-      <div class="jumbotron">
-        <h1>Black regions</h1>
-        <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
-        responsive, mobile-first projects on the web.</p>
-      </div>
-      <p>{{black_regions}}</p> 
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+
+        <!-- Area Chart Example-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-area-chart"></i> Area Chart Example
+            </div>
+            <div class="card-body">
+                <canvas id="myAreaChart" width="100%" height="30"></canvas>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+        <!-- Area Chart Example-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-area-chart"></i> Area Chart Example
+            </div>
+            <div class="card-body">
+                <canvas id="myAreaChart_2" width="100%" height="30"></canvas>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
     </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="{{url_for('static', filename='theme/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='theme/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{url_for('static', filename='theme/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="{{url_for('static', filename='theme/vendor/chart.js/Chart.min.js')}}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{url_for('static', filename='theme/js/sb-admin.min.js')}}"></script>
 
 
-    <img src="{{url_for('static', filename='brd/test.png')}}"/>
+<script>
+    // Chart.js scripts
+// -- Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+// -- Area Chart Example
+
+var ctx = document.getElementById("myAreaChart");
+
+
+data = {
+    labels: [
+        {% for item in labels %}
+                  new Date("{{item}}"),
+        {% endfor %}
+    ],
+    datasets: [{
+      fill: false,
+      pointRadius: 0,
+      data: {{values}},
+    }],
+}
+
+options = {
+        responsive: true,
+         scales: {
+            xAxes: [{
+
+               stacked: true,
+               gridLines: {display: false},
+               type: 'time',
+               time: {
+                  parser: 'YYYY-MM-DD HH:mm:ss',
+                  unit: 'month',
+                  displayFormats: {
+                     day: 'ddd'
+                  },
+                  //min: '2011-10-02 18:43:53',
+                  max: new Date("{{labels[length-1]}}")
+               },
+               ticks: {
+                  source: 'data',
+                  autoSkip: true,
+                  maxTicksLimit: 5
+               }
+            }]
+         },
+         legend: {
+            display: false
+         },
+         elements: {
+            line: {
+                tension: 0, // disables bezier curves
+                borderWidth : 1,
+                borderColor: "rgba(2,117,216,0.2)",
+            }
+        }
+
+}
+
+var myLineChart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: options
+});
+
+  /*options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false
+        },
+        ticks: {
+          maxTicksLimit: 7
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 40000,
+          maxTicksLimit: 5
+        },
+        gridLines: {
+          color: "rgba(0, 0, 0, .125)",
+        }
+      }],
+    },
+    legend: {
+      display: false
+    }
+  }*/
+//});
+
+
+
+
+
+</script>
+
+
+<script>
+var ctx_2 = document.getElementById("myAreaChart_2");
+
+data= [{
+    x: new Date('2012-01-01'),
+    y: 1
+}, {
+    t: new Date('2012-02-02'),
+    y: 10
+}];
+
+console.log(data);
+var chart = new Chart(ctx_2, {
+    type: 'line',
+    data: [{
+            x: new Date('2012-01-01'),
+            y: 1
+        }, {
+            x: new Date('2012-02-02'),
+            y: 10
+        }],
+    options: {
+        scales: {
+            xAxes: [{
+                time: {
+                    unit: 'month'
+                }
+            }]
+        }
+    }
+});
+console.log(chart);
+
+
+</script>
+</body>
+
 </html>
