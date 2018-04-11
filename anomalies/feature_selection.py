@@ -126,7 +126,7 @@ def feature_selecion():
             opt_configuration = configurations[i]
 
     print(opt_model.summary())
-    conditional_volatilit = opt_model.conditional_volatility
+    conditional_volatility = opt_model.conditional_volatility
 
 
     #https://plot.ly/matplotlib/subplots/ for four
@@ -143,7 +143,7 @@ def feature_selecion():
     ax3.set_ylabel('Price')
 
     ax2 = fig.add_subplot(222)
-    ax2.plot(conditional_volatilit)
+    ax2.plot(conditional_volatility)
     ax2.set_title('Conditional Volatility')
     ax2.set_xlabel('Time')
     ax2.set_ylabel('Conditional Volatility')
@@ -156,8 +156,8 @@ def feature_selecion():
     ax1.set_ylabel('Gradient')
 
 
-    np_array_CH = np.array(conditional_volatilit)
-    np_array_CH_dates = np.array(conditional_volatilit.index)
+    np_array_CH = np.array(conditional_volatility)
+    np_array_CH_dates = np.array(conditional_volatility.index)
     gradients_CH = np.gradient(np_array_CH)
 
     ax4 = fig.add_subplot(224)
@@ -172,7 +172,7 @@ def feature_selecion():
     df_CH['Index'] =  np_array_CH_dates
     df_CH['CH_Gradient'] =  gradients_CH
     df_CH.index = df_CH['Index']
-    df_CH['CH'] = conditional_volatilit
+    df_CH['CH'] = conditional_volatility
     df_CH = df_CH.drop(['Index'],  axis=1)
 
     df_price = pd.DataFrame()
@@ -189,4 +189,18 @@ def feature_selecion():
 
     features.to_csv('static/anomalies/features.csv')
 
-    return "done"
+
+    labels = series.index
+    price_values = series.values
+    gradients_values = gradients
+    volatility_values = conditional_volatility.values
+    volatility_gradients_values = gradients_CH
+
+    labels = list(labels)
+    price_values = list(price_values)
+    gradients_values = list(gradients_values)
+    volatility_values = list(volatility_values)
+    volatility_gradients_values = list(volatility_gradients_values)
+
+    return labels, price_values, gradients_values, volatility_values, volatility_gradients_values,len(price_values)
+

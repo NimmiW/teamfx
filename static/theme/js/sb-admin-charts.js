@@ -24,6 +24,14 @@ var myLineChart = new Chart(ctx, {
     }],
   },
   options: {
+    pan: {
+      enabled: true,
+      mode: 'x',
+    },
+    zoom: {
+      enabled: true,
+      mode: 'x',
+    },
     scales: {
       xAxes: [{
         time: {
@@ -50,8 +58,18 @@ var myLineChart = new Chart(ctx, {
     legend: {
       display: false
     }
-  }
+  },
+  /*plugins: [{
+    beforeDraw: function(c) {
+      var reset_zoom = document.getElementById("reset_zoom"); //reset button
+      var ticks = c.scales['x-axis-0'].ticks.length; //x-axis ticks array
+      var labels = c.data.labels.length; //labels array
+      if (ticks < labels) reset_zoom.hidden = false;
+      else reset_zoom.hidden = true;
+    }
+  }]*/
 });
+/*
 // -- Bar Chart Example
 var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
@@ -106,3 +124,4 @@ var myPieChart = new Chart(ctx, {
     }],
   },
 });
+*/

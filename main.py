@@ -56,7 +56,11 @@ def get_input():
 
 @app.route("/anomalies/selectfeatures", methods = ['POST', 'GET'])
 def feature_selecion():
-    return render_template('anomalies/feature_selection.html', status=feature_selection.feature_selecion())
+    labels, price_values, gradients_values, volatility_values, volatility_gradients_values, length\
+        = feature_selection.feature_selecion()
+    return render_template('anomalies/feature_selection.html', labels=labels, price_values=price_values,
+                           volatility_values = volatility_values, volatility_gradients_values = volatility_gradients_values,
+                           gradients_values=gradients_values, length=length)
 
 @app.route("/anomalies/detectlofmapper")
 def detect_lof_mapper():
