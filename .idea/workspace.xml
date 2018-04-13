@@ -3,18 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="696a0610-7701-4ca9-897c-ccaecbb04191" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/feature_selection.py" afterPath="$PROJECT_DIR$/anomalies/feature_selection.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/anomalies.csv" afterPath="$PROJECT_DIR$/static/anomalies/anomalies.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor0.csv" afterPath="$PROJECT_DIR$/static/anomalies/local_outlier_factor0.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor1.csv" afterPath="$PROJECT_DIR$/static/anomalies/local_outlier_factor1.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor2.csv" afterPath="$PROJECT_DIR$/static/anomalies/local_outlier_factor2.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor3.csv" afterPath="$PROJECT_DIR$/static/anomalies/local_outlier_factor3.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor4.csv" afterPath="$PROJECT_DIR$/static/anomalies/local_outlier_factor4.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/merged_local_outlier_factor_file.csv" afterPath="$PROJECT_DIR$/static/anomalies/merged_local_outlier_factor_file.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/theme/js/sb-admin-charts.js" afterPath="$PROJECT_DIR$/static/theme/js/sb-admin-charts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/feature_selection.html" afterPath="$PROJECT_DIR$/templates/anomalies/feature_selection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,7 +17,7 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="1003">
               <caret line="61" column="93" lean-forward="false" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="93" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
@@ -40,7 +29,7 @@
       <file leaf-file-name="get_input.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/anomalies/get_input.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
+            <state relative-caret-position="3689">
               <caret line="217" column="20" lean-forward="false" selection-start-line="217" selection-start-column="20" selection-end-line="219" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#center#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -52,7 +41,7 @@
       <file leaf-file-name="feature_selection.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/anomalies/feature_selection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6654">
+            <state relative-caret-position="9163">
               <caret line="539" column="30" lean-forward="false" selection-start-line="539" selection-start-column="30" selection-end-line="539" selection-end-column="30" />
               <folding />
             </state>
@@ -62,7 +51,7 @@
       <file leaf-file-name="sb-admin-charts.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/theme/js/sb-admin-charts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
+            <state relative-caret-position="442">
               <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="33" selection-end-column="6" />
               <folding />
             </state>
@@ -72,7 +61,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/anomalies/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1452">
+            <state relative-caret-position="2006">
               <caret line="118" column="39" lean-forward="true" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
               <folding />
             </state>
@@ -82,7 +71,7 @@
       <file leaf-file-name="black_region_detection.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/brd/black_region_detection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
+            <state relative-caret-position="748">
               <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="53" selection-end-column="38" />
               <folding>
                 <element signature="e#1#19#0" expanded="true" />
@@ -91,10 +80,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="feature_selection.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="feature_selection.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/anomalies/feature_selection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2057">
+            <state relative-caret-position="3332">
               <caret line="204" column="51" lean-forward="false" selection-start-line="204" selection-start-column="51" selection-end-line="204" selection-end-column="97" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
@@ -103,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="charts.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/brd/charts.html">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="303" column="4" lean-forward="true" selection-start-line="303" selection-start-column="4" selection-end-line="304" selection-end-column="96" />
+            <state relative-caret-position="108">
+              <caret line="49" column="24" lean-forward="false" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -116,7 +105,7 @@
       <file leaf-file-name="brd.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/brd/brd.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
+            <state relative-caret-position="918">
               <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="93" />
               <folding />
             </state>
@@ -126,7 +115,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
+            <state relative-caret-position="5848">
               <caret line="344" column="4" lean-forward="true" selection-start-line="344" selection-start-column="4" selection-end-line="344" selection-end-column="84" />
               <folding />
             </state>
@@ -194,14 +183,15 @@
         <option value="$PROJECT_DIR$/static/theme/js/sb-admin-charts.js" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/anomalies/feature_selection.html" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-18" />
-    <option name="y" value="64" />
+    <option name="x" value="9" />
+    <option name="y" value="129" />
     <option name="width" value="1378" />
-    <option name="height" value="735" />
+    <option name="height" value="463" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -219,7 +209,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,6 +265,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -368,9 +358,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26399395" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2677761" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -420,19 +409,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="21" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -458,7 +438,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -466,7 +445,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -481,7 +459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -554,7 +531,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -589,75 +565,30 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/hello.html" />
-    <entry file="file://$PROJECT_DIR$/templates/cards.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="333" column="0" lean-forward="false" selection-start-line="333" selection-start-column="0" selection-end-line="339" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/forgot-password.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
-          <caret line="272" column="2" lean-forward="false" selection-start-line="272" selection-start-column="2" selection-end-line="272" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cards.html" />
+    <entry file="file://$PROJECT_DIR$/templates/forgot-password.html" />
+    <entry file="file://$PROJECT_DIR$/templates/navbar.html" />
+    <entry file="file://$PROJECT_DIR$/templates/register.html" />
     <entry file="file://$PROJECT_DIR$/templates/brd/tables.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="754" column="0" lean-forward="true" selection-start-line="754" selection-start-column="0" selection-end-line="754" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/blank.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1173">
-          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/blank.html" />
     <entry file="file://$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="20" column="23" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/anomalies/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/anomalies/test.py" />
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -665,7 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -673,7 +603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -681,7 +610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="33" column="16" lean-forward="true" selection-start-line="26" selection-start-column="10" selection-end-line="33" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -689,7 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="6" lean-forward="false" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -697,7 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -705,13 +631,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="303" column="4" lean-forward="true" selection-start-line="303" selection-start-column="4" selection-end-line="304" selection-end-column="96" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/brd/black_region_detection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
+        <state relative-caret-position="748">
           <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="53" selection-end-column="38" />
           <folding>
             <element signature="e#1#19#0" expanded="true" />
@@ -721,7 +646,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/brd/brd.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
+        <state relative-caret-position="918">
           <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="93" />
           <folding />
         </state>
@@ -729,7 +654,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="1003">
           <caret line="61" column="93" lean-forward="false" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="93" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
@@ -739,7 +664,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/anomalies/get_input.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
+        <state relative-caret-position="3689">
           <caret line="217" column="20" lean-forward="false" selection-start-line="217" selection-start-column="20" selection-end-line="219" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#img#0;n#center#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -749,7 +674,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/anomalies/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1452">
+        <state relative-caret-position="2006">
           <caret line="118" column="39" lean-forward="true" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
           <folding />
         </state>
@@ -757,7 +682,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/theme/js/sb-admin-charts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
+        <state relative-caret-position="442">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="33" selection-end-column="6" />
           <folding />
         </state>
@@ -765,7 +690,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
+        <state relative-caret-position="5848">
           <caret line="344" column="4" lean-forward="true" selection-start-line="344" selection-start-column="4" selection-end-line="344" selection-end-column="84" />
           <folding />
         </state>
@@ -773,7 +698,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/anomalies/feature_selection.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6654">
+        <state relative-caret-position="9163">
           <caret line="539" column="30" lean-forward="false" selection-start-line="539" selection-start-column="30" selection-end-line="539" selection-end-column="30" />
           <folding />
         </state>
@@ -781,11 +706,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/anomalies/feature_selection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2057">
+        <state relative-caret-position="3332">
           <caret line="204" column="51" lean-forward="false" selection-start-line="204" selection-start-column="51" selection-end-line="204" selection-end-column="97" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="49" column="24" lean-forward="false" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

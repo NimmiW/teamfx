@@ -47,11 +47,11 @@ python-docs-hello-world/
 
 Module functions should be wriiten on individual module folders in the root directory.
 
-Images should be placed on static folder.
+Images, javascript files should be placed on static folder.
 
 Html templates should be placed on templates folder.
 
-Please observe the behavior of btr module which is a tes module to study the work flow.
+Please observe the behavior of btr module which is a test module to study the work flow.
 
 All the dependencies should be listed in reuirements.txt at the root directory.
 
