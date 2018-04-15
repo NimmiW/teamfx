@@ -1,6 +1,10 @@
 import pandas as pd
+import os
+import gc
 
 def detect_lof_reducer():
+    if os.path.exists("static/anomalies/merged_local_outlier_factor_file.csv"):
+        os.remove("static/anomalies/merged_local_outlier_factor_file.csv")
     fout=open("static/anomalies/merged_local_outlier_factor_file.csv","a")
 
     # first file:
@@ -19,6 +23,6 @@ def detect_lof_reducer():
         f.close()
 
     fout.close()
-
+    gc.collect()
     features = pd.read_csv('static/anomalies/features.csv')
-    return features
+    return features.head(100)

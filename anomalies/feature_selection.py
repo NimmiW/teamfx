@@ -7,12 +7,16 @@ from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.arima_model import ARIMA
 from arch import arch_model
 import matplotlib.pyplot as plt
+import gc
 
 
 def feature_selecion():
 
     start_date = request.form["year"] + "-" + request.form["from_month"] + "-01"
-    end_date = request.form["year"] + "-" + str(int(request.form["to_month"])+1) + "-01"
+    if(int(request.form["to_month"])==12):
+        end_date = str(int(request.form["year"])+1) + "-" + str(1) + "-01"
+    else:
+        end_date = request.form["year"] + "-" + str(int(request.form["to_month"])+1) + "-01"
     data_file ="static/data/"+request.form["currency_pair"]+"/DAT_MT_"+request.form["currency_pair"]+"_M1_"+request.form["year"] +".csv"
     #news = ["Brexit","US presidential election 2012"]
 
@@ -25,6 +29,7 @@ def feature_selecion():
     mask = (data.index > start_date) & (data.index <= end_date)
     data = data.loc[mask]
     series = data["Close"]
+
 
     #price and the gradient
     fig = plt.figure()
@@ -47,6 +52,7 @@ def feature_selecion():
     ax1.plot(np_array_dates, gradients)
 
     fig.savefig("static/anomalies/feature_lection_image1.png")
+    fig,ax1,ax2 = "","",""
 
     price_list = series.values
     ADF_result_price = adfuller(price_list)
@@ -167,6 +173,7 @@ def feature_selecion():
     ax4.set_ylabel('Gradient')
 
     fig.savefig("static/anomalies/feature_lection_image2.png")
+    fig, ax1, ax2, ax3, ax4 = "", "", "", "", ""
 
     df_CH = pd.DataFrame()
     df_CH['Index'] =  np_array_CH_dates
@@ -185,7 +192,7 @@ def feature_selecion():
     features = pd.concat([df_price, df_CH], axis=1)
     features = features.dropna(axis=0)
 
-    print(features)
+    gc.collect()
 
     features.to_csv('static/anomalies/features.csv')
 
