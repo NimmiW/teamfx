@@ -1,3 +1,4 @@
+from flask import Flask,redirect, url_for, request
 from collections import defaultdict
 import numpy as np
 import pandas as pd
@@ -127,7 +128,7 @@ def detect_lof_mapper():
         gc.collect()
         partition.to_csv('static/anomalies/local_outlier_factor'+str(i)+'.csv')
 
-    return "done"
+    return request.form["year"], request.form["from_month"], request.form["to_month"],"done"
 
 
 

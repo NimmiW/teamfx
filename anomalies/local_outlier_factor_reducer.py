@@ -1,3 +1,4 @@
+from flask import Flask,redirect, url_for, request
 import pandas as pd
 import os
 import gc
@@ -25,4 +26,4 @@ def detect_lof_reducer():
     fout.close()
     gc.collect()
     features = pd.read_csv('static/anomalies/features.csv')
-    return features.head(100)
+    return request.form["year"], request.form["from_month"], request.form["to_month"], features.head(100)

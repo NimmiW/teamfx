@@ -164,7 +164,10 @@
             {{features | safe}}
             <p>To Proceed with extracting the gaussin mixture of local coutlier factors and detect black regions, Click
                 Next.</p>
-            <form action="/anomalies/detectanomalies" method="get">
+            <form action="/anomalies/detectanomalies" method="post">
+                <input type="hidden" name="year" value="{{year}}">
+                <input type="hidden" name="from_month" value="{{from_month}}">
+                <input type="hidden" name="to_month" value="{{to_month}}">
                 <button class="btn btn-lg btn-success" type="submit">Next>></button>
             </form>
         </div>

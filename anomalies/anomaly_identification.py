@@ -1,3 +1,4 @@
+from flask import Flask,redirect, url_for, request
 import pandas as pd
 import scipy.stats as ss
 import numpy as np
@@ -13,11 +14,19 @@ def get_percentage(percent, number_of_time_points):
 def detect_anomalies(input_directory = "static/anomalies/merged_local_outlier_factor_file.csv", output_directory="static/anomalies/anomalies.csv"):
     anomaly_percentage = 2 #example 2%
 
+    year = request.form["year"]
+    from_month = request.form["from_month"]
+    to_month = request.form["to_month"]
+
     print('anomalies are detecting...')
+    print('year: ' + str(year))
+    print('from_month: ' + str(from_month))
+    print('to_month: ' + str(to_month))
 
     data = pd.read_csv(input_directory)
     data.index = data.Index
     data = data.sort_index()
+
 
     try:
         data = data[data.lof != 'lof']
@@ -130,7 +139,7 @@ def detect_anomalies(input_directory = "static/anomalies/merged_local_outlier_fa
         count.to_csv(f, header=False)
 
     gc.collect()
-    return count
+    return year, from_month, to_month, count
 
 
 #detect_anomalies(input_directory="D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/anomalies/merged_local_outlier_factor_file.csv",

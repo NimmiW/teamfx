@@ -209,5 +209,5 @@ def feature_selecion():
     volatility_values = list(volatility_values)
     volatility_gradients_values = list(volatility_gradients_values)
 
-    return labels, price_values, gradients_values, volatility_values, volatility_gradients_values,len(price_values)
+    return request.form["year"], request.form["from_month"], request.form["to_month"], labels, price_values, gradients_values, volatility_values, volatility_gradients_values,len(price_values)
 

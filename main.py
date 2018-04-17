@@ -56,25 +56,32 @@ def get_input():
 
 @app.route("/anomalies/selectfeatures", methods = ['POST', 'GET'])
 def feature_selecion():
-    labels, price_values, gradients_values, volatility_values, volatility_gradients_values, length\
+    year, start_month, end_month, labels, price_values, gradients_values, volatility_values, volatility_gradients_values, length\
         = feature_selection.feature_selecion()
-    return render_template('anomalies/feature_selection.html', labels=labels, price_values=price_values,
-                           volatility_values = volatility_values, volatility_gradients_values = volatility_gradients_values,
-                           gradients_values=gradients_values, length=length)
+    return render_template('anomalies/feature_selection.html',
+                           year = year, start_month = start_month, end_month = end_month, labels=labels,
+                           price_values=price_values, volatility_values = volatility_values, length=length,
+                           volatility_gradients_values = volatility_gradients_values, gradients_values=gradients_values)
 
-@app.route("/anomalies/detectlofmapper")
+@app.route("/anomalies/detectlofmapper", methods = ['POST', 'GET'])
 def detect_lof_mapper():
-    return render_template('anomalies/local_outlier_factor_mapper.html', status = local_outlier_factor.detect_lof_mapper())
+    year, start_month, end_month,status = local_outlier_factor.detect_lof_mapper()
+    return render_template('anomalies/local_outlier_factor_mapper.html',
+                           year = year, start_month = start_month, end_month = end_month)
 
-@app.route("/anomalies/detectlofreducer")
+@app.route("/anomalies/detectlofreducer", methods = ['POST', 'GET'])
 def detect_lof_reducer():
-    features = local_outlier_factor_reducer.detect_lof_reducer()
-    return render_template('anomalies/local_outlier_factor_reducer.html', features = features.to_html())
+    year, start_month, end_month, features = local_outlier_factor_reducer.detect_lof_reducer()
+    return render_template('anomalies/local_outlier_factor_reducer.html',
+                           year=year, start_month=start_month, end_month=end_month,
+                           features = features.to_html())
 
-@app.route("/anomalies/detectanomalies")
+@app.route("/anomalies/detectanomalies", methods = ['POST', 'GET'])
 def detect_anomalies():
-    anomalies = anomaly_identification.detect_anomalies()
-    return render_template('anomalies/anomalies.html', anomalies = anomalies.to_html())
+    year, start_month, end_month, anomalies = anomaly_identification.detect_anomalies()
+    return render_template('anomalies/anomalies.html',
+                           year=year, start_month=start_month, end_month=end_month,
+                           anomalies = anomalies.to_html())
 
 
 #--------------------------------------------------------bactesting Routes----------------------------------------------------#

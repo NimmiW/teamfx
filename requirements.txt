@@ -5,3 +5,4 @@ pandas
 statsmodels
 arch
 sklearn
+mpld3
