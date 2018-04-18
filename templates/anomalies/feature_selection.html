@@ -208,6 +208,7 @@
             <p>To Proceed with Local Outlier Calculation Mapper, Click Next.</p>
             <form action="/anomalies/detectlofmapper" method="post">
                 <div class="form-group">
+                    <input type="hidden" name = "currency" value="{{currency}}">
                     <input type="hidden" name = "year" value="{{year}}">
                     <input type="hidden" name = "from_month" value="{{from_month}}">
                     <input type="hidden" name = "to_month" value="{{to_month}}">

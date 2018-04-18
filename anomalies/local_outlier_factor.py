@@ -22,6 +22,8 @@ def all_indices(value, inlist):
 
 
 def detect_lof_mapper():
+
+
     # Calculate K distance
     k_distance = defaultdict(tuple)
     k_distance_neig = defaultdict(list)
@@ -128,7 +130,7 @@ def detect_lof_mapper():
         gc.collect()
         partition.to_csv('static/anomalies/local_outlier_factor'+str(i)+'.csv')
 
-    return request.form["year"], request.form["from_month"], request.form["to_month"],"done"
+    return request.form["year"], request.form["from_month"], request.form["to_month"], request.form["currency"], "done"
 
 
 

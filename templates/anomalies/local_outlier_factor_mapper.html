@@ -159,6 +159,7 @@
             <p>At the moment the local outlier have been genereted. To Proceed with Local Outlier Calculation
                 Reducer, Click Next.</p>
             <form class="form-group" action="/anomalies/detectlofreducer" method="post">
+                <input type="hidden" name = "currency" value="{{currency}}">
                 <input type="hidden" name="year" value="{{year}}">
                 <input type="hidden" name="from_month" value="{{from_month}}">
                 <input type="hidden" name="to_month" value="{{to_month}}">

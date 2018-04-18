@@ -163,9 +163,14 @@
         <div class="container">
             <p>The detected anomalies are shown below.</p>
             {{anomalies | safe}}
+            <form class="form-group" action="/anomalies/plotresults" method="post">
+                <input type="hidden" name = "currency" value="{{currency}}">
+                <input type="hidden" name="year" value="{{year}}">
+                <input type="hidden" name="from_month" value="{{from_month}}">
+                <input type="hidden" name="to_month" value="{{to_month}}">
+                <button class="btn btn-lg btn-success" type="submit">Plot</button>
+            </form>
         </div>
-
-
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->

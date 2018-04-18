@@ -139,7 +139,7 @@ def detect_anomalies(input_directory = "static/anomalies/merged_local_outlier_fa
         count.to_csv(f, header=False)
 
     gc.collect()
-    return year, from_month, to_month, count
+    return year, from_month, to_month, request.form["currency"], count
 
 
 #detect_anomalies(input_directory="D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/anomalies/merged_local_outlier_factor_file.csv",

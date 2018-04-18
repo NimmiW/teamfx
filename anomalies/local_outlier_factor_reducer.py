@@ -4,6 +4,7 @@ import os
 import gc
 
 def detect_lof_reducer():
+
     if os.path.exists("static/anomalies/merged_local_outlier_factor_file.csv"):
         os.remove("static/anomalies/merged_local_outlier_factor_file.csv")
     fout=open("static/anomalies/merged_local_outlier_factor_file.csv","a")
@@ -26,4 +27,5 @@ def detect_lof_reducer():
     fout.close()
     gc.collect()
     features = pd.read_csv('static/anomalies/features.csv')
-    return request.form["year"], request.form["from_month"], request.form["to_month"], features.head(100)
+
+    return request.form["year"], request.form["from_month"], request.form["to_month"], request.form["currency"], features.head(100)

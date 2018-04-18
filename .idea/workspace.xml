@@ -5,6 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/feature_lection_image1.png" afterPath="$PROJECT_DIR$/static/anomalies/feature_lection_image1.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/feature_lection_image2.png" afterPath="$PROJECT_DIR$/static/anomalies/feature_lection_image2.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/anomalies_result_visualization.py" afterPath="$PROJECT_DIR$/anomalies/anomalies_result_visualization.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/anomaly_identification.py" afterPath="$PROJECT_DIR$/anomalies/anomaly_identification.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/feature_selection.py" afterPath="$PROJECT_DIR$/anomalies/feature_selection.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/local_outlier_factor.py" afterPath="$PROJECT_DIR$/anomalies/local_outlier_factor.py" />
@@ -19,6 +20,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor3.csv" afterPath="$PROJECT_DIR$/static/anomalies/local_outlier_factor3.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor4.csv" afterPath="$PROJECT_DIR$/static/anomalies/local_outlier_factor4.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/merged_local_outlier_factor_file.csv" afterPath="$PROJECT_DIR$/static/anomalies/merged_local_outlier_factor_file.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/anomalies.html" afterPath="$PROJECT_DIR$/templates/anomalies/anomalies.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/feature_selection.html" afterPath="$PROJECT_DIR$/templates/anomalies/feature_selection.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html" afterPath="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html" afterPath="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html" />
@@ -35,29 +37,23 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="80" column="34" lean-forward="false" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
-              <folding />
+            <state relative-caret-position="34">
+              <caret line="83" column="98" lean-forward="false" selection-start-line="83" selection-start-column="98" selection-end-line="83" selection-end-column="98" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="anomalies.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/anomalies/anomalies.html">
+      <file leaf-file-name="anomalies_result_visualization.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/anomalies/anomalies_result_visualization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="152" column="61" lean-forward="false" selection-start-line="152" selection-start-column="61" selection-end-line="152" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="local_outlier_factor_reducer.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="169" column="74" lean-forward="false" selection-start-line="169" selection-start-column="74" selection-end-line="169" selection-end-column="74" />
-              <folding />
+            <state relative-caret-position="286">
+              <caret line="44" column="33" lean-forward="false" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,18 +61,8 @@
       <file leaf-file-name="feature_selection.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/anomalies/feature_selection.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="210" column="20" lean-forward="true" selection-start-line="210" selection-start-column="20" selection-end-line="212" selection-end-column="80" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="local_outlier_factor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/anomalies/local_outlier_factor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255">
-              <caret line="0" column="49" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="200">
+              <caret line="210" column="20" lean-forward="false" selection-start-line="210" selection-start-column="20" selection-end-line="210" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -85,8 +71,28 @@
       <file leaf-file-name="local_outlier_factor_mapper.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="163" selection-end-column="74" />
+            <state relative-caret-position="211">
+              <caret line="161" column="76" lean-forward="false" selection-start-line="161" selection-start-column="76" selection-end-line="161" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="local_outlier_factor_reducer.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="167" column="76" lean-forward="false" selection-start-line="167" selection-start-column="76" selection-end-line="167" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="anomalies.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/anomalies/anomalies.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="166" column="76" lean-forward="false" selection-start-line="166" selection-start-column="76" selection-end-line="166" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -96,7 +102,7 @@
         <entry file="file://$PROJECT_DIR$/anomalies/local_outlier_factor_reducer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="235">
-              <caret line="28" column="11" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="86" />
+              <caret line="30" column="113" lean-forward="false" selection-start-line="30" selection-start-column="113" selection-end-line="30" selection-end-column="113" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -104,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="anomaly_identification.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="anomaly_identification.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/anomalies/anomaly_identification.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="141" column="39" lean-forward="false" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="39" />
+              <caret line="141" column="64" lean-forward="false" selection-start-line="141" selection-start-column="64" selection-end-line="141" selection-end-column="64" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -119,19 +125,23 @@
       <file leaf-file-name="feature_selection.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/anomalies/feature_selection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="29" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="187">
+              <caret line="211" column="87" lean-forward="false" selection-start-line="211" selection-start-column="87" selection-end-line="211" selection-end-column="117" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="merged_local_outlier_factor_file.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/anomalies/merged_local_outlier_factor_file.csv">
+      <file leaf-file-name="local_outlier_factor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/anomalies/local_outlier_factor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="21" />
-              <folding />
+            <state relative-caret-position="303">
+              <caret line="132" column="87" lean-forward="false" selection-start-line="132" selection-start-column="87" selection-end-line="132" selection-end-column="111" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -189,21 +199,21 @@
         <option value="$PROJECT_DIR$/static/theme/js/sb-admin-charts.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/brd/__init__.py" />
-        <option value="$PROJECT_DIR$/anomalies/anomalies_result_visualization.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/templates/anomalies/anomalies.html" />
-        <option value="$PROJECT_DIR$/static/anomalies/all_anomalies.csv" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/brd/matplotlib_to_browser.py" />
-        <option value="$PROJECT_DIR$/anomalies/feature_selection.py" />
-        <option value="$PROJECT_DIR$/templates/anomalies/feature_selection.html" />
-        <option value="$PROJECT_DIR$/anomalies/local_outlier_factor.py" />
-        <option value="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html" />
-        <option value="$PROJECT_DIR$/anomalies/local_outlier_factor_reducer.py" />
-        <option value="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/static/anomalies/all_anomalies.csv" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/anomalies/feature_selection.py" />
+        <option value="$PROJECT_DIR$/anomalies/local_outlier_factor.py" />
+        <option value="$PROJECT_DIR$/anomalies/local_outlier_factor_reducer.py" />
         <option value="$PROJECT_DIR$/anomalies/anomaly_identification.py" />
+        <option value="$PROJECT_DIR$/templates/anomalies/feature_selection.html" />
+        <option value="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html" />
+        <option value="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html" />
+        <option value="$PROJECT_DIR$/templates/anomalies/anomalies.html" />
+        <option value="$PROJECT_DIR$/anomalies/anomalies_result_visualization.py" />
       </list>
     </option>
   </component>
@@ -244,6 +254,19 @@
             <path>
               <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
               <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
+              <item name="anomalies" type="462c0819:PsiDirectoryNode" />
+              <item name="evaluator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
+              <item name="anomalies" type="462c0819:PsiDirectoryNode" />
+              <item name="evaluator" type="462c0819:PsiDirectoryNode" />
+              <item name="black_regions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
               <item name="brd" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -256,6 +279,25 @@
               <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="anomalies" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="brd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="EURUSD" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
@@ -287,14 +329,15 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\coursework\L4S2\GroupProject\repo\teamfx\anomalies\input" />
-      <recent name="D:\coursework\L4S2\GroupProject\repo\python-docs-hello-world\anomalies" />
-      <recent name="D:\coursework\L4S2\GroupProject\repo\python-docs-hello-world\templates\anomalies" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\coursework\L4S2\GroupProject\repo\TeamFxPortal\templates\brd" />
       <recent name="D:\coursework\L4S2\GroupProject\repo\teamfx\anomalies\input" />
+      <recent name="D:\coursework\L4S2\GroupProject\repo\python-docs-hello-world\templates\anomalies" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\coursework\L4S2\GroupProject\repo\TeamFxPortal\static\brd" />
+      <recent name="D:\coursework\L4S2\GroupProject\repo\teamfx\anomalies\input" />
+      <recent name="D:\coursework\L4S2\GroupProject\repo\python-docs-hello-world\anomalies" />
       <recent name="D:\coursework\L4S2\GroupProject\repo\python-docs-hello-world\templates\anomalies" />
     </key>
   </component>
@@ -428,16 +471,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2677761" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3223684" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3223684" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3223684" sideWeight="0.49394855" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967105" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -449,6 +491,26 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3223684" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3223684" sideWeight="0.49394855" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2677761" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967105" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -491,23 +553,16 @@
           <line>1</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#55#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/hello.html" />
     <entry file="file://$PROJECT_DIR$/brd/black_region_detection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -547,13 +602,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/blank.html" />
     <entry file="file://$PROJECT_DIR$/anomalies/test.py" />
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/theme/js/sb-admin-datatables.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -596,14 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/anomalies/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2006">
-          <caret line="118" column="39" lean-forward="true" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -678,22 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/anomalies/anomalies_result_visualization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/anomalies/get_input.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1084">
-          <caret line="196" column="46" lean-forward="false" selection-start-line="196" selection-start-column="36" selection-end-line="196" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/anomalies/features.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -706,30 +730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="35" lean-forward="false" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/anomalies/all_anomalies.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="57" lean-forward="false" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/anomalies/anomalies.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="5" lean-forward="false" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -755,26 +755,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html">
+    <entry file="file://$PROJECT_DIR$/templates/anomalies/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="161" column="0" lean-forward="false" selection-start-line="161" selection-start-column="0" selection-end-line="163" selection-end-column="74" />
+        <state relative-caret-position="353">
+          <caret line="118" column="39" lean-forward="true" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html">
+    <entry file="file://$PROJECT_DIR$/templates/anomalies/get_input.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="169" column="74" lean-forward="false" selection-start-line="169" selection-start-column="74" selection-end-line="169" selection-end-column="74" />
+        <state relative-caret-position="-817">
+          <caret line="196" column="46" lean-forward="false" selection-start-line="196" selection-start-column="36" selection-end-line="196" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/anomalies/local_outlier_factor_reducer.py">
+    <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="28" column="11" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="86" />
+        <state relative-caret-position="119">
+          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/brd/yahoofinance-INTC-19950101-20040412.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/anomalies/anomalies.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/anomalies/all_anomalies.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="221" column="0" lean-forward="false" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/anomalies/evaluator/evaluator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="83" column="98" lean-forward="false" selection-start-line="83" selection-start-column="98" selection-end-line="83" selection-end-column="98" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/anomalies/feature_selection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="211" column="87" lean-forward="false" selection-start-line="211" selection-start-column="87" selection-end-line="211" selection-end-column="117" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
@@ -783,50 +843,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/anomalies/local_outlier_factor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="0" column="49" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="303">
+          <caret line="132" column="87" lean-forward="false" selection-start-line="132" selection-start-column="87" selection-end-line="132" selection-end-column="111" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/anomalies/feature_selection.py">
+    <entry file="file://$PROJECT_DIR$/anomalies/local_outlier_factor_reducer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="29" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/anomalies/feature_selection.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="210" column="20" lean-forward="true" selection-start-line="210" selection-start-column="20" selection-end-line="212" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/anomalies/anomalies.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="152" column="61" lean-forward="false" selection-start-line="152" selection-start-column="61" selection-end-line="152" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="80" column="34" lean-forward="false" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="235">
+          <caret line="30" column="113" lean-forward="false" selection-start-line="30" selection-start-column="113" selection-end-line="30" selection-end-column="113" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/anomalies/anomaly_identification.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="141" column="39" lean-forward="false" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="39" />
+          <caret line="141" column="64" lean-forward="false" selection-start-line="141" selection-start-column="64" selection-end-line="141" selection-end-column="64" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/anomalies/feature_selection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="210" column="20" lean-forward="false" selection-start-line="210" selection-start-column="20" selection-end-line="210" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="161" column="76" lean-forward="false" selection-start-line="161" selection-start-column="76" selection-end-line="161" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="167" column="76" lean-forward="false" selection-start-line="167" selection-start-column="76" selection-end-line="167" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/anomalies/anomalies.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="166" column="76" lean-forward="false" selection-start-line="166" selection-start-column="76" selection-end-line="166" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/anomalies/anomalies_result_visualization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="44" column="33" lean-forward="false" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
