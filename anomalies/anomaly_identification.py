@@ -1,3 +1,4 @@
+from flask import Flask,redirect, url_for, request
 import pandas as pd
 import scipy.stats as ss
 import numpy as np
@@ -5,19 +6,27 @@ import math
 from pandas import to_datetime
 from collections import Counter
 from sklearn import mixture
-import matplotlib.pyplot as plt
+import os,gc
 
 def get_percentage(percent, number_of_time_points):
     return int(percent/100*number_of_time_points)
 
-def detect_anomalies():
+def detect_anomalies(input_directory = "static/anomalies/merged_local_outlier_factor_file.csv", output_directory="static/anomalies/anomalies.csv"):
     anomaly_percentage = 2 #example 2%
 
-    print('anomalies are detecting...')
+    year = request.form["year"]
+    from_month = request.form["from_month"]
+    to_month = request.form["to_month"]
 
-    data = pd.read_csv("static/anomalies/merged_local_outlier_factor_file.csv")
+    print('anomalies are detecting...')
+    print('year: ' + str(year))
+    print('from_month: ' + str(from_month))
+    print('to_month: ' + str(to_month))
+
+    data = pd.read_csv(input_directory)
     data.index = data.Index
     data = data.sort_index()
+
 
     try:
         data = data[data.lof != 'lof']
@@ -87,13 +96,13 @@ def detect_anomalies():
     # abnormal_dates = abnormal_dates[1:]
     # abnormal_dates = np.asarray(abnormal_dates)
 
-    abnormal_dates = list(map(lambda x: to_datetime(x).date(), abnormal_dates))
+    abnormal_dates = list(map(lambda x: to_datetime(x).replace(minute=0, second=0, microsecond=0), abnormal_dates))
     print(anomalies)
 
-    anomalies['Date'] = anomalies.index.values
-    anomalies['Date'] = anomalies['Date'].apply(lambda x: to_datetime(x).date())
+    anomalies['DateTime'] = anomalies.index.values
+    anomalies['DateHour'] = anomalies['DateTime'].apply(lambda x: to_datetime(x).replace(minute=0, second=0, microsecond=0))
     print(anomalies)
-    lof_average_per_date = anomalies.groupby('Date', as_index=False)['lof'].mean()
+    lof_average_per_date = anomalies.groupby('DateHour', as_index=False)['lof'].mean()
     print(lof_average_per_date)
     print(abnormal_dates)
 
@@ -103,18 +112,35 @@ def detect_anomalies():
 
     tmp = pd.DataFrame.from_dict(abnormal_dates_and_counter, orient='index').reset_index()
     count = pd.DataFrame()
-    count['Date'] = tmp['index']
+    count['DateHour'] = tmp['index']
     count['Count'] = tmp.iloc[:, -1]
 
-    count = count.sort_values(by=['Date'])
-    count.index = count['Date']
-    count = count.drop(['Date'], axis=1)
+    count = count.sort_values(by=['DateHour'])
+    count.index = count['DateHour']
+    count = count.drop(['DateHour'], axis=1)
+    print("length of lof_average_per_date: " + str(len(lof_average_per_date['lof'].values)))
+    print("length of count: " + str(len(count['Count'].values)))
     count['Average_lof'] = lof_average_per_date['lof'].values
     count['Ranking_Factor'] = count['Average_lof'] / count['Count']
     count = count.sort_values(by=['Ranking_Factor'])
 
-    count = count.head(6)
+    number_of_time_points = len(count)
 
-    count.to_csv('static/anomalies/anomalies.csv')
+    amount_of_anomalies = get_percentage(anomaly_percentage, number_of_time_points)
 
-    return count
+    count = count.head(amount_of_anomalies)
+
+    if os.path.exists(output_directory):
+        os.remove(output_directory)
+
+    count.to_csv(output_directory)
+
+    with open('static/anomalies/all_anomalies.csv', 'a') as f:
+        count.to_csv(f, header=False)
+
+    gc.collect()
+    return year, from_month, to_month, request.form["currency"], count
+
+
+#detect_anomalies(input_directory="D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/anomalies/merged_local_outlier_factor_file.csv",
+#                 output_directory = "D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/anomalies/anomalies.csv")

@@ -5,3 +5,5 @@ pandas
 statsmodels
 arch
 sklearn
+mpld3
+numba>=0.29

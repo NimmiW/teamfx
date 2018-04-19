@@ -1,3 +1,4 @@
+from flask import Flask,redirect, url_for, request
 from collections import defaultdict
 import numpy as np
 import pandas as pd
@@ -5,6 +6,7 @@ import heapq
 from sklearn import preprocessing
 import matplotlib.pyplot as plt
 from sklearn.metrics import pairwise_distances
+import os, gc
 
 #Calculate the k-distance neighborhood:
 def all_indices(value, inlist):
@@ -20,6 +22,8 @@ def all_indices(value, inlist):
 
 
 def detect_lof_mapper():
+
+
     # Calculate K distance
     k_distance = defaultdict(tuple)
     k_distance_neig = defaultdict(list)
@@ -120,9 +124,13 @@ def detect_lof_mapper():
 
         partition['lof'] = lof_values
         print(partition)
+        if os.path.exists('static/anomalies/local_outlier_factor'+str(i)+'.csv'):
+            os.remove('static/anomalies/local_outlier_factor'+str(i)+'.csv')
+
+        gc.collect()
         partition.to_csv('static/anomalies/local_outlier_factor'+str(i)+'.csv')
 
-    return "done"
+    return request.form["year"], request.form["from_month"], request.form["to_month"], request.form["currency"], "done"
 
 
 
