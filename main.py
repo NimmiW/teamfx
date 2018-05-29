@@ -1,7 +1,13 @@
-from flask import Flask, render_template, make_response
-from brd import black_region_detection
+from flask import Flask, render_template, make_response,request
+from brd import plot_data,black_region_detection
 from anomalies import feature_selection, local_outlier_factor, local_outlier_factor_reducer, anomaly_identification
 from anomalies import anomalies_result_visualization
+from anomalies.visualize import visualize as anomlies_visualize
+
+import plotly.plotly.plotly as py
+import pandas as pd
+import numpy as np
+import json
 
 app = Flask(__name__)
 
@@ -16,6 +22,14 @@ def login():
 
 
 #--------------------------------------------------------Test Routes----------------------------------------------------#
+
+@app.route('/brd/plotly')
+def plotly():
+    ids, graphJSON = plot_data.plot_function()
+
+    return render_template('brd/index.html',
+                           ids=ids,
+                           graphJSON=graphJSON)
 
 @app.route("/brd/<num>")
 def brd(num):
@@ -93,13 +107,19 @@ def plot_results():
     anomalies_result_visualization.plot_results()
     return render_template('anomalies/get_input.html')
 
-@app.route("/anomalies/visualize")
-def visualize_anormalies_with_no_data():
-    return render_template('anomalies/visualize.html')
+@app.route("/anomalies/visualize", methods = ['POST', 'GET'])
+def visualize_anormalies():
+    if (request.form['page'] == 'anomalies_visualize_page'):
+        anomlies_visualize.get_visualize_view()
+        return render_template('anomalies/visualize.html')
+    else:
+        return render_template('anomalies/visualize.html')
 
-@app.route("/anomalies/visualize/graph", methods = ['POST', 'GET'])
+
+
+"""@app.route("/anomalies/visualize/graph", methods = ['POST', 'GET'])
 def visualize_anormalies_with_data():
-    return render_template('anomalies/visualize_with_data.html')
+    return render_template('anomalies/visualize_with_data.html')"""
 #--------------------------------------------------------bactesting Routes----------------------------------------------------#
 
 

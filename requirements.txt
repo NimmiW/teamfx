@@ -1,4 +1,4 @@
-Flask==0.12.1
+Flask
 matplotlib
 six
 pandas
@@ -7,3 +7,4 @@ arch
 sklearn
 mpld3
 numba>=0.29
+plotly
