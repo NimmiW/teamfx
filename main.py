@@ -110,10 +110,19 @@ def plot_results():
 @app.route("/anomalies/visualize", methods = ['POST', 'GET'])
 def visualize_anormalies():
     if (request.form['page'] == 'anomalies_visualize_page'):
-        anomlies_visualize.get_visualize_view()
-        return render_template('anomalies/visualize.html')
+
+        ids, graphJSON = anomlies_visualize.get_visualize_view()
+
+        return render_template('anomalies/visualize.html',
+                               status = "with_data",
+                               ids=ids,
+                               graphJSON=graphJSON)
     else:
-        return render_template('anomalies/visualize.html')
+        return render_template('anomalies/visualize.html',
+                               status = "without_data",
+                               ids=["no_id"],
+                               graphJSON=[]
+                               )
 
 
 

@@ -150,9 +150,10 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-3 card">
+
+        <div class="row">
+
+                <div class="col-2 card">
                     <div class="card-body">
                         <h5 class="card-title">Select the date range</h5>
                         <center>
@@ -189,14 +190,14 @@
                     </div>
                 </div>
 
-                <div class="col-9 card">
+                <div class="col-10 card">
                     <div class="card-body">
                         <p class="card-text">Black Regions are shaded in red colour.</p>
-
+                        <div id="{{ids[0]}}"></div>
                     </div>
                 </div>
-            </div>
         </div>
+
 
 
     </div>
@@ -239,6 +240,30 @@
     <script src="{{url_for('static', filename='theme/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{url_for('static', filename='theme/js/sb-admin.min.js')}}"></script>
+
+    <!-- D3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <!-- jQuery -->
+    <!--script src="https://code.jquery.com/jquery-2.1.4.min.js"></script-->
+    <!-- Plotly.js -->
+    <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script>
+
+    <script type="text/javascript">
+
+        if("{{status}}"=="with_data"){
+            console.log("with data");
+
+            var graphs = {{graphJSON | safe}};
+            var ids = {{ids | safe}};
+
+            for(var i in graphs) {
+                Plotly.plot(ids[i], // the ID of the div, created above
+                            graphs[i].data,
+                            graphs[i].layout || {});
+            }
+        }
+
+    </script>
 </div>
 </body>
 

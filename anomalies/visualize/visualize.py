@@ -1,13 +1,8 @@
-from flask import Flask,redirect, url_for, request
+from flask import request
+import plotly.plotly.plotly as py
 import pandas as pd
-import numpy as np
-from pandas import to_datetime,read_csv
+import json
 from datetime import timedelta
-from statsmodels.tsa.stattools import adfuller
-from statsmodels.tsa.arima_model import ARIMA
-from arch import arch_model
-#import matplotlib.pyplot as plt
-import gc
 
 def get_visualize_view():
     start_date = request.form['from_date']
@@ -38,7 +33,7 @@ def get_visualize_view():
     mask = (data.index > start_date) & (data.index <= end_date)
     data = data.loc[mask]
     series = data["Close"]
-    print(series)
+
     labels = series.index
     values = series.values
 
@@ -47,31 +42,34 @@ def get_visualize_view():
 
     shapes = []
 
-    black_region_day = '2012-02-04'
-    black_region_day_end = pd.to_datetime(black_region_day) + timedelta(days=1)
-    print(black_region_day_end)
-    print(str(black_region_day_end))
-    black_region = dict(
-        type='rect',
-        # x-reference is assigned to the x-values
-        xref='x',
-        # y-reference is assigned to the plot paper [0,1]
-        yref='paper',
-        x0=black_region_day,
-        y0=0,
-        x1=str(black_region_day_end),
-        y1=1,
-        fillcolor='#d3d3d3',
-        opacity=0.2,
-        line=dict(
-            width=0,
+    anormalies = pd.read_csv("static/anomalies/all_anomalies.csv")
+
+    anormalies['Time'] = anormalies['DateHour'].apply(lambda x: pd.to_datetime(x))
+    anormalies.index = anormalies.Time
+    mask = (anormalies.index > start_date) & (anormalies.index <= end_date)
+    anormalies = anormalies.loc[mask]
+
+    for black_hour in anormalies.index:
+        black_hour_end = pd.to_datetime(black_hour) + timedelta(hours=1)
+
+        black_region = dict(
+            type='rect',
+            # x-reference is assigned to the x-values
+            xref='x',
+            # y-reference is assigned to the plot paper [0,1]
+            yref='paper',
+            x0=black_hour,
+            y0=0,
+            x1=str(black_hour_end),
+            y1=1,
+            fillcolor='#ff0000',
+            opacity=0.2,
+            line=dict(
+                width=0,
+            )
         )
-    )
 
-    shapes.append(black_region)
-
-    rng = pd.date_range('1/1/2011', periods=7500, freq='H')
-    ts = pd.Series(np.random.randn(len(rng)), index=rng)
+        shapes.append(black_region)
 
     graphs = [
         dict(
@@ -83,31 +81,9 @@ def get_visualize_view():
                 ),
             ],
             layout=dict(
-                title='first graph',
+                title='Anomalies',
                 shapes=shapes
             )
-        ),
-
-        dict(
-            data=[
-                dict(
-                    x=[1, 3, 5],
-                    y=[10, 50, 30],
-                    type='bar'
-                ),
-            ],
-            layout=dict(
-                title='second graph'
-            )
-        ),
-
-        dict(
-            data=[
-                dict(
-                    x=ts.index,  # Can use the pandas data structures directly
-                    y=ts
-                )
-            ]
         )
     ]
 
