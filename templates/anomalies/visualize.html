@@ -135,11 +135,16 @@
             <li class="breadcrumb-item">
                 <a href="/">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Anormalies</li>
+            <li class="breadcrumb-item">
+                <a href="/anomalies">Anormalies</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Visualize
+            </li>
         </ol>
         <div class="row">
             <div class="col-12">
-                <h1>Black Region Detction</h1>
+                <h1>Visualize Black Region</h1>
                 <p>Let us find Monthly Anormalies, or study the solution pipeline. Give your own inputs and figure out
                     the black regions.</p>
             </div>
@@ -147,26 +152,46 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-6 card">
-                    <img class="card-img-top" src="{{url_for('static', filename='anomalies/anormalies_cover.png')}}" alt="Card image cap">
+                <div class="col-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Find Monthly Anormalies, or study the solution pipeline</h5>
-                        <p class="card-text">Give your own inputs and figure out the black regions.</p>
-                        <a href="/anomalies/input" class="btn btn-primary">Explore Black Regions</a>
-                        <hr/>
-                        <h5 class="card-title">Let us visualize the results</h5>
-                        <p class="card-text">Give your own inputs and figure out the black regions.</p>
-                        <a href="/anomalies/visualize" class="btn btn-primary">Visualize</a>
+                        <h5 class="card-title">Select the date range</h5>
+                        <center>
+                        <form action="" method="post">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="currency">Currency:</label>
+                                    <select class="form-control" name="currency_pair">
+                                        <option value="EURUSD">EUR/USD</option>
+                                        <option value="GBPUSD">GBP/USD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="from">From:</label>
+                                    <input class="form-control" type="date" name="from_date">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="to">To:</label>
+                                    <input class="form-control" type="date" name="to_date">
+                                </div>
+                            </div>
+
+                            <input type="submit"  class="btn btn-primary">
+                        </form>
+
+                        </center>
+
+
                     </div>
                 </div>
 
-                <div class="col-6 card">
-                    <img class="card-img-top" src="{{url_for('static', filename='anomalies/evaluate_cover.png')}}" alt="Card image cap" >
+                <div class="col-9 card">
                     <div class="card-body">
-                        <h5 class="card-title">Let us evaluate he true abnormal behaviour vs model detected abnormal
-                            periods</h5>
-                        <p class="card-text">The accuray of the model is validated here.</p>
-                        <a href="/anomalies/evaluate" class="btn btn-primary">Evaluate</a>
+                        <p class="card-text">Black Regions are shaded in red colour.</p>
+
                     </div>
                 </div>
             </div>

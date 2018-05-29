@@ -16,7 +16,7 @@ def detect_lof_reducer():
         print(line)
 
     # now the rest:
-    for num in range(1,5):
+    for num in range(1,6):
         f = open("static/anomalies/local_outlier_factor"+str(num)+".csv")
         lines = f.readlines()[1:]
         for line in lines:

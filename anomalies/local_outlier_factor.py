@@ -44,9 +44,13 @@ def detect_lof_mapper():
 
     instances = pd.DataFrame()
     instances_list = []
-    instances['Price_Gradient'] = df[1]
+    #all_anormalies_1.csv
+    #instances['Price_Gradient'] = df[1]
+    #instances['CH_Gradient'] = df[2] #Index,Price_Gradient,Price,CH_Gradient,CH
+
+    instances['Price'] = df[1]
     instances['CH_Gradient'] = df[2]
-    n_partitions = 5
+    n_partitions = 6
 
     #Let's get the pairwise distance between the points:
     k = 2

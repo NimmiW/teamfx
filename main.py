@@ -59,10 +59,14 @@ def feature_selecion():
 
     year, from_month, to_month, currency, labels, price_values, gradients_values, volatility_values, volatility_gradients_values, length\
         = feature_selection.feature_selecion()
+    #eturn render_template('anomalies/feature_selection.html',
+    #                       year = year, from_month = from_month, to_month = to_month, currency=currency ,labels=labels,
+    #                       price_values=price_values, volatility_values = volatility_values, length=length,
+    #                       volatility_gradients_values = volatility_gradients_values, gradients_values=gradients_values)
     return render_template('anomalies/feature_selection.html',
-                           year = year, from_month = from_month, to_month = to_month, currency=currency ,labels=labels,
-                           price_values=price_values, volatility_values = volatility_values, length=length,
-                           volatility_gradients_values = volatility_gradients_values, gradients_values=gradients_values)
+                           year=year, from_month=from_month, to_month=to_month, currency=currency, labels=labels,
+                           price_values=price_values, length=length,
+                           volatility_gradients_values=volatility_gradients_values)
 
 @app.route("/anomalies/detectlofmapper", methods = ['POST', 'GET'])
 def detect_lof_mapper():
@@ -88,12 +92,14 @@ def detect_anomalies():
 def plot_results():
     anomalies_result_visualization.plot_results()
     return render_template('anomalies/get_input.html')
-    #return "done"
-    #return render_template('anomalies/anomalies.html',
-    #                       year=year, from_month=from_month, to_month=to_month,
-    #                       anomalies = anomalies.to_html())
 
+@app.route("/anomalies/visualize")
+def visualize_anormalies_with_no_data():
+    return render_template('anomalies/visualize.html')
 
+@app.route("/anomalies/visualize/graph", methods = ['POST', 'GET'])
+def visualize_anormalies_with_data():
+    return render_template('anomalies/visualize_with_data.html')
 #--------------------------------------------------------bactesting Routes----------------------------------------------------#
 
 
