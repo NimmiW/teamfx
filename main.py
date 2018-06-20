@@ -3,7 +3,7 @@ from brd import plot_data,black_region_detection
 from anomalies import feature_selection, local_outlier_factor, local_outlier_factor_reducer, anomaly_identification
 from anomalies import anomalies_result_visualization
 from anomalies.visualize import visualize as anomlies_visualize
-
+from backtesting.backtester import application
 import plotly.plotly.plotly as py
 import pandas as pd
 import numpy as np
@@ -130,8 +130,26 @@ def visualize_anormalies():
 def visualize_anormalies_with_data():
     return render_template('anomalies/visualize_with_data.html')"""
 #--------------------------------------------------------bactesting Routes----------------------------------------------------#
+@app.route("/backtesting/", methods = ['POST', 'GET'])
+def backtesting():
+    # anomalies_result_visualization.plot_results()
+    return render_template('backtesting/index.html')
 
+@app.route("/backtesting/input", methods = ['POST','GET'])
+def backtestingInput():
+    # anomalies_result_visualization.plot_results()
+    return render_template('backtesting/input.html')
 
+@app.route("/backtesting/visualize", methods = ['GET','POST'])
+def postInput():
+    graph = application.app()
+    ids, graphJSON = application.app()
+
+    return render_template('backtesting/visualize.html',
+                           status="with_data",
+                           ids=ids,
+                           graphJSON=graphJSON)
+    
 
 #--------------------------------------------------------optimization Routes----------------------------------------------------#
 
