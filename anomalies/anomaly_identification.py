@@ -7,16 +7,39 @@ from pandas import to_datetime
 from collections import Counter
 from sklearn import mixture
 import os,gc
+import anomalies.config as config
+
 
 def get_percentage(percent, number_of_time_points):
     return int(percent/100*number_of_time_points)
 
-def detect_anomalies(input_directory = "static/anomalies/merged_local_outlier_factor_file.csv", output_directory="static/anomalies/anomalies.csv"):
-    anomaly_percentage = 2 #example 2%
+def detect_anomalies(page="app",eval_year=0,eval_currency="",eval_threshold=0,eval_nneighbours=0, eval_from = 0, eval_to=0):
+    if(page== "evaluate"):
+        year = str(eval_year)
+        currency = eval_currency
+        threshold = eval_threshold
+        nneighbours = eval_nneighbours
+        from_month = str(eval_from)
+        to_month = str(eval_to)
+        anomaly_percentage = eval_threshold # example 2%
+    else:
+        year = request.form["year"]
+        currency = request.form["currency"]
+        threshold = config.ANOMALY_PERCENTAGE
+        nneighbours = config.NEAREST_NEIGHBOURS
+        from_month = request.form["from_month"]
+        to_month = request.form["to_month"]
+        anomaly_percentage = config.ANOMALY_PERCENTAGE  # example 2%
 
-    year = request.form["year"]
-    from_month = request.form["from_month"]
-    to_month = request.form["to_month"]
+    root = 'D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/'
+    input_directory = root+"static/anomalies/local_outlier_factors/" + currency + '_' + year + "_merged_local_outlier_factor_file.csv"
+    output_directory = root+"static/anomalies/detected_black_regions/" + str(threshold) + '_' + str(
+        nneighbours) + '_' + currency + '_' + year + "anomalies.csv"
+
+
+
+
+
 
     print('anomalies are detecting...')
     print('year: ' + str(year))
@@ -102,7 +125,7 @@ def detect_anomalies(input_directory = "static/anomalies/merged_local_outlier_fa
     anomalies['DateTime'] = anomalies.index.values
     anomalies['DateHour'] = anomalies['DateTime'].apply(lambda x: to_datetime(x).replace(minute=0, second=0, microsecond=0))
     print(anomalies)
-    lof_average_per_date = anomalies.groupby('DateHour', as_index=False)['lof'].mean()
+    lof_average_per_date = anomalies.groupby('DateHour', as_index=False)['lof'].sum()
     print(lof_average_per_date)
     print(abnormal_dates)
 
@@ -121,7 +144,7 @@ def detect_anomalies(input_directory = "static/anomalies/merged_local_outlier_fa
     print("length of lof_average_per_date: " + str(len(lof_average_per_date['lof'].values)))
     print("length of count: " + str(len(count['Count'].values)))
     count['Average_lof'] = lof_average_per_date['lof'].values
-    count['Ranking_Factor'] = count['Average_lof'] / count['Count']
+    count['Ranking_Factor'] = count['Average_lof'] / (count['Count']*count['Count'])
     count = count.sort_values(by=['Ranking_Factor'])
 
     number_of_time_points = len(count)
@@ -135,11 +158,15 @@ def detect_anomalies(input_directory = "static/anomalies/merged_local_outlier_fa
 
     count.to_csv(output_directory)
 
-    with open('static/anomalies/all_anomalies.csv', 'a') as f:
+    with open(root+'static/anomalies/detected_black_regions/'+str(threshold) + '_' + str(nneighbours) + '_' + currency + '_' + year+'_all_anomalies.csv', 'a') as f:
         count.to_csv(f, header=False)
 
     gc.collect()
-    return year, from_month, to_month, request.form["currency"], count
+    return year, from_month, to_month, currency, count
+
+
+
+
 
 
 #detect_anomalies(input_directory="D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/anomalies/merged_local_outlier_factor_file.csv",

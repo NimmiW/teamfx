@@ -1,3 +1,2 @@
-anomaly_percentage = 2
-GARCH_p_value = 1
-GARCH_q_value = 0
+ANOMALY_PERCENTAGE = 5
+NEAREST_NEIGHBOURS = 2

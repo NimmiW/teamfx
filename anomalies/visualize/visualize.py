@@ -4,24 +4,36 @@ import pandas as pd
 import json
 from datetime import timedelta
 
-def get_visualize_view():
-    start_date = request.form['from_date']
-    end_date = request.form['to_date']
+def get_visualize_view(threshold,nneighbours,page="none"):
+    root = "D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/"
 
-    start_year = start_date.split('-')[0]
-    end_year = end_date.split('-')[0]
+    if(page == 'anomaly_detection'):
 
-    currency_pair = request.form['currency_pair']
+        start_month = request.form['from_month']
+        end_month = request.form['to_month']
+        currency_pair = request.form['currency']
+        start_year = request.form['year']
+        end_year = request.form['year']
+        start_date = start_year+'-'+start_month+'-01'
+        end_date = end_year + '-' + end_month + '-01'
+    else:
+        start_date = request.form['from_date']
+        end_date = request.form['to_date']
+        currency_pair = request.form['currency_pair']
+        start_year = start_date.split('-')[0]
+        end_year = end_date.split('-')[0]
+
+
 
 
 
     if start_year==end_year:
 
-        data_file = "static/data/" + currency_pair + "/DAT_MT_" + currency_pair + "_M1_" + start_year + ".csv"
+        data_file = root+"static/data/" + currency_pair + "/DAT_MT_" + currency_pair + "_M1_" + start_year + ".csv"
         data = pd.read_csv(data_file)
         print("one year range")
     else:
-        data_file = "static/data/" + currency_pair + "/DAT_MT_" + currency_pair + "_M1_" + start_year + ".csv"
+        data_file = root+"static/data/" + currency_pair + "/DAT_MT_" + currency_pair + "_M1_" + start_year + ".csv"
         data = pd.read_csv(data_file)
         print("can cause errors")
 
@@ -31,6 +43,9 @@ def get_visualize_view():
 
     data.index = data.Time
     mask = (data.index > start_date) & (data.index <= end_date)
+    print("start_date")
+    print(start_date)
+    print(end_date)
     data = data.loc[mask]
     series = data["Close"]
 
@@ -42,7 +57,8 @@ def get_visualize_view():
 
     shapes = []
 
-    anormalies = pd.read_csv("static/anomalies/all_anomalies.csv")
+    #anormalies = pd.read_csv("static/anomalies/all_anomalies.csv")
+    anormalies = pd.read_csv(root + 'static/anomalies/detected_black_regions/'+str(threshold) + '_' + str(nneighbours) + '_' + currency_pair + '_' + start_year+'_all_anomalies.csv')
 
     anormalies['Time'] = anormalies['DateHour'].apply(lambda x: pd.to_datetime(x))
     anormalies.index = anormalies.Time

@@ -3,6 +3,8 @@ from brd import plot_data,black_region_detection
 from anomalies import feature_selection, local_outlier_factor, local_outlier_factor_reducer, anomaly_identification
 from anomalies import anomalies_result_visualization
 from anomalies.visualize import visualize as anomlies_visualize
+from anomalies.evaluator import evaluator_hours
+import anomalies.config as config
 
 import plotly.plotly.plotly as py
 import pandas as pd
@@ -71,16 +73,19 @@ def get_input():
 @app.route("/anomalies/selectfeatures", methods = ['POST', 'GET'])
 def feature_selecion():
 
-    year, from_month, to_month, currency, labels, price_values, gradients_values, volatility_values, volatility_gradients_values, length\
+    year, from_month, to_month, currency, length,ids, graphJSON\
         = feature_selection.feature_selecion()
     #eturn render_template('anomalies/feature_selection.html',
     #                       year = year, from_month = from_month, to_month = to_month, currency=currency ,labels=labels,
     #                       price_values=price_values, volatility_values = volatility_values, length=length,
     #                       volatility_gradients_values = volatility_gradients_values, gradients_values=gradients_values)
+
+    print(ids)
+    print(graphJSON)
+    print("under")
     return render_template('anomalies/feature_selection.html',
-                           year=year, from_month=from_month, to_month=to_month, currency=currency, labels=labels,
-                           price_values=price_values, length=length,
-                           volatility_gradients_values=volatility_gradients_values)
+                           year=year, from_month=from_month, to_month=to_month, currency=currency,
+                           ids=ids, graphJSON=graphJSON)
 
 @app.route("/anomalies/detectlofmapper", methods = ['POST', 'GET'])
 def detect_lof_mapper():
@@ -97,10 +102,16 @@ def detect_lof_reducer():
 
 @app.route("/anomalies/detectanomalies", methods = ['POST', 'GET'])
 def detect_anomalies():
+    threshold = config.ANOMALY_PERCENTAGE
+    nneighbours =  config.NEAREST_NEIGHBOURS
     year, from_month, to_month, currency, anomalies = anomaly_identification.detect_anomalies()
+
+    anomalies = anomalies[['Ranking_Factor']]
+
     return render_template('anomalies/anomalies.html',
                            year=year, from_month=from_month, to_month=to_month, currency=currency,
-                           anomalies = anomalies.to_html())
+                           anomalies = anomalies.to_html()
+                           )
 
 @app.route("/anomalies/plotresults", methods = ['POST', 'GET'])
 def plot_results():
@@ -111,7 +122,11 @@ def plot_results():
 def visualize_anormalies():
     if (request.form['page'] == 'anomalies_visualize_page'):
 
-        ids, graphJSON = anomlies_visualize.get_visualize_view()
+        threshold = config.ANOMALY_PERCENTAGE
+        nneighbours = config.NEAREST_NEIGHBOURS
+        ids, graphJSON = anomlies_visualize.get_visualize_view(threshold,nneighbours)
+        print(ids)
+        print(graphJSON)
 
         return render_template('anomalies/visualize.html',
                                status = "with_data",
@@ -124,6 +139,33 @@ def visualize_anormalies():
                                graphJSON=[]
                                )
 
+@app.route("/anomalies/evaluate", methods = ['POST', 'GET'])
+def visualize_anormalies_with_data():
+
+    print("on")
+
+    ids, graphJSON = evaluator_hours.PR_curve_visualize()
+    print(ids)
+    print(graphJSON)
+    print("under")
+
+    return render_template('anomalies/evaluate.html',
+                           status="with_data",
+                           ids=ids,
+                           graphJSON=graphJSON)
+
+@app.route("/anomalies/evaluate/confusion_matrix",  methods = ['POST', 'GET'])
+def show_cpnfusion_matrix_anomalies():
+    threshold = request.form["threshold"]
+    year = request.form["year"]
+    currency = request.form["currency"]
+    nneighbours = 2
+    print(threshold)
+    print(year)
+    print(currency)
+    results = evaluator_hours.show_evaluate_results(threshold, nneighbours, year, currency)
+    print(results.to_json(orient='index'))
+    return results.to_json(orient='index')
 
 
 """@app.route("/anomalies/visualize/graph", methods = ['POST', 'GET'])
