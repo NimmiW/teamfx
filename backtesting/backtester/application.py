@@ -31,7 +31,8 @@ ax1 = fig.add_subplot(111)
     # print(train)
 
 def refreshGraphData(self):
-       line = open("E:/PycharmProject/backtester/RealTimedata.csv").read()
+
+       line = open("D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/backtesting/backtester/RealTimedata.csv").read()
        csv_rows = line.split()
        print(csv_rows)
        xvalue = []
@@ -45,8 +46,12 @@ def refreshGraphData(self):
        ax1.plot(xvalue,yvalue)
        # ani = animation.FuncAnimation(fig, refreshGraphData, interval=1000)
        pyplot.show()
-def app(mode):
+def app():
     symbol = 'USD'
+
+    bars = pd.read_csv("E:/coursework/L4S2/GroupProject/repo/TeamFxPortal/backtesting/backtester/Minute.csv")
+    bars.index = to_datetime(bars ['Date'] +' ' + bars['Time'])
+
     strategyType = request.form["strategy"]
     startDate = request.form["from_date"]
     endDate = request.form["to_date"]
@@ -63,8 +68,6 @@ def app(mode):
     D_period = request.form["D_period"]
     higherLine = request.form["higher_line"]
     lowerLine = request.form["lower_line"]
-    bars = pd.read_csv("E:/4th year project/FinalSystem/teamfx/backtesting/backtester/Minute.csv")
-    bars.index = to_datetime(bars ['Date'] +' ' + bars['Time'])
     mask = (bars.index > startDate) & (bars.index <= '2016.01.04')
     bars = bars.loc[mask]
     # series = data["Close"]

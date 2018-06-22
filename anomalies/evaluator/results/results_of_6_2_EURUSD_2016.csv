@@ -1,0 +1,14 @@
+,Column,value
+0,year,2016
+1,Currency,EURUSD
+2,Threshold,6
+3,Neighbours,2
+4,Actual Black region,62
+5,Actual Non-Black region count,5898
+6,True-Positive,43
+7,False-Positive,292
+8,True-Negative,5879
+9,False-Negative,19
+10,Precision,0.12835820895522387
+11,Recall,0.6935483870967742
+12,Accuracy,0.9501042836515322

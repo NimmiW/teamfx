@@ -152,21 +152,17 @@
                 <p> The Local Outlier Factor (LOF) algorithm is an unsupervised outlier detection method which computes
                     the local density deviation of a given data point with respect to its neighbors. It considers as
                     outlier samples that have a substantially lower density than their neighbors.</p>
+                <p>At the moment the local outlier have been genereted. To Proceed with Local Outlier Calculation
+                Reducer, Click Next.</p>
+                <form class="form-group" action="/anomalies/detectlofreducer" method="post">
+                    <input type="hidden" name = "currency" value="{{currency}}">
+                    <input type="hidden" name="year" value="{{year}}">
+                    <input type="hidden" name="from_month" value="{{from_month}}">
+                    <input type="hidden" name="to_month" value="{{to_month}}">
+                    <button class="btn btn-lg btn-success" type="submit">Next>></button>
+                </form>
             </div>
         </div>
-
-        <div class="container">
-            <p>At the moment the local outlier have been genereted. To Proceed with Local Outlier Calculation
-                Reducer, Click Next.</p>
-            <form class="form-group" action="/anomalies/detectlofreducer" method="post">
-                <input type="hidden" name = "currency" value="{{currency}}">
-                <input type="hidden" name="year" value="{{year}}">
-                <input type="hidden" name="from_month" value="{{from_month}}">
-                <input type="hidden" name="to_month" value="{{to_month}}">
-                <button class="btn btn-lg btn-success" type="submit">Next>></button>
-            </form>
-        </div>
-
 
     </div>
     <!-- /.container-fluid-->

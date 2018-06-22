@@ -145,66 +145,43 @@
         </ol>
         <div class="row">
             <div class="col-12">
-                <h1>Feature Selection</h1>
-                <p>The following Graph shows the behavior of price levels and the gradients.</p>
-                <!-- Area Chart Example-->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-area-chart"></i> Price Levels
-                    </div>
-                    <div class="card-body">
-                        <canvas id="price_data" width="100%" height="30"></canvas>
-                    </div>
-                </div>
+                <h1>Features</h1>
+                <p>The following Graph shows the behavior of following key features that we are interested in.</p>
+            <ol>
+                <li>Gradient of Price</li>
+                <li>Gradient of Conditional Heteroscedasticity</li>
+            </ol>
+
             </div>
         </div>
 
-        <div class="container">
-            <p>The following Graph shows the behavior of following key features that we are interested in.</p>
-            <ol>
-                <li>Gradient of Price</li>
-                <li>Conditional Heteroscedasticity</li>
-                <li>Gradient of Conditional Heteroscedasticity</li>
-            </ol>
-            <!-- Price Gradients-->
-            <!--div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-area-chart"></i> Price Gradients
-                </div>
-                <div class="card-body">
-                    <canvas id="price_gradients" width="100%" height="30"></canvas>
-                </div>
-            </div-->
+        <div class="row">
+            <div class="col-12">
 
-            <!-- Volatility-->
-            <!--div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-area-chart"></i> Conditional Volatility
-                </div>
-                <div class="card-body">
-                    <canvas id="volatility" width="100%" height="30"></canvas>
-                </div>
-            </div-->
+                <div id="{{ids[0]}}"></div>
 
-            <!-- volatility gradients Gradients-->
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-area-chart"></i> Conditional Volatility Gradients
-                </div>
-                <div class="card-body">
-                    <canvas id="volatility_gradients" width="100%" height="30"></canvas>
-                </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="{{ids[1]}}"></div>
+            </div>
+        </div>
 
-            <!--center>
-                <img src="{{url_for('static', filename='anomalies/feature_lection_image2.png')}}"/>
-            </center-->
-            <br/>
+        <div class="row">
+            <div class="col-12">
+                <div id="{{ids[2]}}"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
             <p>Let's calculate the Local Outlier Factors for the selected Features.</p>
             <ol>
                 <li>Gradient of Price</li>
                 <li>Gradient of Conditional Heteroscedasticity</li>
             </ol>
+
             <p>To Proceed with Local Outlier Calculation Mapper, Click Next.</p>
             <form action="/anomalies/detectlofmapper" method="post">
                 <div class="form-group">
@@ -215,7 +192,13 @@
                     <button class="btn btn-lg btn-success" type="submit">Next>></button>
                 </div>
             </form>
+            </div>
+
         </div>
+
+
+
+
 
 
     </div>
@@ -262,288 +245,21 @@
     <script src="https://npmcdn.com/Chart.Zoom.js@0.3.0/Chart.Zoom.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{url_for('static', filename='theme/js/sb-admin.min.js')}}"></script>
-
+    <!-- Plotly.js -->
+    <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script>
     <script>
-        Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-        Chart.defaults.global.defaultFontColor = '#292b2c';
-        // -- Price Chart
-
-        var ctx_1 = document.getElementById("price_data");
 
 
-        data = {
-            labels: [
-                {% for item in labels %}
-                          new Date("{{item}}"),
-                {% endfor %}
-            ],
-            datasets: [{
-              fill: false,
-              pointRadius: 0,
-              data: {{price_values}},
-            }],
-        }
-
-        options = {
-            pan: {
-              enabled: true,
-              mode: 'x',
-            },
-            zoom: {
-              enabled: true,
-              mode: 'x',
-            },
-
-            scales: {
-                    xAxes: [{
-
-                       stacked: true,
-                       gridLines: {display: false},
-                       type: 'time',
-                       time: {
-                          parser: 'YYYY-MM-DD HH:mm:ss',
-                          unit: 'month',
-                          displayFormats: {
-                             day: 'ddd'
-                          },
-                          //min: '2011-10-02 18:43:53',
-                          max: new Date("{{labels[length-1]}}")
-                       },
-                       ticks: {
-                          source: 'data',
-                          autoSkip: true,
-                          maxTicksLimit: 5
-                       }
-                    }]
-                 },
-                 legend: {
-                    display: false
-                 },
-                 elements: {
-                    line: {
-                        tension: 0, // disables bezier curves
-                        borderWidth : 1,
-                        borderColor: "rgba(2,117,216,0.2)",
-                    }
+            var graphs = {{graphJSON | safe}};
+            var ids = {{ids | safe}};
+            console.log(graphs);
+            console.log(ids);
+            for(var i in graphs) {
+                Plotly.plot(ids[i], // the ID of the div, created above
+                            graphs[i].data,
+                            graphs[i].layout || {});
             }
 
-        }
-
-        var myLineChart = new Chart(ctx_1, {
-            type: 'line',
-            data: data,
-            options: options
-        });
-
-
-        // -- Price Gardient Chart
-        /*
-        var ctx_2 = document.getElementById("price_gradients");
-
-        data_2 = {
-            labels: [
-                {% for item in labels %}
-                          new Date("{{item}}"),
-                {% endfor %}
-            ],
-            datasets: [{
-              fill: false,
-              pointRadius: 0,
-              data: {{gradients_values}},
-            }],
-        }
-
-        options_2 = {
-                pan: {
-                  enabled: true,
-                  mode: 'x',
-                },
-                zoom: {
-                  enabled: true,
-                  mode: 'x',
-                },
-                responsive: true,
-                scales: {
-                    xAxes: [{
-
-                       stacked: true,
-                       gridLines: {display: false},
-                       type: 'time',
-                       time: {
-                          parser: 'YYYY-MM-DD HH:mm:ss',
-                          unit: 'month',
-                          displayFormats: {
-                             day: 'ddd'
-                          },
-                          //min: '2011-10-02 18:43:53',
-                          max: new Date("{{labels[length-1]}}")
-                       },
-                       ticks: {
-                          source: 'data',
-                          autoSkip: true,
-                          maxTicksLimit: 5
-                       }
-                    }]
-                },
-                legend: {
-                    display: false
-                },
-                elements: {
-                    line: {
-                        tension: 0, // disables bezier curves
-                        borderWidth : 1,
-                        borderColor: "rgba(2,117,216,0.2)",
-                    }
-                }
-
-        }
-
-        var myLineChart = new Chart(ctx_2, {
-            type: 'line',
-            data: data_2,
-            options: options_2
-        });
-        */
-
-
-        // -- Volatility Chart
-        /*
-        var ctx_3 = document.getElementById("volatility");
-
-        data_3 = {
-            labels: [
-                {% for item in labels %}
-                          new Date("{{item}}"),
-                {% endfor %}
-            ],
-            datasets: [{
-              fill: false,
-              pointRadius: 0,
-              data: {{volatility_values}},
-            }],
-        }
-
-        options_3 = {
-                pan: {
-                  enabled: true,
-                  mode: 'x',
-                },
-                zoom: {
-                  enabled: true,
-                  mode: 'x',
-                },
-                responsive: true,
-                scales: {
-                    xAxes: [{
-
-                       stacked: true,
-                       gridLines: {display: false},
-                       type: 'time',
-                       time: {
-                          parser: 'YYYY-MM-DD HH:mm:ss',
-                          unit: 'month',
-                          displayFormats: {
-                             day: 'ddd'
-                          },
-                          //min: '2011-10-02 18:43:53',
-                          max: new Date("{{labels[length-1]}}")
-                       },
-                       ticks: {
-                          source: 'data',
-                          autoSkip: true,
-                          maxTicksLimit: 5
-                       }
-                    }]
-                },
-                legend: {
-                    display: false
-                },
-                elements: {
-                    line: {
-                        tension: 0, // disables bezier curves
-                        borderWidth : 1,
-                        borderColor: "rgba(2,117,216,0.2)",
-                    }
-                }
-
-        }
-
-        var myLineChart = new Chart(ctx_3, {
-            type: 'line',
-            data: data_3,
-            options: options_3
-        });
-
-        */
-
-
-        // -- Volatility Grdients Chart
-
-        var ctx_4 = document.getElementById("volatility_gradients");
-
-        data_4 = {
-            labels: [
-                {% for item in labels %}
-                          new Date("{{item}}"),
-                {% endfor %}
-            ],
-            datasets: [{
-              fill: false,
-              pointRadius: 0,
-              data: {{volatility_gradients_values}},
-            }],
-        }
-
-        options_4 = {
-            pan: {
-              enabled: true,
-              mode: 'x',
-            },
-            zoom: {
-              enabled: true,
-              mode: 'x',
-            },
-            responsive: true,
-            scales: {
-                    xAxes: [{
-
-                       stacked: true,
-                       gridLines: {display: false},
-                       type: 'time',
-                       time: {
-                          parser: 'YYYY-MM-DD HH:mm:ss',
-                          unit: 'month',
-                          displayFormats: {
-                             day: 'ddd'
-                          },
-                          //min: '2011-10-02 18:43:53',
-                          max: new Date("{{labels[length-1]}}")
-                       },
-                       ticks: {
-                          source: 'data',
-                          autoSkip: true,
-                          maxTicksLimit: 5
-                       }
-                    }]
-            },
-            legend: {
-                   display: false
-            },
-            elements: {
-                    line: {
-                        tension: 0, // disables bezier curves
-                        borderWidth : 1,
-                        borderColor: "rgba(2,117,216,0.2)",
-                    }
-            }
-
-        }
-
-        var myLineChart = new Chart(ctx_4, {
-            type: 'line',
-            data: data_4,
-            options: options_4
-        });
 
     </script>
 </div>
