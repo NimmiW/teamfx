@@ -2,47 +2,89 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="696a0610-7701-4ca9-897c-ccaecbb04191" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/anomaly_identification_v1.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/EURUSD/DAT_MT_EURUSD_M1_2012.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/EURUSD/DAT_MT_EURUSD_M1_2013.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/EURUSD/DAT_MT_EURUSD_M1_2014.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/EURUSD/DAT_MT_EURUSD_M1_2015.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/EURUSD/DAT_MT_EURUSD_M1_2016.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/EURUSD/DAT_MT_EURUSD_M1_2017.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/GBPUSD/DAT_MT_GBPUSD_M1_2013.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/GBPUSD/DAT_MT_GBPUSD_M1_2014.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/GBPUSD/DAT_MT_GBPUSD_M1_2015.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/GBPUSD/DAT_MT_GBPUSD_M1_2016.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/evaluator/data/GBPUSD/DAT_MT_GBPUSD_M1_2017.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/anomalies/test/stream.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/anomalies/evaluator/black_regions/EURUSD_currency_data.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/anomalies/evaluator/black_regions/GBPUSD_currency_data.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/anomalies/evaluator/evaluator.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/anomalies/all_anomalies.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/anomalies/anomalies.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/anomalies/features.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor0.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor1.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor2.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor3.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor4.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/anomalies/local_outlier_factor5.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/anomalies/merged_local_outlier_factor_file.csv" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/anomalies/design_pipline.png" afterPath="$PROJECT_DIR$/static/anomalies/design_pipline.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/BollingerBand/fig1.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/Stochastic/fig1.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/ma_cross/fig1.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fig1.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/figDistribution.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/astronaut_gray.npy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/astronaut_rgb.npy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/backtesting/image1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/backtesting/image111.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/backtesting/image2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/backtesting/image2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/backtesting/images.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/backtesting/images2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/0.29" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/.idea/backtester.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/.idea/dictionaries/DELL_PC.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/.idea/dictionaries/Erandi.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/BackTest/backtest.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/BackTestingResults/BackTestingResults.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Day.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Minute.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/RealTimedata.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/BollingerBand/BollingerBand.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/BollingerBand/file.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/BollingerBand/fuzzyBollingerBand.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/MACD/MACD.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/MACD/fuzzyMACD.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/RSI/RSI.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/RSI/fuzzyRSI.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/Stochastic/Stochastic.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/Stochastic/file.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/Stochastic/fuzzy_stochastic.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/ma_cross/file.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/ma_cross/fuzzy_ma_cross.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/ma_cross/ma_cross.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/Strategies/random_forecast.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/application.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/file.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzyInput.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/control/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/control/antecedent_consequent.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/control/controlsystem.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/control/fuzzyvariable.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/control/ordereddict.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/control/rule.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/control/state.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/control/term.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/control/visualization.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/defuzzify/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/defuzzify/defuzz.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/defuzzify/tests/test_defuzz.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/fuzzymath/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/fuzzymath/_continuous_to_discrete.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/fuzzymath/fuzzy_logic.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/fuzzymath/fuzzy_ops.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/arraypad.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/imops.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/metrics.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/shape.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/tests/test_imops.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/tests/test_metrics.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/tests/test_pad.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/image/tests/test_view_as_.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/membership/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/membership/membership.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/plotCharts/PlotCharts.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backtesting/backtester/plotCharts/plotDistribution.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/file.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/fuzzyInput.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/backtesting/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/backtesting/input.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/backtesting/visualize.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/anomalies_result_visualization.py" afterPath="$PROJECT_DIR$/anomalies/anomalies_result_visualization.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/anomaly_identification.py" afterPath="$PROJECT_DIR$/anomalies/anomaly_identification.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/config.py" afterPath="$PROJECT_DIR$/anomalies/config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/feature_selection.py" afterPath="$PROJECT_DIR$/anomalies/feature_selection.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/local_outlier_factor.py" afterPath="$PROJECT_DIR$/anomalies/local_outlier_factor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/local_outlier_factor_reducer.py" afterPath="$PROJECT_DIR$/anomalies/local_outlier_factor_reducer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anomalies/visualize/visualize.py" afterPath="$PROJECT_DIR$/anomalies/visualize/visualize.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/anomalies.html" afterPath="$PROJECT_DIR$/templates/anomalies/anomalies.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/feature_selection.html" afterPath="$PROJECT_DIR$/templates/anomalies/feature_selection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/get_input.html" afterPath="$PROJECT_DIR$/templates/anomalies/get_input.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/index.html" afterPath="$PROJECT_DIR$/templates/anomalies/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html" afterPath="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/backtesting/__init__.py" afterPath="$PROJECT_DIR$/backtesting/backtester/fuzzySystem/_init_.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,14 +105,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2805">
-              <caret line="165" column="51" lean-forward="false" selection-start-line="165" selection-start-column="30" selection-end-line="165" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#63#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,7 +128,7 @@
       <file leaf-file-name="visualize.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/anomalies/visualize/visualize.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
+            <state relative-caret-position="-755">
               <caret line="60" column="92" lean-forward="false" selection-start-line="60" selection-start-column="83" selection-end-line="60" selection-end-column="92" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
@@ -97,12 +137,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="6_2_EURUSD_2016_all_anomalies.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/anomalies/detected_black_regions/6_2_EURUSD_2016_all_anomalies.csv">
+      <file leaf-file-name="application.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backtesting/backtester/application.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="329" column="3" lean-forward="true" selection-start-line="329" selection-start-column="3" selection-end-line="329" selection-end-column="3" />
-              <folding />
+            <state relative-caret-position="-772">
+              <caret line="49" column="97" lean-forward="false" selection-start-line="49" selection-start-column="97" selection-end-line="49" selection-end-column="97" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -197,7 +239,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/brd/matplotlib_to_browser.py" />
         <option value="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_reducer.html" />
@@ -239,7 +280,6 @@
         <option value="$PROJECT_DIR$/templates/anomalies/anomalies.html" />
         <option value="$PROJECT_DIR$/templates/anomalies/get_input.html" />
         <option value="$PROJECT_DIR$/anomalies/visualize/visualize.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/anomalies/feature_selection.py" />
         <option value="$PROJECT_DIR$/templates/anomalies/feature_selection.html" />
         <option value="$PROJECT_DIR$/templates/anomalies/local_outlier_factor_mapper.html" />
@@ -248,6 +288,8 @@
         <option value="$PROJECT_DIR$/anomalies/evaluator/black_regions_hours/EURUSD_2017_true_anomalies.csv" />
         <option value="$PROJECT_DIR$/anomalies/evaluator/evaluator_hours.py" />
         <option value="$PROJECT_DIR$/templates/anomalies/evaluate.html" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/backtesting/backtester/application.py" />
       </list>
     </option>
   </component>
@@ -295,27 +337,18 @@
               <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
               <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
               <item name="anomalies" type="462c0819:PsiDirectoryNode" />
-              <item name="evaluator" type="462c0819:PsiDirectoryNode" />
-              <item name="black_regions_hours" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
-              <item name="anomalies" type="462c0819:PsiDirectoryNode" />
-              <item name="evaluator" type="462c0819:PsiDirectoryNode" />
-              <item name="results" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
-              <item name="anomalies" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
               <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
-              <item name="anomalies" type="462c0819:PsiDirectoryNode" />
-              <item name="visualize" type="462c0819:PsiDirectoryNode" />
+              <item name="backtesting" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TeamFxPortal" type="462c0819:PsiDirectoryNode" />
+              <item name="backtesting" type="462c0819:PsiDirectoryNode" />
+              <item name="backtester" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TeamFxPortal" type="b2602c69:ProjectViewProjectNode" />
@@ -354,7 +387,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Erandi" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
@@ -513,7 +546,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1364" height="726" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36196318" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288364" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -523,7 +555,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32546374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24923313" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35750422" sideWeight="0.75869894" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35750422" sideWeight="0.75869894" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -600,14 +632,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/anomalies/detected_black_regions/1_2_EURUSD_2016_all_anomalies.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/anomalies/detected_black_regions/4_2_EURUSD_2016anomalies.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -943,7 +967,7 @@
     <entry file="file://$PROJECT_DIR$/static/anomalies/detected_black_regions/6_2_EURUSD_2016_all_anomalies.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
-          <caret line="329" column="3" lean-forward="true" selection-start-line="329" selection-start-column="3" selection-end-line="329" selection-end-column="3" />
+          <caret line="329" column="3" lean-forward="false" selection-start-line="329" selection-start-column="3" selection-end-line="329" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -953,16 +977,6 @@
         <state relative-caret-position="4454">
           <caret line="262" column="0" lean-forward="false" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/anomalies/visualize/visualize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="60" column="92" lean-forward="false" selection-start-line="60" selection-start-column="83" selection-end-line="60" selection-end-column="92" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1018,10 +1032,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2805">
-          <caret line="165" column="51" lean-forward="false" selection-start-line="165" selection-start-column="30" selection-end-line="165" selection-end-column="51" />
+        <state relative-caret-position="68">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/anomalies/visualize/visualize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-755">
+          <caret line="60" column="92" lean-forward="false" selection-start-line="60" selection-start-column="83" selection-end-line="60" selection-end-column="92" />
           <folding>
-            <element signature="e#0#63#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backtesting/backtester/application.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-772">
+          <caret line="49" column="97" lean-forward="false" selection-start-line="49" selection-start-column="97" selection-end-line="49" selection-end-column="97" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,0 +1,7 @@
+Collecting numba
+  Using cached https://files.pythonhosted.org/packages/4e/e7/7d1b46f561582a51f14757ff25cf28080c04129eb9afd0dea07ff129d1f8/numba-0.38.1-cp36-cp36m-win32.whl
+Requirement already satisfied: numpy in c:\users\erandi\appdata\local\programs\python\python36-32\lib\site-packages (from numba) (1.14.0)
+Collecting llvmlite>=0.23.0dev0 (from numba)
+  Using cached https://files.pythonhosted.org/packages/15/fe/4956bf036d7e7637df53cb6dc0b62d62a1ca7c74842434e0055f2ab137e8/llvmlite-0.23.2-cp36-cp36m-win32.whl
+Installing collected packages: llvmlite, numba
+Successfully installed llvmlite-0.23.2 numba-0.38.1
