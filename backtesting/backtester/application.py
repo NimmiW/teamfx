@@ -1,5 +1,6 @@
 import pandas as pd
 import requests,  json
+from datetime import datetime
 from flask import Flask,redirect, url_for, request
 from pandas import to_datetime
 from backtesting.backtester.Strategies.ma_cross.ma_cross import MovingAverageCrossStrategy
@@ -44,31 +45,36 @@ def refreshGraphData(self):
        ax1.plot(xvalue,yvalue)
        # ani = animation.FuncAnimation(fig, refreshGraphData, interval=1000)
        pyplot.show()
-def app():
+def app(mode):
     symbol = 'USD'
-    bars = pd.read_csv("E:/4th year project/FinalSystem/teamfx/backtesting/backtester/Minute.csv")
-    bars.index = to_datetime(bars ['Date'] +' ' + bars['Time'])
     strategyType = request.form["strategy"]
-    startDate = request.form["date"]
-    endDate = request.form["date1"]
+    startDate = request.form["from_date"]
+    endDate = request.form["to_date"]
     short=request.form["minShortMA"]
-    long=int(request.form["minLongMA"])
+    long=request.form["minLongMA"]
     MOV = request.form["minMAPeriod"]
     std = request.form["minStdDev"]
     signalLine = request.form["minSignalLine"]
+    shortMACD = request.form["minShortMAPeriod"]
+    longMACD = request.form["minLongMAPeriod"]
     rup = request.form["rsiUp"]
     rdown = request.form["rsiDown"]
     K_period = request.form["K_period"]
     D_period = request.form["D_period"]
     higherLine = request.form["higher_line"]
     lowerLine = request.form["lower_line"]
+    bars = pd.read_csv("E:/4th year project/FinalSystem/teamfx/backtesting/backtester/Minute.csv")
+    bars.index = to_datetime(bars ['Date'] +' ' + bars['Time'])
+    mask = (bars.index > startDate) & (bars.index <= '2016.01.04')
+    bars = bars.loc[mask]
+    # series = data["Close"]
+
     if(strategyType == "Moving Average" ):
      strategy = MovingAverageCrossStrategy(symbol, bars,  short, long)
      signals = strategy.generate_signals()
     if(strategyType == "Fuzzy Moving Average"):
        strategy = FuzzyMovingAverageCrossStrategy(symbol, bars, short, long)
        signals = strategy.generate_signals()
-       print(signals)
     if(strategyType == "Bollinger Band"):
        strategy = BollingerBandStrategy(symbol, bars, MOV, std)
        signals = strategy.generate_signals()
@@ -76,10 +82,10 @@ def app():
        strategy = FuzzyBollingerBandStrategy(symbol, bars, MOV, std)
        signals = strategy.generate_signals()
     if(strategyType == "MACD"):
-       strategy = MACDStrategy(symbol, bars, short, long,signalLine )
+       strategy = MACDStrategy(symbol, bars, shortMACD, longMACD,signalLine )
        signals = strategy.generate_signals()
     if (strategyType == "Fuzzy MACD"):
-       strategy = FuzzyMACDStrategy(symbol, bars, short, long,signalLine )
+       strategy = FuzzyMACDStrategy(symbol, bars, shortMACD, longMACD,signalLine )
        signals = strategy.generate_signals()
     if (strategyType == "Stochastic"):
        strategy = StochasticStrategy(symbol, bars,K_period,D_period, higherLine, lowerLine)

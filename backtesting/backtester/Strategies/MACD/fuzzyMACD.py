@@ -34,12 +34,13 @@ class FuzzyMACDStrategy(Strategy):
         # with open('fuzzyInput.csv', 'w') as f:
         #     print(signals['fuzzyInput'], file=f)
 
-        fuzzythreshold = 1.88
+        fuzzythreshold = 0.90
+        fuzzythresholdOne = 0.85
 
-        normalizedInput= ctrl.Antecedent(np.arange(-1*fuzzythreshold, fuzzythreshold, 0.000001), 'normalizedInput')
+        normalizedInput= ctrl.Antecedent(np.arange(-1*fuzzythreshold, fuzzythreshold, 0.01), 'normalizedInput')
         fuzzyOutput = ctrl.Consequent(np.arange(-1,1,0.001), 'fuzzyOutput')
-        normalizedInput['high'] = fuzz.trimf(normalizedInput.universe, [0.005,0.005,fuzzythreshold])
-        normalizedInput['low'] = fuzz.trimf(normalizedInput.universe, [-1*fuzzythreshold, -0.005,-0.005] )
+        normalizedInput['high'] = fuzz.trimf(normalizedInput.universe, [0,0,fuzzythreshold])
+        normalizedInput['low'] = fuzz.trimf(normalizedInput.universe, [-1*fuzzythresholdOne, 0,0] )
         normalizedInput['medium1'] = fuzz.trimf(normalizedInput.universe, [-1*fuzzythreshold,-1*fuzzythreshold,0])
         normalizedInput['medium2'] = fuzz.trimf(normalizedInput.universe, [0,fuzzythreshold,fuzzythreshold])
 
@@ -59,12 +60,15 @@ class FuzzyMACDStrategy(Strategy):
         for x in signals['fuzzyInput']:
              MACD.input['normalizedInput'] = round(x,5)
              MACD.compute()
-             print("fuzzyOutput", MACD.output['fuzzyOutput'])
+             # print("fuzzyOutput", MACD.output['fuzzyOutput'])
              if MACD.output['fuzzyOutput']>= -1 and MACD.output['fuzzyOutput']< -0.025 :
                signals['signal'][i]= 1
+               print(signals['signal'][i])
+
              else:
                if MACD.output['fuzzyOutput']>= -0.025 and MACD.output['fuzzyOutput']<=0.025:
                 signals['signal'][i]= 0
+
                else:
                 if MACD.output['fuzzyOutput']> 0.025 and MACD.output['fuzzyOutput']<= 1:
                  signals['signal'][i]=-1
@@ -73,10 +77,13 @@ class FuzzyMACDStrategy(Strategy):
         signals['positions']=signals['signal'].diff()
         i = 0
         for x in signals['positions']:
-            if(signals.positions[i]== -1 and signals.signal[i+1]==-1):
+            if (signals.positions[i] == -1 and signals.signal[i + 1] == -1):
                 signals.positions[i] = 1
+                # print(signals.positions[i])
             else:
-                if(signals.positions[i]==1 and signals.signal[i+1]==1):
-                 signals.positions[i]= -1
-            i = i+1
+                if (signals.positions[i] == 1 and signals.signal[i + 1] == 1):
+                    signals.positions[i] = -1
+                    # print(signals.positions[i])
+            i = i + 1
+
         return signals

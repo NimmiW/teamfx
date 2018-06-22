@@ -149,7 +149,13 @@ def postInput():
                            status="with_data",
                            ids=ids,
                            graphJSON=graphJSON)
-    
+
+# @app.route("/backtesting/evaluate", methods=['GET'])
+# def evaluate():
+#
+#     return render_template('backtesting/evaluate.html')
+#     application.app()
+
 
 #--------------------------------------------------------optimization Routes----------------------------------------------------#
 

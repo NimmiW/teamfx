@@ -67,6 +67,7 @@ class FuzzyMovingAverageCrossStrategy(Strategy):
              i = i+1
         # Take the difference of the signals in order to generate actual trading orders
         signals['positions']=signals['signal'].diff()
+        print(signals['positions'])
         i = 0
         for x in signals['positions']:
             if(signals.positions[i]== -1 and signals.signal[i+1]==-1):

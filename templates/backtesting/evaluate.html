@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Backtesting</title>
+    <title>SB Admin - Start Bootstrap Template</title>
     <!-- Bootstrap core CSS-->
     <link href="{{url_for('static', filename='theme/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -17,15 +17,6 @@
     <link href="{{url_for('static', filename='theme/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="{{url_for('static', filename='theme/css/sb-admin.css')}}" rel="stylesheet">
-    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>
-    <!--Font Awesome (added because you use icons in your prepend/append)-->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css"/>
-    <!-- Inline CSS based on choices in "Settings" tab -->
-    <style>
-        .bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}
-    </style>
-
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -144,15 +135,19 @@
             <li class="breadcrumb-item">
                 <a href="/">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Backtesting</li>
+            <li class="breadcrumb-item">
+                <a href="/anomalies">Anormalies</a>
+            </li>
+            <li class="breadcrumb-item active">Evaluate</li>
         </ol>
         <div class="row">
             <div class="col-12">
-                <h1>Backtesting Trading Strategy</h1>
+                <h1>Backtesting Evaluation</h1>
+                <p>Let us evaluate the results of the backtesting.</p>
             </div>
         </div>
-        </br>
-        <div class="container">
+
+                      <div class="container">
             <div class="row">
                 <div class="col-7 card">
                     <div class="card-body">
@@ -363,7 +358,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <input class="btn btn-primary" type="submit" value="Backtest"/>
+                                    <input class="btn btn-primary" type="submit" value="Sharp Ratio"/>
                                 </div>
 
                             </form>
@@ -374,6 +369,60 @@
             </div>
 
 
+        </div>
+
+
+
+                        <!--<table class="table table-bordered">-->
+                            <!--<thead>-->
+                              <!--<tr>-->
+                                <!--<th rowspan="2" colspan="2"></th>-->
+                                <!--<th colspan="2">Predicted</th>-->
+
+                              <!--</tr>-->
+                              <!--<tr>-->
+
+                                <!--<th>Positive</th>-->
+                                <!--<th>Negative</th>-->
+                              <!--</tr>-->
+                            <!--</thead>-->
+                            <!--<tbody>-->
+                              <!--<tr>-->
+                                <!--<th rowspan="2">Actual</th>-->
+                                <!--<th>Positive</th>-->
+                                <!--<td id="tp"></td>-->
+                                <!--<td id="fp"></td>-->
+                              <!--</tr>-->
+                              <!--<tr>-->
+                                <!--<th>Negative</th>-->
+                                <!--<td id="fn"></td>-->
+                                <!--<td id="tn"></td>-->
+                              <!--</tr>-->
+                            <!--</tbody>-->
+                          <!--</table>-->
+
+                        <!--<table class="table table-bordered">-->
+                            <!--<thead>-->
+                              <!--<tr>-->
+                                <!--<th >Precision</th>-->
+                                <!--<th >Recall</th>-->
+                                <!--<th >Accuracy</th>-->
+                              <!--</tr>-->
+                            <!--</thead>-->
+                            <!--<tbody>-->
+                              <!--<tr>-->
+                                <!--<th id="precision"></th>-->
+                                <!--<th id="recall"></th>-->
+                                <!--<th id="accuracy"></th>-->
+                              <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+
+
+                <div class="col-6 card">
+
+                </div>
+            </div>
         </div>
 
 
@@ -417,10 +466,11 @@
     <script src="{{url_for('static', filename='theme/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{url_for('static', filename='theme/js/sb-admin.min.js')}}"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script>
+</div>
 
-    <!-- Include Date Range Picker -->
-    <script type="text/javascript"
+ <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
@@ -490,7 +540,6 @@
             }
         }
     </script>
-</div>
 </body>
 
 </html>

@@ -14,8 +14,8 @@ class PlotChart:
   def plotCharts(self):
       graphs = []
       if(self.strategy == "Bollinger Band" or self.strategy == "Fuzzy Bollinger Band"):
-          buysignals = np.where(self.signals.positions == 1.0, self.signals.middlBand, '')
-          sellsignals = np.where(self.signals.positions == -1.0, self.signals.middlBand, '')
+          buysignals = np.where(self.signals.positions == 1.0, self.signals.close, '')
+          sellsignals = np.where(self.signals.positions == -1.0, self.signals.close, '')
           df = self.signals
           graphs = [
               dict(
@@ -28,6 +28,11 @@ class PlotChart:
                       dict(
                           x=df.index,
                           y=df.upperBand,
+                          type='scatter'
+                      ),
+                      dict(
+                          x=df.index,
+                          y=df.close,
                           type='scatter'
                       ),
                       dict(
@@ -90,8 +95,8 @@ class PlotChart:
           ]
 
       if(self.strategy == "MACD" or self.strategy =="Fuzzy MACD" ):
-          buysignals = np.where(self.signals.positions == 1.0, self.signals.signalLine, '')
-          sellsignals = np.where(self.signals.positions == -1.0, self.signals.signalLine, '')
+          buysignals = np.where(self.signals.positions == 1.0, self.signals.MACD, '')
+          sellsignals = np.where(self.signals.positions == -1.0, self.signals.MACD, '')
           df = self.signals
           graphs = [
           dict(
@@ -99,12 +104,14 @@ class PlotChart:
                   dict(
                       x=df.index,
                       y=df.signalLine,
-                      type='scatter'
+                      type='scatter',
+                      label = 'signalLine'
                   ),
                   dict(
                       x=df.index,
                       y=df.MACD,
-                      type='scatter'
+                      type='scatter',
+                      lable = 'MACD'
                   ),
                   dict(
                       x=df.index,

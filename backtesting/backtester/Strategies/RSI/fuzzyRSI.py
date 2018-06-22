@@ -34,7 +34,7 @@ class FuzzyRSIStrategy(Strategy):
         down[down > 0] = 0
         signals['rUp'] = up.ewm(com= self.rup  - 1, adjust=False).mean()
         signals['rDown'] = down.ewm(com= self.rdown- 1, adjust=False).mean().abs()
-        signals['RSI'] = 100 - 100 / (1 + signals['rUp'] / signals['rDown'])
+        signals['RSI'] = 100 - 100 / (1 + signals['rUp'] / signals['rDown']) #
         signals['fuzzyInputOne'] = 100 * (signals['RSI']-70)/signals['RSI']
         signals['fuzzyInputTwo'] = 100 * (signals['RSI']-30)/signals['RSI']
         fuzzythreshold = 5.342
