@@ -240,80 +240,238 @@
                 <i class="fa fa-history"></i> Back Test With Enhanced Features
             </div>
             <div class="card-body">
-                <form>
-                    <div class="form-group">
-                        <label for="currency">Currency:</label>
-                        <select class="form-control" name="currency_pair">
-                            <option value="EURUSD">EUR/USD</option>
-                            <option value="GBPUSD">GBP/USD</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="year">From:</label>
-                        <select class="form-control" name="from_year">
-                            <option value="2012">2012</option>
-                            <option value="2013">2013</option>
-                            <option value="2014">2014</option>
-                            <option value="2015">2015</option>
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                        </select>
-                        <select class="form-control" name="from_month">
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="to">To:</label>
-                        <select class="form-control" name="to_year">
-                            <option value="2012">2012</option>
-                            <option value="2013">2013</option>
-                            <option value="2014">2014</option>
-                            <option value="2015">2015</option>
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                        </select>
-                        <select class="form-control" name="to_month">
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
-                    </div>
+                            <form action="/app" method="post">
+                                <div class="row">
+                                    <label for="Trading Strategy">Trading Strategy:</label>
+                                    <select class="form-control" name="strategy" onchange="changeDiv(value)">
+                                        <option disabled selected value> Select Trading Strategy</option>
+                                        <option value="Moving Average">Moving Average Crossover Strategy</option>
+                                        <option value="MACD">MACD</option>
+                                        <option value="Fuzzy MACD">Fuzzy MACD</option>
+                                        <option value="Bollinger Band">Bollinger Bands</option>
+                                        <option value="RSI">Relative Strength Index (RSI)</option>
+                                        <option value="Fuzzy RSI"> Fuzzy Relative Strength Index (RSI)</option>
+                                        <option value="Fuzzy Moving Average">Fuzzy Moving Average</option>
+                                        <option value="Fuzzy Bollinger Band">Fuzzy Bollinger Band</option>
+                                        <option value="Stochastic">Stochastic</option>
+                                        <option value="Fuzzy Stochastic">Fuzzy Stochastic</option>
 
-                    <div class="form-group">
-                        <label for="to">Strategy:</label>
-                        <select class="form-control" name="strategy">
-                            <option value="ma">Moving Average</option>
-                            <option value="macd">MACD</option>
-                            <option value="bolinger">Bolinger Bands</option>
-                        </select>
-                    </div>
+                                    </select>
+                                </div>
+                                </br>
+                                <div class="row">
+                                    <label for="currency">Currency:</label>
+                                    <select class="form-control" name="currency_pair">
+                                        <option value="EURUSD">EUR/USD</option>
+                                        <option value="EURGBP">EUR/GBP</option>
+                                        <option value="EURCHF">EUR/CHF</option>
+                                        <option value="AUDUSD">AUD/USD</option>
+                                    </select>
+                                </div>
+                                </br>
+                                <div class="row">
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                    <label for="from">From:</label>
+                                    <div class="bootstrap-iso">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                        <div class="form-group ">
+                                                            <div class="col-sm-10">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-calendar">
+                                                                        </i>
+                                                                    </div>
+                                                                    <input class="form-control" id="from_date" name="from_date"
+                                                                           placeholder="yyyy.mm.dd" type="text"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <label for="to">To:</label>
+                                    <div class="bootstrap-iso">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                        <div class="form-group ">
+                                                            <div class="col-sm-10">
+                                                                <div class="input-group">
+                                                                    <div class="input-group-addon">
+                                                                        <i class="fa fa-calendar">
+                                                                        </i>
+                                                                    </div>
+                                                                    <input class="form-control" id="to_date" name="to_date"
+                                                                           placeholder="yyyy.mm.dd" type="text"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div id="parameters"  style="display:none;">
+                                </br>
+                                 <div class="row">
+                                    <label for="Parameters">Parameters:</label>
+                                 </div>
+                                </div>
+                                <!--Div Moving Average-->
+                                <div id="moving_average"  style="display:none;">
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="smap">Short Moving Average Period</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" value="200" class="form-control"   name="minShortMA" style="height: 30px;">
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="lmap">Long Moving Average Period</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" value="300" class="form-control"   name="minLongMA" style="height: 30px;">
+                                    </div>
+                                </div>
+                                </div>
 
-                    <div class="form-group">
-                        <button class="btn btn-success">Backtest</button>
-                    </div>
+                                <!--Div MACD-->
+                                <div id="macd"  style="display:none;">
 
-                </form>
-            </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="smap">Short Moving Average Period</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control"   name="minShortMAPeriod" style="height: 30px;">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="lmap">Long Moving Average Period</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control"   name="minLongMAPeriod" style="height: 30px;">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="signalLine">Signal Line</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control"   name="minSignalLine" style="height: 30px;">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                 <!--Div Bollinger-->
+                                <div id="bollinger"  style="display:none;">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="map">Moving Average Period</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control" name="minMAPeriod" style="height: 30px;">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="sd">Standard Deviation</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control"  name="minStdDev" style="height: 30px;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="RSI"  style="display:none;">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="map">RSI-Up window</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control" name="rsiUp" style="height: 30px;">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="sd">RSI-Down window</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control"  name="rsiDown" style="height: 30px;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="Stochastic"  style="display:none;">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="map">K period</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control" name="K_period" style="height: 30px;">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="sd">D period</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control"  name="D_period" style="...">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="sd">Higher Line</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control"  name="higher_line" style="...">
+                                        </div>
+                                    </div>
+                                     <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="sd">Lower Line</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control"  name="lower_line" style="...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                     <label><input onchange="checkedBlackregion()"  id ="CheckeBoxOne" name = "blackregions" type="checkbox" value="true" checked>Remove Black Regions</label>
+                                </div>
+
+                                <div id="Thresholdiv" class="form-group"  style="display:none;">
+                                    <label for="threshold" id="lol">Threshold</label>
+                                    <select class="form-control" id="threshold" name="threshold">
+                                      <option value="1">1%</option>
+                                      <option value="2">2%</option>
+                                      <option value="3">3%</option>
+                                      <option value="4">4%</option>
+                                      <option value="5">5%</option>
+                                      <option value="6">6%</option>
+                                    </select>
+
+                                </div>
+                                <div class="checkbox">
+                                     <label><input onchange="checkedOptimation()" id ="CheckeBoxTwo" name = "optimization" type="checkbox" value="">Optimization</label>
+                                </div>
+
+
+                                <div class="row">
+                                    <input class="btn btn-primary" type="submit" value="submit"/>
+                                </div>
+
+                            </form>
+                    </div>
         </div>
         <!--End Product View-->
 
@@ -365,6 +523,85 @@
     <script src="{{url_for('static', filename='theme/js/sb-admin.min.js')}}"></script>
     <!-- Custom scripts for this page-->
     <script src="{{url_for('static', filename='theme/js/sb-admin-charts.js')}}"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+    <script>
+	$(document).ready(function(){
+		var date_input=$('input[name="from_date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'yyyy.mm.dd',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	})
+
+	$(document).ready(function(){
+		var date_input=$('input[name="to_date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'yyyy.mm.dd',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	})
+
+    </script>
+    <script>
+        function changeDiv(value) {
+             document.getElementById('parameters').style.display = "block";
+            if(value==="Moving Average" || value==="Fuzzy Moving Average"){
+                document.getElementById('moving_average').style.display = "block";
+                document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('macd').style.display = "none";
+                document.getElementById('bollinger').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+            }
+            if(value==="MACD" || value==="Fuzzy MACD"){
+                document.getElementById('macd').style.display = "block";
+                document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('moving_average').style.display = "none";
+                document.getElementById('bollinger').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+            }
+            if(value==="Bollinger Band" || value==="Fuzzy Bollinger Band"){
+                document.getElementById('bollinger').style.display = "block";
+                document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('moving_average').style.display = "none";
+                document.getElementById('macd').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+            }
+             if(value==="Fuzzy RSI" || value===""){
+                document.getElementById('RSI').style.display = "block";
+                document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('moving_average').style.display = "none";
+                document.getElementById('macd').style.display = "none";
+                document.getElementById('bollinger').style.display = "none";
+            }
+             if(value==="Stochastic" || value==="Fuzzy Stochastic"){
+                document.getElementById('Stochastic').style.display = "block";
+                document.getElementById('moving_average').style.display = "none";
+                document.getElementById('macd').style.display = "none";
+                document.getElementById('bollinger').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+
+            }
+        }
+    </script>
+    <script>
+        function checkedBlackregion()
+        {
+        if(document.getElementById('CheckeBoxOne').checked == true)
+        {
+            document.getElementById('Thresholdiv').style.display = "block";
+        }
+        }
+    </script>
 
 </div>
 </body>

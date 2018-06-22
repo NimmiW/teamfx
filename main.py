@@ -185,6 +185,20 @@ def backtestingInput():
     # anomalies_result_visualization.plot_results()
     return render_template('backtesting/input.html')
 
+@app.route("/app", methods = ['GET','POST'])
+def overall_backtesting():
+
+    blackregion = request.form["blackregions"]
+    if(blackregion == "true"):
+        ids, graphJSON = application.app(True)
+    else:
+        ids, graphJSON = application.app()
+
+    return render_template('backtesting/visualize.html',
+                           status="with_data",
+                           ids=ids,
+                           graphJSON=graphJSON)
+
 @app.route("/backtesting/visualize", methods = ['GET','POST'])
 def postInput():
     graph = application.app()
