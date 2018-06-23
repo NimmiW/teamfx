@@ -9,6 +9,11 @@ import anomalies.config as config
 
 from backtesting.backtester import application
 
+from optimization.Strategies import StrategyOptimizer_MA
+from optimization.Strategies import StrategyOptimizer_MACD
+from optimization import Risk_Calculator
+from optimization import signal_Generator
+
 import plotly.plotly.plotly as py
 import pandas as pd
 import numpy as np
@@ -217,7 +222,39 @@ def postInput():
 
 
 #--------------------------------------------------------optimization Routes----------------------------------------------------#
+@app.route("/optimization/", methods = ['POST', 'GET'])
+def load_index_page():
+    return render_template('optimization/index.html')
 
+@app.route("/optimization/input", methods = ['POST', 'GET'])
+def load_optimize_interface():
+    return render_template('optimization/optimize_interface.html')
+
+@app.route("/optimization/strategyOptimizer", methods = ['POST', 'GET'])
+def optimize():
+    strategy = request.form['strategy']
+    returns = []
+    if(strategy == 'Moving Average'):
+        strategyNum = 1
+        returns = StrategyOptimizer_MA.initialize()
+    elif (strategy == 'MACD'):
+        strategyNum = 2
+        returns = StrategyOptimizer_MACD.initialize()
+
+    top10 = returns[:10]
+    results = [(Risk_Calculator.calculateRisk(x[1],strategy), x, strategyNum) for x in top10]
+    return render_template('optimization/Results.html',results=results)
+
+@app.route('/plotChart', methods=['POST','GET'])
+def plot_chart():
+    data = request.form.get('custId')
+    strategy = data[1:len(data) - 1][-1:len(data)]
+    para = data.split('[')
+    para = para[2][:len(para) - 9].split(',')
+    para = [int(i) for i in para]
+    ids, graphJSON = signal_Generator.app(para,strategy)
+
+    return render_template('optimization/plot.html',status="with_data",ids=ids,graphJSON=graphJSON,para=para,strategy=strategy)
 
 
 #--------------------------------------------------------predictions Routes----------------------------------------------------#
