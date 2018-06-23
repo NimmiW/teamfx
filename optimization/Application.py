@@ -1,6 +1,7 @@
 import pandas as pd
 from pandas import to_datetime
 import backtesting
+from flask import Flask,redirect, url_for, request
 from backtesting.backtester.Strategies.ma_cross.ma_cross import MovingAverageCrossStrategy
 from backtesting.backtester.Strategies.ma_cross.fuzzy_ma_cross import FuzzyMovingAverageCrossStrategy
 from backtesting.backtester.Strategies.BollingerBand.BollingerBand import BollingerBandStrategy
@@ -19,9 +20,16 @@ def optimize(individual,strategy):
    #print("short",short_window)
    #print("long",long_window)
    symbol = 'USD'
-   bars = pd.read_csv("D:/Dilmi Computer Backup/A/Final Year Project/Strategy_Optimizer_MA/GeneticTesting/Data/DataSets/Minute/Minute.csv")
-   bars.index = to_datetime(bars.Date)
+
    strategyType = strategy
+   startDate = request.form["from_date"]
+   endDate = request.form["to_date"]
+
+   bars = pd.read_csv("D:/Dilmi Computer Backup/A/Final Year Project/Strategy_Optimizer_MA/GeneticTesting/Data/DataSets/Minute/Minute.csv")
+   bars.index = to_datetime(bars['Date'] + ' ' + bars['Time'])
+   mask = (bars.index > startDate) & (bars.index <= endDate)
+   bars = bars.loc[mask]
+
 
    if (strategyType == "Moving Average"):
       strategy = MovingAverageCrossStrategy(symbol, bars, individual[0], individual[1])

@@ -99,7 +99,7 @@ def calculateRisk(individual,strategy):
     from subprocess import Popen
     p = Popen('finalresult.csv', shell=True)"""
 
-    inv_return.to_csv('without2.csv', encoding='utf-8')
+    #inv_return.to_csv('without4.csv', encoding='utf-8')
 
     #profit = inv_return.iloc[-1].tolist()[5]
     #print("profit : ",profit)
