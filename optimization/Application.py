@@ -25,7 +25,10 @@ def optimize(individual,strategy):
    startDate = request.form["from_date"]
    endDate = request.form["to_date"]
 
-   bars = pd.read_csv("D:/Dilmi Computer Backup/A/Final Year Project/Strategy_Optimizer_MA/GeneticTesting/Data/DataSets/Minute/Minute.csv")
+
+
+
+   bars = pd.read_csv("D:/Dilmi Computer Backup/A/Final Year Project/Final_Module_5/teamfx/static/data/EURUSD/DAT_MT_EURUSD_M1_2016.csv")
    bars.index = to_datetime(bars['Date'] + ' ' + bars['Time'])
    mask = (bars.index > startDate) & (bars.index <= endDate)
    bars = bars.loc[mask]

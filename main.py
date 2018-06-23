@@ -13,6 +13,8 @@ from optimization.Strategies import StrategyOptimizer_MA
 from optimization.Strategies import StrategyOptimizer_MACD
 from optimization import Risk_Calculator
 from optimization import signal_Generator
+from optimization import evaluation_opt
+from optimization import parameter_Gen
 
 import plotly.plotly.plotly as py
 import pandas as pd
@@ -255,6 +257,22 @@ def plot_chart():
     ids, graphJSON = signal_Generator.app(para,strategy)
 
     return render_template('optimization/plot.html',status="with_data",ids=ids,graphJSON=graphJSON,para=para,strategy=strategy)
+
+@app.route("/optimization/evaluate", methods = ['POST', 'GET'])
+def load_evaluate_optimize():
+    return render_template('optimization/evaluate.html')
+
+@app.route("/optimization/evaluation", methods = ['POST', 'GET'])
+def evaluate_optimize():
+    strategy = request.form['strategy']
+    print (strategy)
+    para = parameter_Gen.individual(strategy)
+    print (para)
+    print(type(para))
+    print (type(para[0]))
+    results = evaluation_opt.calculateRisk(para, strategy)
+    print(results)
+    return render_template('optimization/evaluation_results.html',para=para,results=results)
 
 
 #--------------------------------------------------------predictions Routes----------------------------------------------------#

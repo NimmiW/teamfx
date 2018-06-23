@@ -84,7 +84,7 @@ def app(blackregion=False):
 
 
     bars.index = to_datetime(bars ['Date'] +' ' + bars['Time'])
-    mask = (bars.index > startDate) & (bars.index <= '2016.01.04')
+    mask = (bars.index > startDate) & (bars.index <= endDate)
     bars = bars.loc[mask]
     # series = data["Close"]
 

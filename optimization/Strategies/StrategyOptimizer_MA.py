@@ -203,6 +203,6 @@ def finalResult(parents):
 # parents=evolve(pop)
 # print(len(parents))
 increment = 0
-count = 15
+count = 100
 
 #initialize(10, 50, 2, 5, 200, 5, 0, 400, 100, 0, 1000, 100)
