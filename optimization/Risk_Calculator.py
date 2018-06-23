@@ -113,20 +113,20 @@ def calculateRisk(individual,strategy):
 
     ###   Profit Factor  ###
     if (total_loss != 0):
-        profit_factor = (total_profit / total_loss)
+        profit_factor = abs(total_profit / total_loss)
     else:
-        profit_factor = 0
+        profit_factor = 1
 
     print("Profit factor:",profit_factor)
 
 
     ###   Total Return   ###
     total_return = total_profit - total_loss
-    print("Total_Return",total_return)
+    print("Total_Return:",total_return)
 
     ###   Profit trades percentage   ####
-    profit_trades_perc = (total_profit/total_return)*100
-    print("Profit_Trades_Percentage: ",profit_trades_perc)
+    #profit_trades_perc = (total_profit/total_return)*100
+    #print("Profit_Trades_Percentag: ",profit_trades_perc)
 
     ###    Risk Factor ###
     max_drawdown = abs(inv_return['returns'].max())

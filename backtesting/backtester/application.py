@@ -80,9 +80,6 @@ def app(blackregion=False):
         #     barsTwo = np.where(bars.index > black_regions.index and bars.index<black_regions.index,bars , 0.0)
 
 
-
-
-
     bars.index = to_datetime(bars ['Date'] +' ' + bars['Time'])
     mask = (bars.index > startDate) & (bars.index <= endDate)
     bars = bars.loc[mask]

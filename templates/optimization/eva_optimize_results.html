@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Strategy Optimization</title>
+    <title>Evaluation</title>
     <!-- Bootstrap core CSS-->
     <link href="{{url_for('static', filename='theme/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -24,6 +24,7 @@
     <!-- Inline CSS based on choices in "Settings" tab -->
     <style>
         .bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}
+
 
 
 
@@ -149,121 +150,126 @@
             <li class="breadcrumb-item">
                 <a href="/">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Optimization</li>
+            <li class="breadcrumb-item active">Evaluation</li>
         </ol>
         <div class="row">
             <div class="col-12">
-                <h1>Evaluation of Results for parameter {{para}}</h1>
+                <h1>Evaluation - Trading Strategy Optimizer {{para}}</h1>
             </div>
         </div>
         </br>
-
         <div class="container">
             <div class="col-12 card">
                 <div class="card-body">
                     <div class="row">
+                        <div class="col-md-1">
+
+                        </div>
+
                         <div class="col-md-2">
                             <center>
                                 <b><label for="profac">Profit Factor</label></b>
                             </center>
                         </div>
+
                         <div class="col-md-2">
                             <center>
-                                <b><label for="profac_va">{{'%.4f' % results[0]}}</label></b>
+                                {{'%.4f' % results[0]}}
                             </center>
                         </div>
-
                     </div>
 
-                    <!--<div class="row">
-                        <div class="col-md-2">
-                            <center>
-                                <b><label for="return">Total Return</label></b>
-                            </center>
+                    <div class="row">
+                        <div class="col-md-1">
+
                         </div>
+
                         <div class="col-md-2">
                             <center>
-                                <b><label for="return_val">{{'%.4f' % results[1]}}</label></b>
+                                <b><label for="totRet">Total Return</label></b>
                             </center>
                         </div>
 
-                    </div>-->
+                        <div class="col-md-2">
+                            <center>
+                                {{'%.4f' % results[1]}}
+                            </center>
+                        </div>
+                    </div>
+
 
                     <div class="row">
+                        <div class="col-md-1">
+
+                        </div>
+
                         <div class="col-md-2">
                             <center>
                                 <b><label for="riskfac">Risk Factor</label></b>
                             </center>
                         </div>
+
                         <div class="col-md-2">
                             <center>
-                                <b><label for="riskfac_val">{{'%.4f' % results[2]}}</label></b>
+                                {{'%.4f' % results[2]}}
                             </center>
                         </div>
-
                     </div>
 
-
-
-                    </div>
-
-
+                </div>
 
 
             </div>
-
-
-
-
 
 
         </div>
-
-
-        <!-- /.container-fluid-->
-        <!-- /.content-wrapper-->
-        <footer class="sticky-footer">
-            <div class="container">
-                <div class="text-center">
-                    <small>Copyright © TeamFx 2018</small>
-                </div>
-            </div>
-        </footer>
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fa fa-angle-up"></i>
-        </a>
-        <!-- Logout Modal-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="/login">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="{{url_for('static', filename='theme/vendor/jquery/jquery.min.js')}}"></script>
-        <script src="{{url_for('static', filename='theme/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <!-- Core plugin JavaScript-->
-        <script src="{{url_for('static', filename='theme/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-        <!-- Custom scripts for all pages-->
-        <script src="{{url_for('static', filename='theme/js/sb-admin.min.js')}}"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
     </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © TeamFx 2018</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/login">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{url_for('static', filename='theme/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='theme/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{{url_for('static', filename='theme/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{{url_for('static', filename='theme/js/sb-admin.min.js')}}"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+</div>
 </body>
 
 </html>

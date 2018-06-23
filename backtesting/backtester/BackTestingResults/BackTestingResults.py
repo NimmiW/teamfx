@@ -34,7 +34,7 @@ class MarketOnClosePortfolio(Portfolio):
         # pf['cash'] = self.initial_capital - pf['holdings'].cumsum() # return the cummulative sum
         # pf['total'] = pf['cash'] + self.positions[self.symbol].cumsum() * self.bars['Close']
         daily_log_returns = np.log(self.bars['Close'] / self.bars['Close'].shift(1))
-        daily_log_returns = daily_log_returns * self.signals['positions'].shift(1)
+        daily_log_returns = daily_log_returns * self.signals['signal'].shift(1)
         pf['returns'] = daily_log_returns
         pf['total'] = daily_log_returns.cumsum()
         print('total', daily_log_returns.cumsum() )

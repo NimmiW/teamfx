@@ -80,7 +80,7 @@ def fitness(individual,strategy):
         else:
             return_value = row['returns']
             returns.append(return_value)
-            if return_value>0:
+            if (return_value>0):
                 total_profit += return_value
             else:
                 total_loss -= return_value
@@ -113,9 +113,9 @@ def fitness(individual,strategy):
         risk_factor = 0
 
     if (total_loss != 0):
-        profit_factor = (total_profit / total_loss)
+        profit_factor = abs(total_profit / total_loss)
     else:
-        profit_factor = 0
+        profit_factor = 1
 
     fitness = profit_factor
     # fitness = risk_factor + profit_factor

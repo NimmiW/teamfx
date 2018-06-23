@@ -157,7 +157,7 @@
             <div class="row">
                 <div class="col-7 card">
                     <div class="card-body">
-                        <form action="/optimization/evaluation" method="post">
+                        <form action="/optimization/evaluation_optimizer" method="post">
                             <div class="row">
                                 <b><label for="Trading Strategy">Trading Strategy:</label></b>
                                 <select class="form-control" name="strategy" onchange="changeDiv(value)">
@@ -235,12 +235,13 @@
                             <!--Div Moving Average-->
                             <div id="Moving Average" style="display:none;">
                                 <br/>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b><label for="smap">Short Moving Average Period</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="ShortMA" value="1"
+                                        <input type="number" class="form-control" name="ShortMA"
                                                style="height: 30px;">
                                     </div>
 
@@ -250,7 +251,7 @@
                                         <b><label for="lmap">Long Moving Average Period</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="LongMA" value="10"
+                                        <input type="number" class="form-control" name="LongMA"
                                                style="height: 30px;">
                                     </div>
 
@@ -260,77 +261,41 @@
                                         <b><label for="stoploss">Stop-Loss</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="StopLoss" value="1"
+                                        <input type="number" class="form-control" name="StopLoss"
                                                style="height: 30px;">
                                     </div>
-
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b><label for="takeprofit">Take-Profit</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="TakeProfit" value="10"
+                                        <input type="number" class="form-control" name="TakeProfit"
                                                style="height: 30px;">
                                     </div>
-
                                 </div>
                             </div>
 
 
                             <!--Div MACD-->
                             <div id="MACD" style="display:none;">
-                                <div class="row">
-                                    <div class="col-md-6">
 
-                                    </div>
-                                    <div class="col-md-2">
-                                        <center>
-                                            <b><label for="initial">Initial</label></b>
-                                        </center>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <center>
-                                            <b><label for="final">Final</label></b>
-                                        </center>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <center>
-                                            <b><label for="increment">Increment</label></b>
-                                        </center>
-                                    </div>
-                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b><label for="smap">Short Moving Average Period</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="minShortMAPeriod" value="2"
+                                        <input type="number" class="form-control" name="ShortMAPeriod"
                                                style="height: 30px;">
                                     </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="maxShortMAPeriod" value="20"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="stepShortMAPeriod" value="1"
-                                               style="height: 30px;">
-                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b><label for="lmap">Long Moving Average Period</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="minLongMAPeriod" value="10"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="maxLongMAPeriod" value="40"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="stepLongMAPeriod" value="2"
+                                        <input type="number" class="form-control" name="LongMAPeriod"
                                                style="height: 30px;">
                                     </div>
                                 </div>
@@ -339,15 +304,7 @@
                                         <b><label for="signalLine">Signal Line</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="minSignalLine" value="5"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="maxSignalLine" value="20"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="stepSignalLine" value="1"
+                                        <input type="number" class="form-control" name="minSignalLine"
                                                style="height: 30px;">
                                     </div>
                                 </div>
@@ -356,15 +313,7 @@
                                         <b><label for="stoploss">Stop-Loss</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="minStopLoss" value="10"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="maxStopLoss" value="20"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="stepStopLoss" value="2"
+                                        <input type="number" class="form-control" name="StopLoss"
                                                style="height: 30px;">
                                     </div>
                                 </div>
@@ -373,15 +322,7 @@
                                         <b><label for="takeprofit">Take-Profit</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="minTakeProfit" value="20"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="maxTakeProfit" value="100"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="stepTakeProfit" value="10"
+                                        <input type="number" class="form-control" name="TakeProfit"
                                                style="height: 30px;">
                                     </div>
                                 </div>

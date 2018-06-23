@@ -19,11 +19,11 @@ def calculateRisk(individual,strategy):
 
     inv_return = Application.optimize(individual,strategy)
 
-    #print(inv_return)
+    print("inv_return:",inv_return)
 
     ### Filter Regions ###
     inv_return = inv_return[(inv_return["signal"] == 1) | (inv_return["positions"] == -1)]
-    #print(inv_return)
+    print("inv_return_filtered:",inv_return)
 
     print("   ")
     #print(inv_return)
@@ -64,7 +64,7 @@ def calculateRisk(individual,strategy):
     inv_return['stoploss']  = stoploss
     inv_return['takeprofit'] = takeprofit
     inv_return['check'] = check
-    #print(inv_return)
+
 
     returns = []
     total_profit = 0
@@ -81,9 +81,9 @@ def calculateRisk(individual,strategy):
         else:
             return_value = row['returns']
             returns.append(return_value)
-            if return_value>0:
+            if (return_value>0):
                 total_profit += return_value
-            else:
+            elif(return_value<0):
                 total_loss -= return_value
 
     total = []
@@ -93,13 +93,15 @@ def calculateRisk(individual,strategy):
     inv_return['returns'] = returns
     inv_return['total'] = total
 
+    print("inv_return_final:", inv_return)
+
     #print(inv_return.iloc[-1].tolist()[5])
 
     """inv_return.to_csv('finalresult.csv', encoding='utf-8')
     from subprocess import Popen
     p = Popen('finalresult.csv', shell=True)"""
 
-    #inv_return.to_csv('without4.csv', encoding='utf-8')
+    inv_return.to_csv('without4.csv', encoding='utf-8')
 
     #profit = inv_return.iloc[-1].tolist()[5]
     #print("profit : ",profit)
@@ -109,11 +111,14 @@ def calculateRisk(individual,strategy):
         ##### Calculating #####
 
     ###    Total Profit    ###
-    print("total_profit", total_profit)
+    print("total_profit:", total_profit)
 
+
+    print ("total_profit", total_profit)
+    print ("total_loss", total_loss)
     ###   Profit Factor  ###
     if (total_loss != 0):
-        profit_factor = (total_profit / total_loss)
+        profit_factor = abs(total_profit / total_loss)
     else:
         profit_factor = 0
 
@@ -122,11 +127,11 @@ def calculateRisk(individual,strategy):
 
     ###   Total Return   ###
     total_return = total_profit - total_loss
-    print("Total_Return",total_return)
+    print("Total_Return:",total_return)
 
     ###   Profit trades percentage   ####
-    profit_trades_perc = (total_profit/total_return)*100
-    print("Profit_Trades_Percentage: ",profit_trades_perc)
+    #profit_trades_perc = (total_profit/total_return)*100
+    #print("Profit_Trades_Percentage: ",profit_trades_perc)
 
     ###    Risk Factor ###
     max_drawdown = abs(inv_return['returns'].max())
@@ -139,9 +144,7 @@ def calculateRisk(individual,strategy):
     else:
         risk_factor = 0
 
-    print("Risk factor: ", risk_factor)
-
-    matrix = [profit_factor, total_return, risk_factor]
+    print("Risk factor:   ", risk_factor)
 
     fitness = profit_factor
     #fitness = risk_factor + profit_factor
@@ -153,6 +156,7 @@ def calculateRisk(individual,strategy):
 
     #print("Profit Factor: ",profit_factor)
 
+    matrix = [profit_factor, total_return, risk_factor]
 
     return matrix
 

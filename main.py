@@ -13,8 +13,9 @@ from optimization.Strategies import StrategyOptimizer_MA
 from optimization.Strategies import StrategyOptimizer_MACD
 from optimization import Risk_Calculator
 from optimization import signal_Generator
-from optimization import evaluation_opt
-from optimization import parameter_Gen
+from optimization import evaluate_optimization
+from optimization import gen_parameters
+
 
 import plotly.plotly.plotly as py
 import pandas as pd
@@ -259,21 +260,16 @@ def plot_chart():
     return render_template('optimization/plot.html',status="with_data",ids=ids,graphJSON=graphJSON,para=para,strategy=strategy)
 
 @app.route("/optimization/evaluate", methods = ['POST', 'GET'])
-def load_evaluate_optimize():
-    return render_template('optimization/evaluate.html')
+def load_optimize_eval_interface():
+    return render_template('optimization/optimize_eval_interface.html')
 
-@app.route("/optimization/evaluation", methods = ['POST', 'GET'])
-def evaluate_optimize():
+@app.route("/optimization/evaluation_optimizer", methods = ['POST', 'GET'])
+def opt_evaluation_results():
     strategy = request.form['strategy']
-    print (strategy)
-    para = parameter_Gen.individual(strategy)
-    print (para)
-    print(type(para))
-    print (type(para[0]))
-    results = evaluation_opt.calculateRisk(para, strategy)
+    para = gen_parameters.getPara(strategy);
+    results = evaluate_optimization.calculateRisk(para,strategy)
     print(results)
-    return render_template('optimization/evaluation_results.html',para=para,results=results)
-
+    return render_template('optimization/eva_optimize_results.html',results=results,para=para)
 
 #--------------------------------------------------------predictions Routes----------------------------------------------------#
 
