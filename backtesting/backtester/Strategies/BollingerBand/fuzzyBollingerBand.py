@@ -40,8 +40,8 @@ class FuzzyBollingerBandStrategy(Strategy):
         # print('fuzzy Input')
         # print(signals['fuzzyInputUpperBand'])
         # print(signals['fuzzyInputlowerBand'])
-        fuzzythreshold = 0.0000002
-        fuzzythresholdOne = 0.0000003
+        fuzzythreshold = 0.02
+        fuzzythresholdOne = 0.03
         normalizedInputOne = ctrl.Antecedent(np.arange(-1*fuzzythreshold, fuzzythreshold, 0.0000001), 'normalizedInputOne')
         normalizedInputTwo = ctrl.Antecedent(np.arange(-1*fuzzythreshold, fuzzythreshold, 0.0000001), 'normalizedInputTwo')
         fuzzyOutput = ctrl.Consequent(np.arange(-1,1,0.001), 'fuzzyOutput')
@@ -78,53 +78,68 @@ class FuzzyBollingerBandStrategy(Strategy):
 
         movingAverage_ctrl_two = ctrl.ControlSystem([rule7, rule5, rule8])
         movingAverageCrossOverTwo = ctrl.ControlSystemSimulation(movingAverage_ctrl_two)
+        print('fuzzyInputlowerBand')
+        print(signals['fuzzyInputlowerBand'])
+
+
+        for x in range(len(signals['fuzzyInputUpperBand'])-1):
+            if(signals['fuzzyInputUpperBand'][x]>-0.00023 and signals['fuzzyInputUpperBand'][x]<0.00023):
+                if (signals['close'][x] >signals['middlBand'][x]):
+                  signals['positions'][x] = -1
+                  print(signals['fuzzyInputUpperBand'][x])
+
+        for x in range(len(signals['fuzzyInputlowerBand']) - 1):
+            if (signals['fuzzyInputlowerBand'][x] >-0.0023 and signals['fuzzyInputlowerBand'][x] <0.00023):
+                if (signals['close'][x] < signals['middlBand'][x]):
+                 signals['positions'][x] = 1
+                 print(signals['fuzzyInputlowerBand'][x])
 
         i = 0
-        for x in signals['close']:
-          print("close" , x)
-          print("middle" , signals['middlBand'][i])
-
-          if (x> signals['middlBand'][i]):
-            print('Inside if Zero')
-            movingAverageCrossOver.input['normalizedInputOne'] = round(x, 5)
-            movingAverageCrossOver.compute()
-            if movingAverageCrossOver.output['fuzzyOutput'] >= -1 and movingAverageCrossOver.output['fuzzyOutput'] <= -0.025:
-                signals['signal'][i] = -1
-                print("Inside if one")
-
-            else:
-                if movingAverageCrossOver.output['fuzzyOutput'] > -0.025 and movingAverageCrossOver.output['fuzzyOutput'] < 0.025:
-                    signals['signal'][i] = 0
-                    print("Inside if two")
-
-                else:
-                    if movingAverageCrossOver.output['fuzzyOutput'] >= 0.000025 and movingAverageCrossOver.output['fuzzyOutput'] <= 1:
-                        signals['signal'][i] = -1
-                        print("Inside if three")
-          else:
-              signals['signal'][i] = 0.0
-          i=i+1
-
-        i = 0
-        for x in signals['close']:
-          if (x< signals['middlBand'][i]):
-            movingAverageCrossOverTwo.input['normalizedInputTwo'] = round(x, 5)
-            movingAverageCrossOverTwo.compute()
-            if movingAverageCrossOverTwo.output['fuzzyOutput'] >= -1 and movingAverageCrossOverTwo.output['fuzzyOutput'] <= -0.0025:
-                signals['signal'][i] = 1
-                print("Inside if four")
-
-            else:
-                if movingAverageCrossOverTwo.output['fuzzyOutput'] > -0.025 and movingAverageCrossOverTwo.output['fuzzyOutput'] < 0.025:
-                    signals['signal'][i] = 0
-                    print("Inside if five")
-                else:
-                    if movingAverageCrossOverTwo.output['fuzzyOutput'] >= 0.000025 and movingAverageCrossOverTwo.output['fuzzyOutput'] <= 1:
-                        signals['signal'][i] = 1
-                        print("Inside if six")
-            i = i + 1
-        signals['positions'] = signals['signal']
-
+        # for x in signals['close']:
+        #   print("close" , x)
+        #   print("middle" , signals['middlBand'][i])
+        #
+        #   if (x> signals['middlBand'][i]):
+        #     print('Inside if Zero')
+        #     movingAverageCrossOver.input['normalizedInputOne'] = round(x, 5)
+        #     movingAverageCrossOver.compute()
+        #     if movingAverageCrossOver.output['fuzzyOutput'] >= -1 and movingAverageCrossOver.output['fuzzyOutput'] <= -0.025:
+        #         signals['signal'][i] = -1
+        #         print("Inside if one")
+        #
+        #     else:
+        #         if movingAverageCrossOver.output['fuzzyOutput'] > -0.025 and movingAverageCrossOver.output['fuzzyOutput'] < 0.025:
+        #             signals['signal'][i] = 0
+        #             print("Inside if two")
+        #
+        #         else:
+        #             if movingAverageCrossOver.output['fuzzyOutput'] >= 0.000025 and movingAverageCrossOver.output['fuzzyOutput'] <= 1:
+        #                 signals['signal'][i] = -1
+        #                 print("Inside if three")
+        #   else:
+        #       signals['signal'][i] = 0.0
+        #   i=i+1
+        #
+        # i = 0
+        # for x in signals['close']:
+        #   if (x< signals['middlBand'][i]):
+        #     movingAverageCrossOverTwo.input['normalizedInputTwo'] = round(x, 5)
+        #     movingAverageCrossOverTwo.compute()
+        #     if movingAverageCrossOverTwo.output['fuzzyOutput'] >= -1 and movingAverageCrossOverTwo.output['fuzzyOutput'] <= -0.0025:
+        #         signals['signal'][i] = 1
+        #         print("Inside if four")
+        #
+        #     else:
+        #         if movingAverageCrossOverTwo.output['fuzzyOutput'] > -0.025 and movingAverageCrossOverTwo.output['fuzzyOutput'] < 0.025:
+        #             signals['signal'][i] = 0
+        #             print("Inside if five")
+        #         else:
+        #             if movingAverageCrossOverTwo.output['fuzzyOutput'] >= 0.000025 and movingAverageCrossOverTwo.output['fuzzyOutput'] <= 1:
+        #                 signals['signal'][i] = 1
+        #                 print("Inside if six")
+        #     i = i + 1
+        # signals['positions'] = signals['signal']
+        #
         # for x in range(len(signals.index)-1):
         #     if(signals.positions[x]== -1 and signals.signal[x+1]==-1):
         #         signals.positions[x] = 1

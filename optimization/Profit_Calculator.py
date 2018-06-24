@@ -8,21 +8,39 @@ import numpy as np
 def fitness(individual,strategy):
     print("Calculaing Profit: ", individual)
 
-    sma = individual[0]
-    lma = individual[1]
-    stoploss_pip = individual[2]
-    takeprofit_pip = individual[3]
-    print(sma,lma,stoploss_pip,takeprofit_pip)
     stoplossValue = 0.00000
     takeprofitValue = 0.00000
+    stoploss_pip = 0.00000
+    takeprofit_pip = 0.00000
+
+    if (strategy == "Moving Average"):
+        stoploss_pip = individual[2]
+        takeprofit_pip = individual[3]
+
+    elif (strategy == "Fuzzy Moving Average"):
+        stoploss_pip = individual[2]
+        takeprofit_pip = individual[3]
+
+    elif (strategy == "Bollinger Band"):
+        stoploss_pip = individual[2]
+        takeprofit_pip = individual[3]
+
+    elif (strategy == "MACD"):
+        stoploss_pip = individual[3]
+        takeprofit_pip = individual[4]
 
 
     inv_return = Application.optimize(individual,strategy)
+    print("output inv_return",inv_return)
+    #inv_return.to_csv('without.csv', encoding='utf-8')
+
 
     #print(inv_return)
 
     ### Filter Regions ###
     inv_return = inv_return[(inv_return["signal"] == 1) | (inv_return["positions"] == -1)]
+    #print("output inv_return_filter", inv_return)
+    #inv_return.to_csv('filtered.csv', encoding='utf-8')
     #print(inv_return)
 
     print("   ")

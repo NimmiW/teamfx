@@ -24,28 +24,24 @@ def optimize(individual,strategy):
    strategyType = strategy
    startDate = request.form["from_date"]
    endDate = request.form["to_date"]
-   print ("startDat",startDate)
-   print ("endDate",endDate)
 
    bars = pd.read_csv("D:/Dilmi Computer Backup/A/Final Year Project/DataSetFinal/hour/hour.csv")
    bars.index = to_datetime(bars['Date'] + ' ' + bars['Time'])
-   print("bars.index", bars.index)
    mask = (bars.index > startDate) & (bars.index <= endDate)
-   print("mas",mask)
    bars = bars.loc[mask]
-   print ("bars", bars)
 
 
    if (strategyType == "Moving Average"):
-      print("inside")
       strategy = MovingAverageCrossStrategy(symbol, bars, individual[0], individual[1])
       signals = strategy.generate_signals()
    if (strategyType == "Fuzzy Moving Average"):
-      strategy = FuzzyMovingAverageCrossStrategy(symbol, bars, short_window, long_window)
+      print("inside fuzzyMA")
+      print("individual",individual)
+      strategy = FuzzyMovingAverageCrossStrategy(symbol, bars, individual[0], individual[1])
       signals = strategy.generate_signals()
       #print(signals)
    if (strategyType == "Bollinger Band"):
-      strategy = BollingerBandStrategy(symbol, bars, short_window, long_window)
+      strategy = BollingerBandStrategy(symbol, bars, individual[0], individual[1])
       signals = strategy.generate_signals()
    if (strategyType == "Fuzzy Bollinger Band"):
       strategy = FuzzyBollingerBandStrategy(symbol, bars, short_window=short, long_window=long)

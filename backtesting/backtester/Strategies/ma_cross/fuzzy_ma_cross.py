@@ -30,7 +30,8 @@ class FuzzyMovingAverageCrossStrategy(Strategy):
         signals['fuzzyInput'] = 100*((signals['short_mavg']- signals['long_mavg'])/signals['short_mavg'])
         print(signals['fuzzyInput'])
 
-        fuzzyThreshold = 0.0125
+        # fuzzyThreshold = 0.0125
+        fuzzyThreshold = 0.125
         normalizedInput= ctrl.Antecedent(np.arange(-1*fuzzyThreshold, fuzzyThreshold, 0.00001), 'normalizedInput')
         fuzzyOutput = ctrl.Consequent(np.arange(-1,1,0.001), 'fuzzyOutput')
 
@@ -55,7 +56,7 @@ class FuzzyMovingAverageCrossStrategy(Strategy):
         for x in signals['fuzzyInput']:
              movingAverageCrossOver.input['normalizedInput'] = round(x,5)
              movingAverageCrossOver.compute()
-             print("fuzzyOutput", movingAverageCrossOver.output['fuzzyOutput'])
+             #print("fuzzyOutput", movingAverageCrossOver.output['fuzzyOutput'])
              if movingAverageCrossOver.output['fuzzyOutput']>= -1 and movingAverageCrossOver.output['fuzzyOutput']<= -0.025 :
                signals['signal'][i]= 1
              else:
@@ -69,7 +70,7 @@ class FuzzyMovingAverageCrossStrategy(Strategy):
         signals['positions']=signals['signal'].diff()
         print(signals['positions'])
         i = 0
-        for x in signals['positions']:
+        for x in range(len(signals['positions'])-1):
             if(signals.positions[i]== -1 and signals.signal[i+1]==-1):
                 signals.positions[i] = 1
             else:

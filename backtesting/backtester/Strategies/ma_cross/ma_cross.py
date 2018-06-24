@@ -30,7 +30,7 @@ class MovingAverageCrossStrategy(Strategy):
         signals['positions'] = signals['signal'].diff()
         for x in signals['positions']:
             if(x ==1 or x == -1 ):
-                print("possitions")
+                print("possition")
                 print(x)
 
         return signals

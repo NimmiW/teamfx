@@ -10,57 +10,52 @@ from functools import reduce
 import csv
 
 def initialize():
-    global minShortMA
-    global maxShortMA
-    global stepShortMA
-    global minLongMA
-    global maxLongMA
-    global stepLongMA
-    global minSignalLine
-    global maxSignalLine
-    global stepSignalLine
+    global minMAPeriod
+    global maxMAPeriod
+    global stepMAPeriod
+    global minStdDev
+    global maxStdDev
+    global stepStdDev
     global minStopLoss
     global maxStopLoss
     global stepStopLoss
     global minTakeProfit
     global maxTakeProfit
     global stepTakeProfit
-    minShortMA = int(request.form["minShortMAMacd"])
-    maxShortMA = int(request.form["maxShortMAMacd"])
-    stepShortMA = int(request.form["stepShortMAMacd"])
+    minMAPeriod = int(request.form["minMAPeriod"])
+    maxMAPeriod = int(request.form["maxMAPeriod"])
+    stepMAPeriod = int(request.form["stepMAPeriod"])
 
-    minLongMA = int(request.form["minLongMAMacd"])
-    maxLongMA = int(request.form["maxLongMAMacd"])
-    stepLongMA = int(request.form["stepLongMAMacd"])
+    minStdDev = int(request.form["minStdDev"])
+    maxStdDev = int(request.form["maxStdDev"])
+    stepStdDev = int(request.form["stepStdDev"])
 
-    minSignalLine = int(request.form["minSignalLineMacd"])
-    maxSignalLine = int(request.form["maxSignalLineMacd"])
-    stepSignalLine = int(request.form["stepSignalLineMacd"])
+    minStopLoss = int(request.form["minStopLoss"])
+    maxStopLoss = int(request.form["maxStopLoss"])
+    stepStopLoss = int(request.form["stepStopLoss"])
 
-    minStopLoss = int(request.form["minStopLossMacd"])
-    maxStopLoss = int(request.form["maxStopLossMacd"])
-    stepStopLoss = int(request.form["stepStopLossMacd"])
-
-    minTakeProfit = int(request.form["minTakeProfitMacd"])
-    maxTakeProfit = int(request.form["maxTakeProfitMacd"])
-    stepTakeProfit = int(request.form["stepTakeProfitMacd"])
+    minTakeProfit = int(request.form["minTakeProfit"])
+    maxTakeProfit = int(request.form["maxTakeProfit"])
+    stepTakeProfit = int(request.form["stepTakeProfit"])
 
     start_time = time.time()
 
-    pop = population(count, minShortMA, maxShortMA, stepShortMA, minLongMA, maxLongMA, stepLongMA, minSignalLine, maxSignalLine, stepSignalLine, minStopLoss,
+    pop = population(count, minMAPeriod, maxMAPeriod, stepMAPeriod, minStdDev, maxStdDev, stepStdDev, minStopLoss,
                      maxStopLoss, stepStopLoss, minTakeProfit, maxTakeProfit, stepTakeProfit)
+
+    print("pop",pop)
 
     pool_graded = propagate(pop)
     pool_graded_sorted = sorted(pool_graded, reverse=True)
 
-    print("Sorted graded: ", pool_graded_sorted)
+    print("Sorted graded ", pool_graded_sorted)
     children = []
     for n in range(4):
         children = roulette_wheel_pop(pool_graded_sorted)
         pool_graded_sorted.extend(propagate(children))
         print("pool_graded_sorted",pool_graded_sorted)
         pool_graded_sorted = mutate(pool_graded_sorted)
-        print("pool_graded_sorted", pool_graded_sorted)
+        print("pool_graded_sorted:", pool_graded_sorted)
         pool_graded_sorted = sorted(pool_graded_sorted, reverse=True)
 
     print("final",pool_graded_sorted)
@@ -68,14 +63,13 @@ def initialize():
     return pool_graded_sorted
 
 
-def individual(minShortMA, maxShortMA, stepShortMA, minLongMA, maxLongMA, stepLongMA, minSignalLine, maxSignalLine, stepSignalLine, minStopLoss, maxStopLoss,
-               stepStopLoss, minTakeProfit, maxTakeProfit, stepTakeProfit):
+def individual(minMAPeriod, maxMAPeriod, stepMAPeriod, minStdDev, maxStdDev, stepStdDev, minStopLoss,
+                     maxStopLoss, stepStopLoss, minTakeProfit, maxTakeProfit, stepTakeProfit):
     'Create a member of the population.'
     # print([randrange(minShortMA, maxShortMA, stepShortMA)-randrange(minLongMA, maxLongMA, stepLongMA), randrange(minStopLoss, maxStopLoss, stepStopLoss), randrange(minTakeProfit, maxTakeProfit, stepTakeProfit)])
     while True:
-        tmp = [randrange(minShortMA, maxShortMA, stepShortMA),
-               randrange(minLongMA, maxLongMA, stepLongMA),
-               randrange(minSignalLine, maxSignalLine, stepSignalLine),
+        tmp = [randrange(minMAPeriod, maxMAPeriod, stepMAPeriod),
+               randrange(minStdDev, maxStdDev, stepStdDev),
                randrange(minStopLoss, maxStopLoss, stepStopLoss),
                randrange(minTakeProfit, maxTakeProfit, stepTakeProfit)]
         if (tmp[0] < tmp[1]):
@@ -84,8 +78,8 @@ def individual(minShortMA, maxShortMA, stepShortMA, minLongMA, maxLongMA, stepLo
     return tmp
 
 
-def population(count, minShortMA, maxShortMA, stepShortMA, minLongMA, maxLongMA, stepLongMA, minSignalLine, maxSignalLine, stepSignalLine, minStopLoss, maxStopLoss,
-               stepStopLoss, minTakeProfit, maxTakeProfit, stepTakeProfit):
+def population(count, minMAPeriod, maxMAPeriod, stepMAPeriod, minStdDev, maxStdDev, stepStdDev, minStopLoss,
+                     maxStopLoss, stepStopLoss, minTakeProfit, maxTakeProfit, stepTakeProfit):
     """
     Create a number of individuals (i.e. a population).
 
@@ -95,12 +89,12 @@ def population(count, minShortMA, maxShortMA, stepShortMA, minLongMA, maxLongMA,
     max: the maximum possible value in an individual's list of values
 
     """
-    return [individual(minShortMA, maxShortMA, stepShortMA, minLongMA, maxLongMA, stepLongMA, minSignalLine, maxSignalLine, stepSignalLine, minStopLoss, maxStopLoss,
-                       stepStopLoss, minTakeProfit, maxTakeProfit, stepTakeProfit) for x in range(count)]
+    return [individual(minMAPeriod, maxMAPeriod, stepMAPeriod, minStdDev, maxStdDev, stepStdDev, minStopLoss,
+                     maxStopLoss, stepStopLoss, minTakeProfit, maxTakeProfit, stepTakeProfit) for x in range(count)]
 
 
 def fitness(individual):
-    fitness = Profit_Calculator.fitness(individual,"MACD")
+    fitness = Profit_Calculator.fitness(individual,"Bollinger Band")
     #fitness = individual[0] + individual[1] + individual[2] + individual[3]
 
     #print("fitness of", individual, " ", fitness)
@@ -179,7 +173,7 @@ def mutate(pool):
     for i,chromo in enumerate(pool):
         if mutation_percentage > random():
             pos_to_mutate = randint(0, len(chromo[1]) - 1)
-            tmp = individual(minShortMA, maxShortMA, stepShortMA, minLongMA, maxLongMA, stepLongMA, minSignalLine, maxSignalLine, stepSignalLine, minStopLoss,
+            tmp = individual(minMAPeriod, maxMAPeriod, stepMAPeriod, minStdDev, maxStdDev, stepStdDev, minStopLoss,
                      maxStopLoss, stepStopLoss, minTakeProfit, maxTakeProfit, stepTakeProfit)
             chromo[1][pos_to_mutate] = tmp[pos_to_mutate]
             #print("chromo",chromo[0],chromo)
@@ -212,5 +206,6 @@ def finalResult(parents):
 # parents=evolve(pop)
 # print(len(parents))
 increment = 0
-count = 15
+count = 100
 
+#initialize(10, 50, 2, 5, 200, 5, 0, 400, 100, 0, 1000, 100)

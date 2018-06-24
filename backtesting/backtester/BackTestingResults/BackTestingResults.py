@@ -37,5 +37,5 @@ class MarketOnClosePortfolio(Portfolio):
         daily_log_returns = daily_log_returns * self.signals['signal'].shift(1)
         pf['returns'] = daily_log_returns
         pf['total'] = daily_log_returns.cumsum()
-        print('total', daily_log_returns.cumsum() )
+        #print('total', daily_log_returns.cumsum())
         return pf
