@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/python-docs-hello-world.iml" filepath="$PROJECT_DIR$/.idea/python-docs-hello-world.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/teamfx.iml" filepath="$PROJECT_DIR$/.idea/teamfx.iml" />
     </modules>
   </component>
 </project>
