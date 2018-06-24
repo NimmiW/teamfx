@@ -3,7 +3,10 @@ from brd import plot_data,black_region_detection
 from anomalies import feature_selection, local_outlier_factor, local_outlier_factor_reducer, anomaly_identification
 from anomalies import anomalies_result_visualization
 from anomalies.visualize import visualize as anomlies_visualize
-
+from predictions.predict import predict_arima_ann
+from predictions.test.hello_world import fun
+from predictions.test.graph import grp
+from predictions.evaluate import evaluate as evaluate_predictions
 import plotly.plotly.plotly as py
 import pandas as pd
 import numpy as np
@@ -138,8 +141,49 @@ def visualize_anormalies_with_data():
 
 
 #--------------------------------------------------------predictions Routes----------------------------------------------------#
+@app.route("/predictions/")
+def prediction_index():
+    return render_template('predictions/index.html')
+
+@app.route("/predictions/input")
+def prediction_inputs():
+    return render_template('predictions/get_input.html')
 
 
+@app.route("/predictions/predict", methods = ['POST', 'GET'])
+def prediction_predict():
+
+    print("inputs")
+
+    print(request.form["currency"])
+    prediction_type = request.form["prediction_type"]
+    #date_time = "2012-10 -31 02:14:00"
+    date_time = request.form["date"]+' '+request.form["time"]+':00'
+    #count = int(request.form["count"])
+    ids, graphJSON = predict_arima_ann(date_time, prediction_type)
+    return render_template('predictions/predicted_graph.html', ids=ids,
+                           graphJSON=graphJSON)
+
+    """return render_template('anomalies/feature_selection.html',
+                           year=year, from_month=from_month, to_month=to_month, currency=currency, labels=labels,
+                           price_values=price_values, length=length,
+                           volatility_gradients_values=volatility_gradients_values)"""
+
+@app.route("/predictions/predict/result")
+def prediction_graph():
+    ids, graphJSON = grp()
+    return render_template('predictions/predicted_graph.html',  ids=ids,
+                           graphJSON=graphJSON)
+
+@app.route("/predictions/evaluate")
+def prediction_evaluate():
+    return render_template('predictions/evaluate.html')
+
+@app.route("/predictions/predict/evaluation_results")
+def prediction_evaluate_result():
+
+    results = evaluate_predictions.read_results()
+    return results.to_json(orient='index')
 
 #----------------------------------------------------------------------------------------------------------------------------
 @app.after_request

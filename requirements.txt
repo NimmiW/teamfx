@@ -5,6 +5,8 @@ pandas
 statsmodels
 arch
 sklearn
-mpld3
+mpld
 numba>=0.29
 plotly
+tensorflow
+numpy
