@@ -79,7 +79,7 @@ def plot_results_offline(year,month,currency):
     else:
         end_date = year + "-" + str(int(to_month) + 1) + "-01"
 
-    quotes = pd.read_csv("D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/data/"+currency+"/DAT_MT_"+currency+"_M1_" + str(year) + ".csv")
+    quotes = pd.read_csv(config.ROOT+"static/data/"+currency+"/DAT_MT_"+currency+"_M1_" + str(year) + ".csv")
 
 
     quotes['Time'] = quotes[['Date', 'Time']].apply(lambda x: ' '.join(x), axis=1)
@@ -96,7 +96,7 @@ def plot_results_offline(year,month,currency):
     fig, ax = plt.subplots()
     ax.plot(quotes['Close'])
     ax.set_title('Black Regions')
-    anormalies = pd.read_csv(' D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/anomalies/detected_black_regions/'+str(config.ANOMALY_PERCENTAGE) + '_' + str(config.NEAREST_NEIGHBOURS) + '_' + currency+ '_' + year+'_all_anomalies.csv')
+    anormalies = pd.read_csv(config.ROOT+'static/anomalies/detected_black_regions/'+str(config.ANOMALY_PERCENTAGE) + '_' + str(config.NEAREST_NEIGHBOURS) + '_' + currency+ '_' + year+'_all_anomalies.csv')
 
     anormalies['Time'] = anormalies['DateHour'].apply(lambda x: pd.to_datetime(x))
     anormalies.index = anormalies.Time

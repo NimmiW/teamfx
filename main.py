@@ -7,7 +7,7 @@ from anomalies.visualize import visualize as anomlies_visualize
 from anomalies.evaluator import evaluator_hours
 import anomalies.config as config
 
-from backtesting.backtester import application
+#from backtesting.backtester import application
 
 import plotly.plotly.plotly as py
 import pandas as pd
@@ -76,6 +76,8 @@ def get_input():
 @app.route("/anomalies/selectfeatures", methods = ['POST', 'GET'])
 def feature_selecion():
 
+    config.ANOMALY_PERCENTAGE = int(request.form["threshold"])
+
     year, from_month, to_month, currency, length,ids, graphJSON\
         = feature_selection.feature_selecion()
     #eturn render_template('anomalies/feature_selection.html',
@@ -125,7 +127,7 @@ def plot_results():
 def visualize_anormalies():
     if (request.form['page'] == 'anomalies_visualize_page'):
 
-        threshold = config.ANOMALY_PERCENTAGE
+        threshold = request.form["threshold"]
         nneighbours = config.NEAREST_NEIGHBOURS
         ids, graphJSON = anomlies_visualize.get_visualize_view(threshold,nneighbours)
         print(ids)
@@ -184,7 +186,7 @@ def backtesting():
 def backtestingInput():
     # anomalies_result_visualization.plot_results()
     return render_template('backtesting/input.html')
-
+"""
 @app.route("/backtesting/visualize", methods = ['GET','POST'])
 def postInput():
     graph = application.app()
@@ -195,7 +197,7 @@ def postInput():
                            ids=ids,
                            graphJSON=graphJSON)
     
-
+"""
 #--------------------------------------------------------optimization Routes----------------------------------------------------#
 
 

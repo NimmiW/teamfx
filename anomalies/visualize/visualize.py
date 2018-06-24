@@ -25,8 +25,6 @@ def get_visualize_view(threshold,nneighbours,page="none"):
 
 
 
-
-
     if start_year==end_year:
 
         data_file = root+"static/data/" + currency_pair + "/DAT_MT_" + currency_pair + "_M1_" + start_year + ".csv"
@@ -58,7 +56,7 @@ def get_visualize_view(threshold,nneighbours,page="none"):
     shapes = []
 
     #anormalies = pd.read_csv("static/anomalies/all_anomalies.csv")
-    anormalies = pd.read_csv(root + 'static/anomalies/detected_black_regions/'+str(threshold) + '_' + str(nneighbours) + '_' + currency_pair + '_' + start_year+'_all_anomalies.csv')
+    anormalies = pd.read_csv(root + 'static/anomalies/detected_black_regions/'+str(threshold) + '_' + str(nneighbours) + '_' + currency_pair + '_all_anomalies.csv')
 
     anormalies['Time'] = anormalies['DateHour'].apply(lambda x: pd.to_datetime(x))
     anormalies.index = anormalies.Time

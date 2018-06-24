@@ -31,7 +31,7 @@ def detect_anomalies(page="app",eval_year=0,eval_currency="",eval_threshold=0,ev
         to_month = request.form["to_month"]
         anomaly_percentage = config.ANOMALY_PERCENTAGE  # example 2%
 
-    root = 'D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/'
+    root = config.ROOT
     input_directory = root+"static/anomalies/local_outlier_factors/" + currency + '_' + year + "_merged_local_outlier_factor_file.csv"
     output_directory = root+"static/anomalies/detected_black_regions/" + str(threshold) + '_' + str(
         nneighbours) + '_' + currency + '_' + year + "anomalies.csv"

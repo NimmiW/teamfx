@@ -17,8 +17,8 @@ import json
 
 
 def evaluate(threshold, nneighbours, year, currency):
-    root_evaluate = "D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/anomalies/evaluator/"
-    root_static_anomalies = "D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/anomalies/"
+    root_evaluate = config.ROOT+"anomalies/evaluator/"
+    root_static_anomalies = config.ROOT+"static/anomalies/"
     black_regions = pd.read_csv('black_regions_hours/' + currency +'_'+str(year)+ '_true_anomalies.csv')
     black_regions['hour'] = black_regions['true_anomalies'].apply(lambda x: to_datetime(x))
     black_regions.index = black_regions['hour']
@@ -103,19 +103,21 @@ def draw_graph():
     #y = [0,0.14516129, 0.596774194,0.64516129, 0.629032258,0.725806452,0.693548387,1]#Recall
 
     #for NN
-    x = [0.409836066,0.637931034,0.464285714,0.535714286,0.553571429]  # Pecision
-    y = [0.403225806,0.596774194,0.419354839,0.483870968,0.5]  # Recall
+
+    x = [0,0.000486696950032446,0.00340632603406326, 0.0126438644837089,0.0241569390402075,0.0350081037277147, 0.0473181007940366,1] #FPR
+
+    y = [0, 0.14516129, 0.596774194, 0.64516129, 0.629032258, 0.725806452, 0.693548387, 1]  # Recall
 
     ## Plot functions and a point where they intersect
     plt.plot(x, y)
-    plt.plot([1,0],[0,1])
+    plt.plot([0,0],[1,1])
     #plt.plot(x, dy)
     #plt.plot(1, 1, 'or')
 
     ## Config the graph
-    plt.title('PR Curve')
-    plt.xlabel('Precison')
-    plt.ylabel('Recall')
+    plt.title('ROC Curve')
+    plt.xlabel('FPR')
+    plt.ylabel('TPR')
     # plt.ylim([0, 4])
     plt.grid(True)
     plt.legend(['Model PR Curve', 'Baseline'], loc='upper left')
@@ -129,7 +131,7 @@ def show_evaluate_results(threshold, nneighbours, year, currency):
     print(threshold)
     print(year)
     print(currency)
-    root_static_anomalies = "D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/anomalies/evaluator/"
+    root_static_anomalies = config.ROOT+"anomalies/evaluator/"
     results = pd.read_csv(root_static_anomalies+'results/results_of_' + str(threshold) + '_' + str(nneighbours) + '_' + currency + '_' + str(year) + '.csv')
     print(results)
     return results
@@ -157,7 +159,23 @@ def PR_curve_visualize():
                 ),
             ],
             layout=dict(
-                title='PR Curve'
+                title='PR Curve',
+                xaxis=dict(
+                    title='Precision',
+                    titlefont=dict(
+                        #family='Courier New, monospace',
+                        size=18,
+                        color='#7f7f7f'
+                    )
+                ),
+                yaxis=dict(
+                    title='Recall',
+                    titlefont=dict(
+                        #family='Courier New, monospace',
+                        size=18,
+                        color='#7f7f7f'
+                    )
+                )
             )
         )
     ]
@@ -176,5 +194,5 @@ def PR_curve_visualize():
 
 #show_evaluate_results(2, 2, 2016, "EURUSD")
 
-#evaluate(5, 2, 2017, 'EURUSD')
+#evaluate(1, 2, 2017, 'EURUSD')
 #draw_graph()

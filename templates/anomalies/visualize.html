@@ -153,12 +153,12 @@
 
         <div class="row">
 
-                <div class="col-2 card">
+                <div class="col-4 card">
                     <div class="card-body">
                         <h5 class="card-title">Select the date range</h5>
                         <center>
                         <form action="" method="post">
-                            <div class="row">
+
                                 <div class="form-group">
                                     <label for="currency">Currency:</label>
                                     <select class="form-control" name="currency_pair">
@@ -166,18 +166,29 @@
                                         <option value="GBPUSD">GBP/USD</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="row">
+
+
                                 <div class="form-group">
                                     <label for="from">From:</label>
                                     <input class="form-control" type="date" name="from_date">
                                 </div>
-                            </div>
-                            <div class="row">
+
+
                                 <div class="form-group">
                                     <label for="to">To:</label>
                                     <input class="form-control" type="date" name="to_date">
                                 </div>
+
+                            <div class="form-group">
+                                <label for="from">Risk Level:</label>
+                                <select class="form-control" name="threshold">
+                                    <option value="1">Only Critical Risks(1% threshold)</option>
+                                    <option value="2">Including Very High Risks (2% threshold)</option>
+                                    <option value="3">Including High Risks (3% threshold)</option>
+                                    <option value="4">Including Moderate Risks (4% threshold)</option>
+                                    <option value="5">Including Low Risks (5% threshold)</option>
+                                    <option value="6">Including Very Low Risks (6% threshold)</option>
+                                </select>
                             </div>
 
                             <input type="hidden" name="page" value="anomalies_visualize_page">
@@ -190,7 +201,7 @@
                     </div>
                 </div>
 
-                <div class="col-10 card">
+                <div class="col-8 card">
                     <div class="card-body">
                         <p class="card-text">Black Regions are shaded in red colour.</p>
                         <div id="{{ids[0]}}"></div>

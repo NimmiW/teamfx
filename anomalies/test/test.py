@@ -10,10 +10,26 @@ print(str(mean_list))
 sd = statistics.stdev(list)
 print(int(sd))
 
+import pandas as pd
+from pandas import to_datetime,read_csv
+from datetime import timedelta
+black_regions = pd.read_csv("D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/anomalies/detected_black_regions/1_2_EURUSD_2016_all_anomalies.csv")
+black_regions["DateHour"] = black_regions["DateHour"].apply(lambda x: to_datetime(x))
+black_regions.index = black_regions["DateHour"]
+black_regions = black_regions.index
+data = pd.read_csv("D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/data/EURUSD/DAT_MT_EURUSD_M1_2016.csv")
 
+data['Time'] = data[['Date', 'Time']].apply(lambda x: ' '.join(x), axis=1)
+data['Time'] = data['Time'].apply(lambda x: to_datetime(x)-timedelta(hours=2))
+data['Hour'] = data['Time'].apply(lambda x: x.replace(minute=0, second=0, microsecond=0))
 
+data.index = data.Hour
+print(len(data))
+data =  data.drop([black_regions[0],black_regions[1]])
+data.index=data.Time
 
-
+print(data)
+print(len(data))
 """
 
 @app.route("/anomalies/")
