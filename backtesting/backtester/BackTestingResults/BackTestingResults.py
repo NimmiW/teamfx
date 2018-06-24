@@ -55,7 +55,7 @@ class MarketOnClosePortfolio(Portfolio):
         rolling_max = self.bars['Close'].rolling(window, min_periods=1).max()
         daily_drawdown = self.bars['Close'] / rolling_max - 1.0
         # Calculate the minimum (negative) daily drawdown
-        max_daily_drawdown = (daily_drawdown.rolling(window, min_periods=1).min())*100
+        max_daily_drawdown = (daily_drawdown.rolling(window, min_periods=1).min())
         graphs = [
             dict(
                 data=[

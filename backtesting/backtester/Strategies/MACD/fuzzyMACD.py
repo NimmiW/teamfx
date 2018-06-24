@@ -88,15 +88,10 @@ class FuzzyMACDStrategy(Strategy):
                     signals.positions[i] = -1
             i = i + 1
 
-
-        # for x in range(len(signals['Input']) - 1):
-        #     if (signals['Input'][x] > -0.03898 and signals['Input'][x] < 0):
-        #         signals['positions'][x] = -1
-        #     if (signals['Input'][x] < 0.047873 and signals['Input'][x] > 0):
-        #         signals['positions'][x] = 1
-
         for x in range(len(signals['Input']) - 1):
             if (signals['Input'][x] > -0.03898 and signals['Input'][x] < 0):
                 signals['positions'][x] = -1
             if (signals['Input'][x] < 0.047873 and signals['Input'][x] > 0):
                 signals['positions'][x] = 1
+
+        return signals
