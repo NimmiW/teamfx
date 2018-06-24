@@ -56,7 +56,7 @@ class FuzzyMovingAverageCrossStrategy(Strategy):
         for x in signals['fuzzyInput']:
              movingAverageCrossOver.input['normalizedInput'] = round(x,5)
              movingAverageCrossOver.compute()
-             # print("fuzzyOutput", movingAverageCrossOver.output['fuzzyOutput'])
+
              if movingAverageCrossOver.output['fuzzyOutput']>= -1 and movingAverageCrossOver.output['fuzzyOutput']<= -0.025 :
                signals['signal'][i]= 1
              else:
@@ -70,7 +70,7 @@ class FuzzyMovingAverageCrossStrategy(Strategy):
         signals['positions']=signals['signal'].diff()
         # print(signals['positions'])
         i = 0
-        for x in signals['positions']:
+        for x in range(len(signals['positions'])-1):
             if(signals.positions[i]== -1 and signals.signal[i+1]==-1):
                 signals.positions[i] = 1
             else:

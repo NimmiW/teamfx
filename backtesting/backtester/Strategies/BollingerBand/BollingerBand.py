@@ -31,6 +31,8 @@ class BollingerBandStrategy(Strategy):
         signals['close'] = self.bars['Close']
         signals['middlBand'] = pd.rolling_mean(self.bars['Close'], self.short_window, min_periods=1)
         signals['standardDiviation'] = self.bars['Close'].rolling(window=self.std).std()
+        print("Rr",self.short_window)
+        print ("Ss",self.std)
         signals['upperBand'] = signals['middlBand'] + (signals['standardDiviation']*2)
         signals['lowerBand'] = signals['middlBand'] - (signals['standardDiviation']*2)
         signals['positions'] = 0.0

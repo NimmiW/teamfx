@@ -9,6 +9,18 @@ import anomalies.config as config
 
 from backtesting.backtester import application
 
+from optimization.Strategies import StrategyOptimizer_MA
+from optimization.Strategies import StrategyOptimizer_MACD
+from optimization.Strategies import Strategy_Optimizer_Bollinger
+from optimization.Strategies import Strategy_Optimizer_Stochastic
+from optimization.Strategies import Strategy_Optimizer_RSI
+from optimization.Strategies import Strategy_Optimizer_FMA
+from optimization import Risk_Calculator
+from optimization import signal_Generator
+from optimization import evaluate_optimization
+from optimization import gen_parameters
+
+
 import plotly.plotly.plotly as py
 import pandas as pd
 import numpy as np
@@ -251,8 +263,65 @@ def evaluate():
 
 
 #--------------------------------------------------------optimization Routes----------------------------------------------------#
+@app.route("/optimization/", methods = ['POST', 'GET'])
+def load_index_page():
+    return render_template('optimization/index.html')
 
+@app.route("/optimization/input", methods = ['POST', 'GET'])
+def load_optimize_interface():
+    return render_template('optimization/optimize_interface.html')
 
+@app.route("/optimization/strategyOptimizer", methods = ['POST', 'GET'])
+def optimize():
+    strategy = request.form['strategy']
+    returns = []
+    if(strategy == 'Moving Average'):
+        strategyNum = 1
+        returns = StrategyOptimizer_MA.initialize()
+    elif (strategy == 'MACD'):
+        strategyNum = 2
+        returns = StrategyOptimizer_MACD.initialize()
+    elif (strategy == 'Bollinger Band'):
+        strategyNum = 3
+        returns = Strategy_Optimizer_Bollinger.initialize()
+    elif (strategy == 'Stochastic'):
+        strategyNum = 4
+        returns = Strategy_Optimizer_Stochastic.initialize()
+    elif (strategy == 'RSI'):
+        strategyNum = 5
+        returns = Strategy_Optimizer_RSI.initialize()
+    elif (strategy == 'Fuzzy Moving Average'):
+        strategyNum = 6
+        returns = Strategy_Optimizer_FMA.initialize()
+
+    top10 = returns[:10]
+    results = [(Risk_Calculator.calculateRisk(x[1],strategy), x, strategyNum) for x in top10]
+    return render_template('optimization/Results.html',results=results)
+
+@app.route('/plotChart', methods=['POST','GET'])
+def plot_chart():
+    data = request.form.get('custId')
+    strategy = data[1:len(data) - 1][-1:len(data)]
+    para = data.split('[')
+    para = para[2][:len(para) - 9].split(',')
+    para = [int(i) for i in para]
+    ids, graphJSON = signal_Generator.app(para,strategy)
+
+    return render_template('optimization/plot.html',status="with_data",ids=ids,graphJSON=graphJSON,para=para,strategy=strategy)
+
+@app.route("/optimization/evaluate", methods = ['POST', 'GET'])
+def load_optimize_eval_interface():
+    return render_template('optimization/optimize_eval_interface.html')
+
+@app.route("/optimization/evaluation_optimizer", methods = ['POST', 'GET'])
+def opt_evaluation_results():
+    strategy = request.form['strategy']
+    print("strategy:",strategy)
+    para = gen_parameters.getPara(strategy);
+    print("parA",para)
+    results = evaluate_optimization.calculateRisk(para,strategy)
+    print(results)
+    return render_template('optimization/eva_optimize_results.html',results=results,para=para)
 
 #--------------------------------------------------------predictions Routes----------------------------------------------------#
 
