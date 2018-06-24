@@ -39,5 +39,12 @@ class RSIStrategy(Strategy):
                   signals['signal'][count] = 1.0
             count = count + 1
         signals['positions'] = signals['signal']
+
+
+
+
+
+
+
         print(signals)
         return signals

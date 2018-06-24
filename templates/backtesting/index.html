@@ -148,31 +148,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-6 card">
-                    <img class="card-img-top" src="{{url_for('static', filename='backtesting/image2.png')}}" height="30%" width= "20" alt="Card image cap">
+                    <img class="card-img-top" src="{{url_for('static', filename='backtesting/image2.png')}}" height="50%" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"> Test a trading strategy on relevant historical data to ensure its viability before risks any actual capital</h5>
                         <p class="card-text">Give your own inputs and backtest.</p>
                         <a href="/backtesting/input" class="btn btn-primary">Backtesting</a>
                         <hr/>
-                        <h5 class="card-title">Let us visualize the results</h5>
-                        <p class="card-text">Give your own inputs and backtest.</p>
-                        <form action="/backtesting/visualize" method="post">
-                            <div class="form-group">
-                                <input type="hidden" name="page" value="anomalies_index_page">
-                                <input class="btn btn-primary" type="submit" value="Visualize"/>
-                            </div>
-                        </form>
+                        <!--<h5 class="card-title">Let us visualize the results</h5>-->
+                        <!--<p class="card-text">Give your own inputs and backtest.</p>-->
+                        <!--<form action="/backtesting/visualize" method="post">-->
+                            <!--<div class="form-group">-->
+                                <!--<input type="hidden" name="page" value="anomalies_index_page">-->
+                                <!--<input class="btn btn-primary" type="submit" value="Visualize"/>-->
+                            <!--</div>-->
+                        <!--</form>-->
 
                     </div>
                 </div>
 
                 <div class="col-6 card">
-                    <img class="card-img-top" src="{{url_for('static', filename='backtesting/image1.jpg')}}" height="55%" width= "5%"  alt="Card image cap" >
+                    <img class="card-img-top" src="{{url_for('static', filename='backtesting/image1.jpg')}}" height="50%  alt="Card image cap" >
                     <div class="card-body">
                         <h5 class="card-title">Let us evaluate
                             periods</h5>
                         <p class="card-text">The accuray of the model is validated here.</p>
-                        <a href="/anomalies/evaluate" class="btn btn-primary">Evaluate</a>
+                        <a href="/backtesting/evaluate" class="btn btn-primary">Evaluate</a>
                     </div>
                 </div>
             </div>

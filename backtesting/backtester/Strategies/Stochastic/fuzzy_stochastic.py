@@ -37,8 +37,8 @@ class FuzzyStochasticStrategy(Strategy):
         normalizedInput = ctrl.Antecedent(np.arange(-11.51187, 3.93323, 0.00001), 'normalizedInput')
         fuzzyOutput = ctrl.Consequent(np.arange(-1, 1, 0.00001), 'fuzzyOutput')
         signals['fuzzyInput'] = (signals['K'] - signals['D']/signals['K'])
-
-        fuzzyThreshold = 1.25
+        signals['Input'] = signals['K'] - signals['D']
+        fuzzyThreshold = 0.25
         normalizedInput = ctrl.Antecedent(np.arange(-1 * fuzzyThreshold, fuzzyThreshold, 0.00001), 'normalizedInput')
         fuzzyOutput = ctrl.Consequent(np.arange(-1, 1, 0.001), 'fuzzyOutput')
 
@@ -75,7 +75,7 @@ class FuzzyStochasticStrategy(Strategy):
                     if movingAverageCrossOver.output['fuzzyOutput'] >= 0.025 and movingAverageCrossOver.output[
                         'fuzzyOutput'] <= 1:
                         signals['signal'][i] = -1
-            i = i + 1
+        i = i + 1
         # Take the difference of the signals in order to generate actual trading orders
         signals['positions'] = signals['signal'].diff()
         i = 0
@@ -86,6 +86,15 @@ class FuzzyStochasticStrategy(Strategy):
                 if (signals.positions[i] == 1 and signals.signal[i + 1] == 1):
                     signals.positions[i] = -1
             i = i + 1
+
+        i = 0
+        for x in range(len(signals['Input']) - 1):
+            if (signals['Input'][x] > -1.83898 and signals['Input'][x] < 0):
+                    signals['positions'][x] = -1
+            if (signals['Input'][x] < 1.897873 and signals['Input'][x] > 0):
+                signals['positions'][x] = 1
+
+
         return signals
 
 

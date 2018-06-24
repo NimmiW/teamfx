@@ -23,33 +23,39 @@ class PlotChart:
                       dict(
                           x=df.index,
                           y=df.middlBand,
-                          type='scatter'
+                          type='scatter',
+                          name ='Middle Band'
                       ),
                       dict(
                           x=df.index,
                           y=df.upperBand,
-                          type='scatter'
+                          type='scatter',
+                          name = 'Upper Band'
                       ),
                       dict(
                           x=df.index,
                           y=df.close,
-                          type='scatter'
+                          type='scatter',
+                          name = 'Close'
                       ),
                       dict(
                           x=df.index,
                           y=df.lowerBand,
-                          type='scatter'
+                          type='scatter',
+                          name = 'Lowe Band'
                       ),
                       dict(
                           x=df.index,
                           y=buysignals,
                           mode="markers",
+                          name ='Buy',
                           type='plot'
                       ),
                       dict(
                           x=df.index,
                           y=sellsignals,
                           mode="markers",
+                          name = 'Sell',
                           type='plot'
                       )
                   ],
@@ -68,23 +74,27 @@ class PlotChart:
                       dict(
                           x=df.index,
                           y=df.short_mavg,
-                          type='scatter'
+                          type='scatter',
+                          name= 'Short MA'
                       ),
                       dict(
                           x=df.index,
                           y=df.long_mavg,
-                          type='scatter'
+                          type='scatter',
+                          name = 'Long MA'
                       ),
                       dict(
                           x=df.index,
                           y=buysignals,
                           mode="markers",
-                          type='plot'
+                          type='plot',
+                          name = 'Buy'
                       ),
                       dict(
                           x=df.index,
                           y=sellsignals,
                           mode="markers",
+                          name = 'Sell',
                           type='plot'
                       )
                   ],
@@ -95,8 +105,8 @@ class PlotChart:
           ]
 
       if(self.strategy == "MACD" or self.strategy =="Fuzzy MACD" ):
-          buysignals = np.where(self.signals.positions == 1.0, self.signals.MACD, '')
-          sellsignals = np.where(self.signals.positions == -1.0, self.signals.MACD, '')
+          buysignals = np.where(self.signals.positions == 1.0, self.signals.signalLine, '')
+          sellsignals = np.where(self.signals.positions == -1.0, self.signals.signalLine, '')
           df = self.signals
           graphs = [
           dict(
@@ -105,25 +115,29 @@ class PlotChart:
                       x=df.index,
                       y=df.signalLine,
                       type='scatter',
-                      label = 'signalLine'
+                      label = 'signalLine',
+                      name = 'Signal Line'
                   ),
                   dict(
                       x=df.index,
                       y=df.MACD,
                       type='scatter',
-                      lable = 'MACD'
+                      lable = 'MACD',
+                      name = 'MACD'
                   ),
                   dict(
                       x=df.index,
                       y=buysignals,
                       mode="markers",
-                      type='plot'
+                      type='plot',
+                      name ='Buy'
                   ),
                   dict(
                       x=df.index,
                       y=sellsignals,
                       mode="markers",
-                      type='plot'
+                      type='plot',
+                      name = 'Sell'
                   )
               ],
               layout=dict(
@@ -133,7 +147,7 @@ class PlotChart:
       ]
 
       if (self.strategy == "Stochastic" or self.strategy == "Fuzzy Stochastic"):
-          buysignals = np.where(self.signals.positions == 1.0, self.signals.K, '')
+          buysignals = np.where(self.signals.positions == 1.0, self.signals.D, '')
           sellsignals = np.where(self.signals.positions == -1.0, self.signals.D, '')
           df = self.signals
           graphs = [
@@ -142,24 +156,28 @@ class PlotChart:
                       dict(
                           x=df.index,
                           y=df.K,
-                          type='scatter'
+                          type='scatter',
+                          name = 'K'
                       ),
                       dict(
                           x=df.index,
                           y=df.D,
-                          type='scatter'
+                          type='scatter',
+                          name = 'D'
                       ),
                       dict(
                           x=df.index,
                           y=buysignals,
                           mode="markers",
-                          type='plot'
+                          type='plot',
+                          name = 'Buy'
                       ),
                       dict(
                           x=df.index,
                           y=sellsignals,
                           mode="markers",
-                          type='plot'
+                          type='plot',
+                          name = 'Sell'
                       )
                   ],
                   layout=dict(
@@ -169,8 +187,9 @@ class PlotChart:
           ]
 
       if (self.strategy == "RSI" or self.strategy == "Fuzzy RSI"):
-          buysignals = np.where(self.signals.positions == 1.0, self.signals.RSI, '')
-          sellsignals = np.where(self.signals.positions == -1.0, self.signals.RSI, '')
+          buysignals = np.where(self.signals.positions == 1.0 , self.signals.RSI, '')
+          sellsignals = np.where(self.signals.positions == -1.0 , self.signals.RSI, '')
+
           df = self.signals
           graphs = [
               dict(
@@ -178,19 +197,22 @@ class PlotChart:
                       dict(
                           x=df.index,
                           y=df.RSI,
-                          type='scatter'
+                          type='scatter',
+                          name ='RSI'
                       ),
                       dict(
                           x=df.index,
                           y=buysignals,
                           mode="markers",
-                          type='plot'
+                          type='plot',
+                          name = 'Buy'
                       ),
                       dict(
                           x=df.index,
                           y=sellsignals,
                           mode="markers",
-                          type='plot'
+                          type='plot',
+                          name = 'Sell'
                       )
                   ],
                   layout=dict(
@@ -216,5 +238,29 @@ class PlotChart:
       # PlotlyJSONEncoder appropriately converts pandas, datetime, etc
       # objects to their JSON equivalents
       graphJSON = json.dumps(graphs, cls=py.utils.PlotlyJSONEncoder)
+      returngraph = []
+      df = self.returns.tail(500)
+      returngraph = [
+          dict(
+              data=[
+                  dict(
+                      x=df.index,
+                      y=df.returns,
+                      type='scatter',
+                      name = 'return'
+                  )
+              ],
+              layout=dict(
+                  title='Backtesting Results',
+              )
+          )
+      ]
 
-      return ids, graphJSON
+      idsreturn = ['graph-{}'.format(i) for i, _ in enumerate(returngraph)]
+
+      returngraphJSON = json.dumps(returngraph, cls=py.utils.PlotlyJSONEncoder)
+      # print("Inside plotcharts")
+      # print(idsreturn )
+      # print(ids)
+
+      return ids, graphJSON,idsreturn, returngraphJSON

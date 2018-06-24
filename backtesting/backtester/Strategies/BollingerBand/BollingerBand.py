@@ -35,6 +35,11 @@ class BollingerBandStrategy(Strategy):
         signals['lowerBand'] = signals['middlBand'] - (signals['standardDiviation']*2)
         signals['positions'] = 0.0
         for row in range(len(signals)):
+        # signals['signal'] = np.where(
+        #         signals['close'] > signals['upperBand'], 1.0, 0.0)
+        # signals['signal'] = np.where(
+        #         signals['close'] > signals['lowerBand'], -1.0, 0.0)
+
             if (signals['close'].iloc[row] > signals['upperBand'].iloc[row]) and (
                     signals['close'].iloc[row - 1] < signals['upperBand'].iloc[row - 1]):
                 signals['positions'][row] = -1
@@ -43,5 +48,15 @@ class BollingerBandStrategy(Strategy):
                     signals['close'].iloc[row - 1] > signals['lowerBand'].iloc[row - 1]):
                 signals['positions'][row] = 1
 
-        # signals['positions'] = signals['signal']
+        # signals['positions'] = signals['signal'].diff()
+        # i=0
+        # for x in signals['positions']:
+        #     if(x == 1):
+        #         while x != -1:
+        #             signals['signal'][i] = 1
+        #             i = i +1
+        signals['signal'] = signals['positions']
+        print(" bollinger band signals")
+        print(signals)
+
         return signals

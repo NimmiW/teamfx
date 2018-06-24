@@ -37,7 +37,11 @@ class FuzzyRSIStrategy(Strategy):
         signals['RSI'] = 100 - 100 / (1 + signals['rUp'] / signals['rDown']) #
         signals['fuzzyInputOne'] = 100 * (signals['RSI']-70)/signals['RSI']
         signals['fuzzyInputTwo'] = 100 * (signals['RSI']-30)/signals['RSI']
-        fuzzythreshold = 5.342
+        signals['Input0ne'] = signals['RSI']-70
+        signals['InputTwo'] = signals['RSI']-30
+
+
+        fuzzythreshold = 0.42
         normalizedInputOne = ctrl.Antecedent(np.arange(-1 * fuzzythreshold, fuzzythreshold, 0.00001),'normalizedInputOne')
         normalizedInputTwo = ctrl.Antecedent(np.arange(-1 * fuzzythreshold, fuzzythreshold, 0.00001),'normalizedInputTwo')
         fuzzyOutput = ctrl.Consequent(np.arange(-1, 1, 0.001), 'fuzzyOutput')
@@ -117,4 +121,17 @@ class FuzzyRSIStrategy(Strategy):
                     signals.positions[i] = -1
             i = i + 1
         # print(signals['positions'])
+        for x in range(len(signals['Input0ne']) - 1):
+            if (signals['Input0ne'][x] > -1.83898 and signals['Input0ne'][x] < 0):
+                signals['positions'][x] = 1
+            if (signals['Input0ne'][x] < 1.897873 and signals['Input0ne'][x] > 0):
+                signals['positions'][x] = 1
+
+        for x in range(len(signals['InputTwo']) - 1):
+            if (signals['InputTwo'][x] > -1.83898 and signals['InputTwo'][x] < 0):
+                signals['positions'][x] = - 1
+            if (signals['InputTwo'][x] < 1.897873 and signals['InputTwo'][x] > 0):
+                signals['positions'][x] = -1
+
+
         return signals

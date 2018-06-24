@@ -1,6 +1,7 @@
 import pandas as pd
 import requests,  json
-from datetime import datetime
+from datetime import datetime, timedelta
+
 from flask import Flask,redirect, url_for, request
 from pandas import to_datetime
 from backtesting.backtester.Strategies.ma_cross.ma_cross import MovingAverageCrossStrategy
@@ -48,7 +49,7 @@ def refreshGraphData(self):
        ax1.plot(xvalue,yvalue)
        # ani = animation.FuncAnimation(fig, refreshGraphData, interval=1000)
        pyplot.show()
-def app(blackregion=False):
+def app(blackregion=False, mode = "backtesting"):
     symbol = 'USD'
     strategyType = request.form["strategy"]
     startDate = request.form["from_date"]
@@ -67,65 +68,99 @@ def app(blackregion=False):
     higherLine = request.form["higher_line"]
     lowerLine = request.form["lower_line"]
 
-    bars = pd.read_csv("E:/coursework/L4S2/GroupProject/repo/TeamFxPortal/backtesting/backtester/Minute.csv")
-    bars.index = to_datetime(bars['Date'] + ' ' + bars['Time'])
+    bars = pd.read_csv("E:/coursework/L4S2/GroupProject/repo/TeamFxPortal/backtesting/backtester/hourData.csv")
+    #bars.index = to_datetime(bars['Date'] + ' ' + bars['Time'])
+    #bars['Time'] = bars['Time'].apply(lambda x: pd.to_datetime(x) - pd.timedelta(hours=7.5))
+
+    bars['Time'] = bars[['Date', 'Time']].apply(lambda x: ' '.join(x), axis=1)
+    bars['Time'] = bars['Time'].apply(lambda x: pd.to_datetime(x) - timedelta(hours=7.5))
+    bars.index = bars.Time
+
+
+
+
 
     if (blackregion == True):
-        threshold = request.form["threshold"]
-        black_regions = pd.read_csv('E:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/anomalies/detected_black_regions/'+threshold+'_'+str(config.NEAREST_NEIGHBOURS)+'_EURUSD_all_anomalies.csv')
-        print("black regions")
-        black_regions = black_regions["DateHour"]
+        black_regions = pd.read_csv("E:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/anomalies/detected_black_regions/4_2_EURUSD_all_anomalies.csv")
+        black_regions["DateHour"] = black_regions["DateHour"].apply(lambda x: to_datetime(x))
+        black_regions.index = black_regions["DateHour"]
+        black_regions = black_regions.index
+        print(black_regions)
+        bars = pd.read_csv("E:/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/data/EURUSD/DAT_MT_EURUSD_M1_2016.csv")
 
-        # for hour in black_regions:
-        #     barsTwo = np.where(bars.index > black_regions.index and bars.index<black_regions.index,bars , 0.0)
+        bars['Time'] = bars[['Date', 'Time']].apply(lambda x: ' '.join(x), axis=1)
+        bars['Time'] = bars['Time'].apply(lambda x: to_datetime(x) - timedelta(hours=2))
+        bars['Hour'] = bars['Time'].apply(lambda x: x.replace(minute=0, second=0, microsecond=0))
 
+        bars.index = bars.Hour
+        print(bars)
+        print(len(bars))
 
+        bars = bars.drop([black_regions[0], black_regions[1]])
+        bars.index = bars.Time
 
+        print(bars)
+        print(len(bars))
 
-
-    bars.index = to_datetime(bars ['Date'] +' ' + bars['Time'])
-    mask = (bars.index > startDate) & (bars.index <= '2016.01.04')
+    mask = (bars.index > startDate) & (bars.index <= endDate)
     bars = bars.loc[mask]
+    print(startDate)
+    print(endDate)
+    print(mask)
     # series = data["Close"]
-
+    parameter = 0
     if(strategyType == "Moving Average" ):
      strategy = MovingAverageCrossStrategy(symbol, bars,  short, long)
      signals = strategy.generate_signals()
     if(strategyType == "Fuzzy Moving Average"):
        strategy = FuzzyMovingAverageCrossStrategy(symbol, bars, short, long)
        signals = strategy.generate_signals()
+       parameter = 1
     if(strategyType == "Bollinger Band"):
        strategy = BollingerBandStrategy(symbol, bars, MOV, std)
        signals = strategy.generate_signals()
     if(strategyType == "Fuzzy Bollinger Band"):
        strategy = FuzzyBollingerBandStrategy(symbol, bars, MOV, std)
        signals = strategy.generate_signals()
+       parameter = 1
     if(strategyType == "MACD"):
        strategy = MACDStrategy(symbol, bars, shortMACD, longMACD,signalLine )
        signals = strategy.generate_signals()
     if (strategyType == "Fuzzy MACD"):
        strategy = FuzzyMACDStrategy(symbol, bars, shortMACD, longMACD,signalLine )
        signals = strategy.generate_signals()
+       parameter = 1
     if (strategyType == "Stochastic"):
        strategy = StochasticStrategy(symbol, bars,K_period,D_period, higherLine, lowerLine)
        signals = strategy.generate_signals()
     if (strategyType == "Fuzzy Stochastic"):
        strategy = FuzzyStochasticStrategy(symbol, bars,K_period,D_period, higherLine, lowerLine)
        signals = strategy.generate_signals()
+       parameter = 1
     if (strategyType == "RSI"):
        strategy = RSIStrategy(symbol, bars, rup, rdown)
        signals = strategy.generate_signals()
     if (strategyType == "Fuzzy RSI"):
        strategy = FuzzyRSIStrategy(symbol, bars,rup, rdown)
        signals = strategy.generate_signals()
+       parameter = 1
 
     portfolio = MarketOnClosePortfolio(symbol, bars, signals, initial_capital=100000.0)
-    returns = portfolio.backtest_portfolio()
+    returns,sharp_ratio,cagr,max_daily_drawdown,graphDrawDown,idsDrawDown = portfolio.backtest_portfolio(parameter)
     with open('file.csv', 'w') as f:
         print(returns, file=f)
     plot = PlotChart(signals, returns, strategyType)
-    graph = plot.plotCharts()
-    return graph
+    ids, graph, idsreturn, returngraphJSON = plot.plotCharts()
+
+    if (mode == "Evaluate"):
+        print("sharp ratio")
+        print(sharp_ratio)
+        return sharp_ratio, cagr, max_daily_drawdown.sum(),graphDrawDown,idsDrawDown
+
+    return ids,graph,returns, idsreturn, returngraphJSON
+
+
+
     # plot = plotDistribution(signals, returns,strategyType)
     # plot.distribution()
 

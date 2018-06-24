@@ -1,4 +1,4 @@
-from flask import Flask, render_template, make_response,request
+from flask import Flask, render_template, make_response,request, session
 from brd import plot_data,black_region_detection
 from anomalies import feature_selection, local_outlier_factor, local_outlier_factor_reducer, anomaly_identification
 from anomalies import anomalies_result_visualization
@@ -15,6 +15,10 @@ import numpy as np
 import json
 
 app = Flask(__name__)
+app.config['SESSION_TYPE'] = 'memcached'
+app.config['SECRET_KEY'] = 'super secret key'
+
+
 
 @app.route('/')
 def hello_world():
@@ -190,30 +194,60 @@ def overall_backtesting():
 
     blackregion = request.form["blackregions"]
     if(blackregion == "true"):
-        ids, graphJSON = application.app(True)
+        ids, graphJSON, returns, idsreturn, returngraphJSON = application.app(True)
     else:
-        ids, graphJSON = application.app()
+        ids, graphJSON, returns, idsreturn, returngraphJSON= application.app()
 
-    return render_template('backtesting/visualize.html',
-                           status="with_data",
+    return render_template('backtesting/visualize.html',status="with_data",
                            ids=ids,
-                           graphJSON=graphJSON)
+                           graphJSON=graphJSON, returns = returns, returngraphJSON = returngraphJSON, idsreturn= idsreturn
+                        )
 
 @app.route("/backtesting/visualize", methods = ['GET','POST'])
 def postInput():
-    graph = application.app()
-    ids, graphJSON = application.app()
-
+    ids, graphJSON,returns,idsreturn, returngraphJSON   = application.app()
+    returns = (returns.tail(200)).to_html()
+    # session ['returngraphJSON'] =returngraphJSON
+    # session ['idsreturn'] = idsreturn
+    # print(ids)
+    # print(' print(idsreturn)')
+    # print(idsreturn)
+    # print('print(ids)')
+    # print(ids)
     return render_template('backtesting/visualize.html',
                            status="with_data",
                            ids=ids,
-                           graphJSON=graphJSON)
+                           graphJSON=graphJSON, returns = returns, returngraphJSON = returngraphJSON, idsreturn= idsreturn )
 
-# @app.route("/backtesting/evaluate", methods=['GET'])
-# def evaluate():
-#
-#     return render_template('backtesting/evaluate.html')
-#     application.app()
+@app.route("/backtesting/returnChart", methods = ['GET','POST'])
+def returnChart():
+    # graph,returns = application.app()
+    returns = request.args.get('returns')
+    return render_template('backtesting/returnChart.html', returns= returns)
+
+@app.route("/backtesting/equityChart", methods = ['GET','POST'])
+def equityChart():
+    # graph,returns = application.app()
+    returngraphJSON = request.args.get('returngraphJSON')
+    idsreturn = request.args.get('idsreturn')
+    print("idsreturn")
+    print(idsreturn)
+    return render_template('backtesting/equityChart.html', status="with_data",ids=[idsreturn], graphJSON = returngraphJSON )
+
+@app.route("/backtesting/evaluate", methods=['GET'])
+def showevaluate():
+    return render_template('backtesting/evaluate.html')
+
+@app.route("/backtesting/evaluation", methods=['GET','POST'])
+def evaluate():
+    sharp_ratio, cagr,max_daily_drawdown,graph,ids = application.app(False,"Evaluate")
+    # print(sharp_ratio)
+    # print(cagr)
+    return render_template('backtesting/evaluation.html',status="with_data",sharp_ratio = sharp_ratio,cagr = cagr,
+                           max_daily_drawdown =max_daily_drawdown,graphJSON=graph, ids = ids )
+
+
+
 
 
 #--------------------------------------------------------optimization Routes----------------------------------------------------#

@@ -28,10 +28,10 @@ class MovingAverageCrossStrategy(Strategy):
         signals['signal'][self.short_window:] = np.where(signals['short_mavg'][self.short_window:] > signals['long_mavg'][self.short_window:], 1.0, 0.0)
         # Take the difference of the signals in order to generate actual trading orders
         signals['positions'] = signals['signal'].diff()
-        for x in signals['positions']:
-            if(x ==1 or x == -1 ):
-                print("possitions")
-                print(x)
+        # for x in signals['positions']:
+        #     if(x ==1 or x == -1 ):
+        #         print("possitions")
+        #         print(x)
 
         return signals
 

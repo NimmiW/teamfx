@@ -136,7 +136,7 @@
                 <a href="/">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="/anomalies">Anormalies</a>
+                <a href="/backtesting">Backtesting</a>
             </li>
             <li class="breadcrumb-item active">Evaluate</li>
         </ol>
@@ -151,7 +151,7 @@
             <div class="row">
                 <div class="col-7 card">
                     <div class="card-body">
-                            <form action="/backtesting/visualize" method="post">
+                            <form action="/backtesting/evaluation" method="post">
                                 <div class="row">
                                     <label for="Trading Strategy">Trading Strategy:</label>
                                     <select class="form-control" name="strategy" onchange="changeDiv(value)">
@@ -358,7 +358,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <input class="btn btn-primary" type="submit" value="Sharp Ratio"/>
+                                    <input class="btn btn-primary" type="submit" value="Evaluate"/>
                                 </div>
 
                             </form>
@@ -371,9 +371,7 @@
 
         </div>
 
-
-
-                        <!--<table class="table table-bordered">-->
+        <!--<table class="table table-bordered">-->
                             <!--<thead>-->
                               <!--<tr>-->
                                 <!--<th rowspan="2" colspan="2"></th>-->
@@ -417,11 +415,6 @@
                               <!--</tr>-->
                             <!--</tbody>-->
                         <!--</table>-->
-
-
-                <div class="col-6 card">
-
-                </div>
             </div>
         </div>
 
@@ -516,7 +509,7 @@
                 document.getElementById('macd').style.display = "none";
                 document.getElementById('RSI').style.display = "none";
             }
-             if(value==="Fuzzy RSI" || value===""){
+             if(value==="Fuzzy RSI" || value==="RSI"){
                 document.getElementById('RSI').style.display = "block";
                 document.getElementById('Stochastic').style.display = "none";
                 document.getElementById('moving_average').style.display = "none";

@@ -148,12 +148,18 @@
                 <p>Let us Evaluate a trading strategy, or study the solution pipeline. Give your own inputs and start backtesting.</p>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ url_for('returnChart', returns=returns) }}">Return Chart</a>
+                <a href="{{ url_for('equityChart', idsreturn=idsreturn, returngraphJSON=returngraphJSON) }} "> Return Graph</a>
+            </div>
+        </div>
 
-
+        <b></b>
         <div class="row">
 
                 <div class="col-10 card">
-                    <div class="card-body">
+                    <div class="card-body" name="graph1">
                         <p class="card-text">Buy and Sell signals are illustrated in red and black color.</p>
                         <div id="{{ids[0]}}"></div>
                     </div>
@@ -163,6 +169,9 @@
 
 
     </div>
+<!--{% block content %}-->
+<!--{{returns | safe}}-->
+<!--{% endblock %}-->
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
@@ -195,6 +204,7 @@
             </div>
         </div>
     </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{url_for('static', filename='theme/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{url_for('static', filename='theme/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -224,8 +234,22 @@
                             graphs[i].layout || {});
             }
         }
-
     </script>
+    <!--<script>-->
+
+        <!--if("{{status}}"=="with_data"){-->
+
+            <!--var returngraph = {{returngraphJSON | safe}};-->
+            <!--var idsreturn= {{idsreturn | safe}};-->
+
+            <!--for(var i in returngraph) {-->
+                <!--Plotly.plot(idsreturn[i], // the ID of the div, created above-->
+                            <!--returngraph[i].data,-->
+                            <!--returngraph[i].layout || {});-->
+            <!--}-->
+        <!--}-->
+
+    <!--</script>-->
 </div>
 </body>
 
