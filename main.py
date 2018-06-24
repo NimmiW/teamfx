@@ -13,6 +13,7 @@ from optimization.Strategies import StrategyOptimizer_MA
 from optimization.Strategies import StrategyOptimizer_MACD
 from optimization.Strategies import Strategy_Optimizer_Bollinger
 from optimization.Strategies import Strategy_Optimizer_Stochastic
+from optimization.Strategies import Strategy_Optimizer_RSI
 from optimization.Strategies import Strategy_Optimizer_FMA
 from optimization import Risk_Calculator
 from optimization import signal_Generator
@@ -252,8 +253,11 @@ def optimize():
     elif (strategy == 'Stochastic'):
         strategyNum = 4
         returns = Strategy_Optimizer_Stochastic.initialize()
-    elif (strategy == 'Fuzzy Moving Average'):
+    elif (strategy == 'RSI'):
         strategyNum = 5
+        returns = Strategy_Optimizer_RSI.initialize()
+    elif (strategy == 'Fuzzy Moving Average'):
+        strategyNum = 6
         returns = Strategy_Optimizer_FMA.initialize()
 
     top10 = returns[:10]
@@ -280,7 +284,7 @@ def opt_evaluation_results():
     strategy = request.form['strategy']
     print("strategy:",strategy)
     para = gen_parameters.getPara(strategy);
-    print("para",para)
+    print("parA",para)
     results = evaluate_optimization.calculateRisk(para,strategy)
     print(results)
     return render_template('optimization/eva_optimize_results.html',results=results,para=para)

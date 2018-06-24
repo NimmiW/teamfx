@@ -170,7 +170,7 @@
 
                                     <option value="Stochastic">Stochastic Strategy</option>
 
-                                    <option value="rsi">Relative Strength Index (RSI)</option>
+                                    <option value="RSI">Relative Strength Index (RSI)</option>
 
                                 </select>
                             </div>
@@ -662,7 +662,7 @@
                                         <b><label for="%d_period">%D Period</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="minD_periods" value="0"
+                                        <input type="number" class="form-control" name="minD_periods" value="1"
                                                style="height: 30px;">
                                     </div>
                                     <div class="col-md-2">
@@ -679,15 +679,15 @@
                                         <b><label for="higher_line">Higher Line</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="min_higher_lines" value="50"
+                                        <input type="number" class="form-control" name="min_higher_lines" value="10"
                                                style="height: 30px;">
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="max_higher_lines" value="100"
+                                        <input type="number" class="form-control" name="max_higher_lines" value="20"
                                                style="height: 30px;">
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="step_higher_lines" value="5"
+                                        <input type="number" class="form-control" name="step_higher_lines" value="2"
                                                style="height: 30px;">
                                     </div>
                                 </div>
@@ -696,15 +696,15 @@
                                         <b><label for="lower_line">Lower Line</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="min_lower_lines" value="0"
+                                        <input type="number" class="form-control" name="min_lower_lines" value="1"
                                                style="height: 30px;">
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="max_lower_lines" value="50"
+                                        <input type="number" class="form-control" name="max_lower_lines" value="10"
                                                style="height: 30px;">
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="step_lower_lines" value="5"
+                                        <input type="number" class="form-control" name="step_lower_lines" value="2"
                                                style="height: 30px;">
                                     </div>
                                 </div>
@@ -742,7 +742,101 @@
                                                style="height: 30px;">
                                     </div>
                                 </div>
-                            </div
+                            </div>
+
+                            <!--Div RSI-->
+                            <div id="RSI" style="display:none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="initial">Initial</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="final">Final</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="increment">Increment</label></b>
+                                        </center>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="higher_linersi">Higher Line</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="min_higher_line_rsi" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="max_higher_line_rsi" value="100"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="step_higher_line_rsi" value="5"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="lower_linersi">Lower Line</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="min_lower_line_rsi" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="max_lower_line_rsi" value="50"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="step_lower_line_rsi" value="5"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="stoplossrsi">Stop-Loss</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minStopLoss_rsi" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxStopLoss_rsi" value="50"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepStopLoss_rsi" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="takeprofitrsi">Take-Profit</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minTakeProfit_rsi" value="100"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxTakeProfit_rsi" value="1000"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepTakeProfit_rsi" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <div class="row">
@@ -841,6 +935,7 @@
                 document.getElementById('MACD').style.display = "none";
                 document.getElementById('Bollinger Band').style.display = "none";
                 document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
             }
             if(value==="Fuzzy Moving Average"){
                 document.getElementById('Fuzzy Moving Average').style.display = "block";
@@ -848,6 +943,7 @@
                 document.getElementById('MACD').style.display = "none";
                 document.getElementById('Bollinger Band').style.display = "none";
                 document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
             }
             if(value==="MACD"){
                 document.getElementById('MACD').style.display = "block";
@@ -855,6 +951,7 @@
                 document.getElementById('Fuzzy Moving Average').style.display = "none"
                 document.getElementById('Bollinger Band').style.display = "none";
                 document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
             }
             if(value==="Bollinger Band"){
                 document.getElementById('Bollinger Band').style.display = "block";
@@ -862,9 +959,19 @@
                 document.getElementById('Fuzzy Moving Average').style.display = "none"
                 document.getElementById('MACD').style.display = "none";
                 document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
             }
             if(value==="Stochastic"){
                 document.getElementById('Stochastic').style.display = "block";
+                document.getElementById('Bollinger Band').style.display = "none";
+                document.getElementById('Moving Average').style.display = "none";
+                document.getElementById('Fuzzy Moving Average').style.display = "none"
+                document.getElementById('MACD').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+            }
+            if(value==="RSI"){
+                document.getElementById('RSI').style.display = "block";
+                document.getElementById('Stochastic').style.display = "none";
                 document.getElementById('Bollinger Band').style.display = "none";
                 document.getElementById('Moving Average').style.display = "none";
                 document.getElementById('Fuzzy Moving Average').style.display = "none"

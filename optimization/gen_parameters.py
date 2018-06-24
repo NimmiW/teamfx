@@ -19,6 +19,9 @@ def getPara(strategy):
     elif (strategy == "Stochastic"):
         para = [int(request.form['K_periods']), int(request.form['D_periods']), int(request.form['higher_lines']), int(request.form['lower_lines']),int(request.form['StopLosss']),int(request.form['TakeProfits'])]
 
+    elif (strategy == "RSI"):
+        para = [int(request.form['higher_line_rsi']), int(request.form['lower_line_rsi']),int(request.form['StopLoss_rsi']),int(request.form['TakeProfit_rsi'])]
+
     return para
 
 

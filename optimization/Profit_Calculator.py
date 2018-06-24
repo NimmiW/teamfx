@@ -33,6 +33,10 @@ def fitness(individual,strategy):
         stoploss_pip = individual[4]
         takeprofit_pip = individual[5]
 
+    elif (strategy == "RSI"):
+        stoploss_pip = individual[2]
+        takeprofit_pip = individual[3]
+
 
     inv_return = Application.optimize(individual,strategy)
 

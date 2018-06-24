@@ -170,7 +170,7 @@
 
                                     <option value="Stochastic">Stochastic Strategy</option>
 
-                                    <option value="rsi">Relative Strength Index (RSI)</option>
+                                    <option value="RSI">Relative Strength Index (RSI)</option>
 
                                 </select>
                             </div>
@@ -477,7 +477,55 @@
                                     </div>
 
                                 </div>
-                            </div
+                            </div>
+
+
+                            <!--Div RSI-->
+                            <div id="RSI" style="display:none;">
+                                <br/>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="higher_linersi">Higher Line</label></b>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="higher_line_rsi" value="5"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="lower_linersi">Lower Line</label></b>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="lower_line_rsi" value="5"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="stoplossrsi">Stop-Loss</label></b>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="StopLoss_rsi" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="takeprofitrsi">Take-Profit</label></b>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="TakeProfit_rsi" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <div class="row">
@@ -576,6 +624,7 @@
                 document.getElementById('MACD').style.display = "none";
                 document.getElementById('Bollinger Band').style.display = "none";
                 document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
             }
             if(value==="Fuzzy Moving Average"){
                 document.getElementById('Fuzzy Moving Average').style.display = "block";
@@ -583,6 +632,7 @@
                 document.getElementById('MACD').style.display = "none";
                 document.getElementById('Bollinger Band').style.display = "none";
                 document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
             }
             if(value==="MACD"){
                 document.getElementById('MACD').style.display = "block";
@@ -590,6 +640,7 @@
                 document.getElementById('Fuzzy Moving Average').style.display = "none";
                 document.getElementById('Bollinger Band').style.display = "none";
                 document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
             }
             if(value==="Bollinger Band"){
                 document.getElementById('Bollinger Band').style.display = "block";
@@ -597,9 +648,19 @@
                 document.getElementById('Fuzzy Moving Average').style.display = "none";
                 document.getElementById('MACD').style.display = "none";
                 document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
             }
             if(value==="Stochastic"){
                 document.getElementById('Stochastic').style.display = "block";
+                document.getElementById('Bollinger Band').style.display = "none";
+                document.getElementById('Moving Average').style.display = "none";
+                document.getElementById('Fuzzy Moving Average').style.display = "none";
+                document.getElementById('MACD').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+            }
+            if(value==="RSI"){
+                document.getElementById('RSI').style.display = "block";
+                document.getElementById('Stochastic').style.display = "none";
                 document.getElementById('Bollinger Band').style.display = "none";
                 document.getElementById('Moving Average').style.display = "none";
                 document.getElementById('Fuzzy Moving Average').style.display = "none";
@@ -615,6 +676,5 @@
 </body>
 
 </html>
-
 
 

@@ -10,62 +10,39 @@ from functools import reduce
 import csv
 
 def initialize():
-    global minK_periods
-    global maxK_periods
-    global stepK_periods
+    global min_higher_line_rsi
+    global max_higher_line_rsi
+    global step_higher_line_rsi
+    global min_lower_line_rsi
+    global max_lower_line_rsi
+    global step_lower_line_rsi
+    global minStopLoss_rsi
+    global maxStopLoss_rsi
+    global stepStopLoss_rsi
+    global minTakeProfit_rsi
+    global maxTakeProfit_rsi
+    global stepTakeProfit_rsi
 
-    global minD_periods
-    global maxD_periods
-    global stepD_periods
+    min_higher_line_rsi = int(request.form["min_higher_line_rsi"])
+    max_higher_line_rsi = int(request.form["max_higher_line_rsi"])
+    step_higher_line_rsi = int(request.form["step_higher_line_rsi"])
 
-    global min_higher_lines
-    global max_higher_lines
-    global step_higher_lines
+    min_lower_line_rsi = int(request.form["min_lower_line_rsi"])
+    max_lower_line_rsi = int(request.form["max_lower_line_rsi"])
+    step_lower_line_rsi = int(request.form["step_lower_line_rsi"])
 
-    global min_lower_lines
-    global max_lower_lines
-    global step_lower_lines
+    minStopLoss_rsi = int(request.form["minStopLoss_rsi"])
+    maxStopLoss_rsi = int(request.form["maxStopLoss_rsi"])
+    stepStopLoss_rsi = int(request.form["stepStopLoss_rsi"])
 
-    global minStopLosss
-    global maxStopLosss
-    global stepStopLosss
-
-    global minTakeProfits
-    global maxTakeProfits
-    global stepTakeProfits
-
-    minK_periods = int(request.form["minK_periods"])
-    maxK_periods = int(request.form["maxK_periods"])
-    stepK_periods = int(request.form["stepK_periods"])
-
-    minD_periods = int(request.form["minD_periods"])
-    maxD_periods = int(request.form["maxD_periods"])
-    stepD_periods = int(request.form["stepD_periods"])
-
-    min_higher_lines = int(request.form["min_higher_lines"])
-    max_higher_lines = int(request.form["max_higher_lines"])
-    step_higher_lines = int(request.form["step_higher_lines"])
-
-    min_lower_lines = int(request.form["min_lower_lines"])
-    max_lower_lines = int(request.form["max_lower_lines"])
-    step_lower_lines = int(request.form["step_lower_lines"])
-
-    minStopLosss = int(request.form["minStopLosss"])
-    maxStopLosss = int(request.form["maxStopLosss"])
-    stepStopLosss = int(request.form["stepStopLosss"])
-
-    minTakeProfits = int(request.form["minTakeProfits"])
-    maxTakeProfits = int(request.form["maxTakeProfits"])
-    stepTakeProfits = int(request.form["stepTakeProfits"])
+    minTakeProfit_rsi = int(request.form["minTakeProfit_rsi"])
+    maxTakeProfit_rsi = int(request.form["maxTakeProfit_rsi"])
+    stepTakeProfit_rsi = int(request.form["stepTakeProfit_rsi"])
 
     start_time = time.time()
 
-    pop = population(count, minK_periods, maxK_periods, stepK_periods,
-                     minD_periods, maxD_periods, stepD_periods,
-                     min_higher_lines, max_higher_lines, step_higher_lines,
-                     min_lower_lines, max_lower_lines, step_lower_lines,
-                     minStopLosss ,maxStopLosss, stepStopLosss,
-                     minTakeProfits, maxTakeProfits, stepTakeProfits)
+    pop = population(count, min_higher_line_rsi, max_higher_line_rsi, step_higher_line_rsi, min_lower_line_rsi, max_lower_line_rsi, step_lower_line_rsi, minStopLoss_rsi,
+                     maxStopLoss_rsi, stepStopLoss_rsi, minTakeProfit_rsi, maxTakeProfit_rsi, stepTakeProfit_rsi)
 
     pool_graded = propagate(pop)
     pool_graded_sorted = sorted(pool_graded, reverse=True)
@@ -85,31 +62,21 @@ def initialize():
     return pool_graded_sorted
 
 
-def individual(minK_periods, maxK_periods, stepK_periods,
-                     minD_periods, maxD_periods, stepD_periods,
-                     min_higher_lines, max_higher_lines, step_higher_lines,
-                     min_lower_lines, max_lower_lines, step_lower_lines,
-                     minStopLosss ,maxStopLosss, stepStopLosss,
-                     minTakeProfits, maxTakeProfits, stepTakeProfits):
+def individual(min_higher_line_rsi, max_higher_line_rsi, step_higher_line_rsi, min_lower_line_rsi, max_lower_line_rsi, step_lower_line_rsi,
+               minStopLoss_rsi, maxStopLoss_rsi, stepStopLoss_rsi, minTakeProfit_rsi, maxTakeProfit_rsi, stepTakeProfit_rsi):
     'Create a member of the population.'
     # print([randrange(minShortMA, maxShortMA, stepShortMA)-randrange(minLongMA, maxLongMA, stepLongMA), randrange(minStopLoss, maxStopLoss, stepStopLoss), randrange(minTakeProfit, maxTakeProfit, stepTakeProfit)])
 
-    tmp = [randrange(minK_periods, maxK_periods, stepK_periods),
-               randrange(minD_periods, maxD_periods, stepD_periods),
-               randrange(min_higher_lines, max_higher_lines, step_higher_lines),
-               randrange(min_lower_lines, max_lower_lines, step_lower_lines),
-               randrange(minStopLosss ,maxStopLosss, stepStopLosss),
-               randrange(minTakeProfits, maxTakeProfits, stepTakeProfits)]
+    tmp = [randrange(min_higher_line_rsi, max_higher_line_rsi, step_higher_line_rsi),
+               randrange(min_lower_line_rsi, max_lower_line_rsi, step_lower_line_rsi),
+               randrange(minStopLoss_rsi, maxStopLoss_rsi, stepStopLoss_rsi),
+               randrange(minTakeProfit_rsi, maxTakeProfit_rsi, stepTakeProfit_rsi)]
 
     return tmp
 
 
-def population(count, minK_periods, maxK_periods, stepK_periods,
-                     minD_periods, maxD_periods, stepD_periods,
-                     min_higher_lines, max_higher_lines, step_higher_lines,
-                     min_lower_lines, max_lower_lines, step_lower_lines,
-                     minStopLosss ,maxStopLosss, stepStopLosss,
-                     minTakeProfits, maxTakeProfits, stepTakeProfits):
+def population(count, min_higher_line_rsi, max_higher_line_rsi, step_higher_line_rsi, min_lower_line_rsi, max_lower_line_rsi, step_lower_line_rsi,
+               minStopLoss_rsi, maxStopLoss_rsi, stepStopLoss_rsi, minTakeProfit_rsi, maxTakeProfit_rsi, stepTakeProfit_rsi):
     """
     Create a number of individuals (i.e. a population).
 
@@ -119,16 +86,12 @@ def population(count, minK_periods, maxK_periods, stepK_periods,
     max: the maximum possible value in an individual's list of values
 
     """
-    return [individual(minK_periods, maxK_periods, stepK_periods,
-                     minD_periods, maxD_periods, stepD_periods,
-                     min_higher_lines, max_higher_lines, step_higher_lines,
-                     min_lower_lines, max_lower_lines, step_lower_lines,
-                     minStopLosss ,maxStopLosss, stepStopLosss,
-                     minTakeProfits, maxTakeProfits, stepTakeProfits) for x in range(count)]
+    return [individual(min_higher_line_rsi, max_higher_line_rsi, step_higher_line_rsi, min_lower_line_rsi, max_lower_line_rsi, step_lower_line_rsi,
+               minStopLoss_rsi, maxStopLoss_rsi, stepStopLoss_rsi, minTakeProfit_rsi, maxTakeProfit_rsi, stepTakeProfit_rsi) for x in range(count)]
 
 
 def fitness(individual):
-    fitness = Profit_Calculator.fitness(individual,"Stochastic")
+    fitness = Profit_Calculator.fitness(individual,"RSI")
     #fitness = individual[0] + individual[1] + individual[2] + individual[3]
 
     #print("fitness of", individual, " ", fitness)
@@ -207,12 +170,8 @@ def mutate(pool):
     for i,chromo in enumerate(pool):
         if mutation_percentage > random():
             pos_to_mutate = randint(0, len(chromo[1]) - 1)
-            tmp = individual(minK_periods, maxK_periods, stepK_periods,
-                     minD_periods, maxD_periods, stepD_periods,
-                     min_higher_lines, max_higher_lines, step_higher_lines,
-                     min_lower_lines, max_lower_lines, step_lower_lines,
-                     minStopLosss ,maxStopLosss, stepStopLosss,
-                     minTakeProfits, maxTakeProfits, stepTakeProfits)
+            tmp = individual(min_higher_line_rsi, max_higher_line_rsi, step_higher_line_rsi, min_lower_line_rsi, max_lower_line_rsi, step_lower_line_rsi,
+               minStopLoss_rsi, maxStopLoss_rsi, stepStopLoss_rsi, minTakeProfit_rsi, maxTakeProfit_rsi, stepTakeProfit_rsi)
             chromo[1][pos_to_mutate] = tmp[pos_to_mutate]
             #print("chromo",chromo[0],chromo)
             chromo = (fitness(chromo[1]),chromo[1])

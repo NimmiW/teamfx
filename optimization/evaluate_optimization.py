@@ -34,10 +34,14 @@ def calculateRisk(individual,strategy):
         stoploss_pip = individual[4]
         takeprofit_pip = individual[5]
 
+    elif (strategy == "RSI"):
+        stoploss_pip = individual[2]
+        takeprofit_pip = individual[3]
+
 
     inv_return = Application.optimize(individual,strategy)
 
-    print("inv_return:",inv_return)
+    #print("inv_return:",inv_return)
 
     ### Filter Regions ###
     inv_return = inv_return[(inv_return["signal"] == 1) | (inv_return["positions"] == -1)]

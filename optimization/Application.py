@@ -59,7 +59,7 @@ def optimize(individual,strategy):
       strategy = FuzzyStochasticStrategy(symbol, bars, short_window=short, long_window=long)
       signals = strategy.generate_signals()
    if (strategyType == "RSI"):
-      strategy = RSIStrategy(symbol, bars, rup, rdown)
+      strategy = RSIStrategy(symbol, bars, individual[0], individual[1])
       signals = strategy.generate_signals()
    if (strategyType == "Fuzzy RSI"):
       strategy = FuzzyRSIStrategy(symbol, bars, short_window=short, long_window=long)
