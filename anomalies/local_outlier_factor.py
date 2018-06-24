@@ -7,6 +7,7 @@ from sklearn import preprocessing
 import matplotlib.pyplot as plt
 from sklearn.metrics import pairwise_distances
 import os, gc
+import anomalies.config as config
 
 #Calculate the k-distance neighborhood:
 def all_indices(value, inlist):
@@ -29,7 +30,7 @@ def detect_lof_mapper():
     k_distance_neig = defaultdict(list)
 
     #price
-    data = pd.read_csv('static/anomalies/features.csv')
+    data = pd.read_csv('static/anomalies/features/'+request.form["currency"]+'_'+request.form["year"]+'.csv')
     #data = data.head(200)
 
 
@@ -53,8 +54,11 @@ def detect_lof_mapper():
     n_partitions = 6
 
     #Let's get the pairwise distance between the points:
-    k = 2
+    #k = 2
+    k = config.NEAREST_NEIGHBOURS
     distance = 'manhattan'
+
+    print('here1')
 
     for i in range(n_partitions):
         partition = data.loc[instances.index % n_partitions == i]
@@ -62,15 +66,16 @@ def detect_lof_mapper():
         instances_list[i] = instances_list[i].as_matrix()
         x = np.squeeze(np.asarray(instances_list[i][:,0]))
         y = np.squeeze(np.asarray(instances_list[i][:,1]))
-        plt.cla()
-        plt.figure(1)
-        plt.scatter(x,y)
+        #plt.cla()
+        #plt.figure(1)
+        #plt.scatter(x,y)
         dist = pairwise_distances(instances_list[i],metric=distance)
 
         #Let's calculate the k-distance. We will use heapq and get the k-nearest neighbors:
-
+        print('here2')
         # For each data point
         for j in range(instances_list[i].shape[0]):
+            print('here3')
             # Get its distance to all the other points.
             # Convert array into list for convienience
             distances = dist[j].tolist()
@@ -96,7 +101,7 @@ def detect_lof_mapper():
             ksmallest_idx = [item for sublist in ksmallest_idx for item in sublist]
             # For each data pont store the K distance neighbourhood
             k_distance_neig[j].extend(zip(ksmallest,ksmallest_idx))
-
+        print('here4')
 
 
         #Then, calculate the reachability distance and LRD:
@@ -125,14 +130,20 @@ def detect_lof_mapper():
         list_of_lists = [list(elem) for elem in lof_list]
         list_of_lists = [list(elem) for elem in zip(*list_of_lists)]
         lof_values = list_of_lists[1]
-
+        print('here5')
         partition['lof'] = lof_values
         print(partition)
-        if os.path.exists('static/anomalies/local_outlier_factor'+str(i)+'.csv'):
-            os.remove('static/anomalies/local_outlier_factor'+str(i)+'.csv')
+        if os.path.exists('static/anomalies/local_outlier_factors/' +
+                request.form["currency"] + '_' + request.form["year"]+str(i)+'.csv'):
+            os.remove('static/anomalies/local_outlier_factors/' +
+                request.form["currency"] + '_' + request.form["year"]+str(i)+'.csv')
 
         gc.collect()
-        partition.to_csv('static/anomalies/local_outlier_factor'+str(i)+'.csv')
+        partition.to_csv('static/anomalies/local_outlier_factors/' +
+            request.form["currency"] + '_' + request.form["year"]+str(i)+'.csv')
+
+
+        print('here6')
 
     return request.form["year"], request.form["from_month"], request.form["to_month"], request.form["currency"], "done"
 

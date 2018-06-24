@@ -1,0 +1,2 @@
+model_checkpoint_path: "E:\\moodle\\Level04S02\\Teamfx\\weights_record\\T43-2018-06-24\\M60_epochs_800_relu_next_3_close_price_for_close_ema_rsi.ckpt"
+all_model_checkpoint_paths: "E:\\moodle\\Level04S02\\Teamfx\\weights_record\\T43-2018-06-24\\M60_epochs_800_relu_next_3_close_price_for_close_ema_rsi.ckpt"

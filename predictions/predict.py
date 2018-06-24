@@ -12,6 +12,7 @@ from pandas import to_datetime
 import json
 import plotly.plotly.plotly as py
 from sklearn.metrics import mean_squared_error
+import anomalies.config as config
 
 # warnings.filterwarnings('ignore')
 # path = 'E:/moodle/Level04S02/Teamfx/preprocessing'
@@ -102,7 +103,7 @@ def predict(date_time, prediction_type):
     year = date_time[:4]
     count = 5
     x = tf.placeholder(tf.float32, shape=[None, 3])
-    path = 'E:/moodle/Level04S02/Teamfx/preprocessing'
+    path = config.ROOT+'predictions/preprocessing'
     column_list = ['open', 'high', 'low', 'close', 'will_r', 'ema', 'rsi', 'next_close', 'next_next_close',
                    'next_next_next_close']
 
@@ -176,9 +177,9 @@ def predict(date_time, prediction_type):
     # save_file = 'E:\\moodle\\Level04S02\\Teamfx\\weights_record\\T34-2018-06-21\\2012_nextclose_price_normalized_300000_data_2000epochs_relu_3layers.ckpt'
     # save_file = 'E:\\moodle\\Level04S02\\Teamfx\\weights_record\\T38-2018-06-22\\2012_epochs_500_relu_next_3_close_price_for_close_ema_rsi.ckpt'
     if prediction_type == 'minutes':
-        save_file = 'E:\\moodle\\Level04S02\\Teamfx\\weights_record\\T39-2018-06-23\\'+"2017"+'_epochs_1500_relu_next_3_close_price_for_close_ema_rsi.ckpt'
+        save_file = config.ROOT+'predictions\\T39-2018-06-23\\'+"2017"+'_epochs_1500_relu_next_3_close_price_for_close_ema_rsi.ckpt'
     else:
-        save_file = 'E:\\moodle\\Level04S02\\Teamfx\\weights_record\\T43-2018-06-24\\M60_epochs_800_relu_next_3_close_price_for_close_ema_rsi.ckpt'
+        save_file = config.ROOT+'predictions\\T43-2018-06-24\\M60_epochs_800_relu_next_3_close_price_for_close_ema_rsi.ckpt'
 
     saver = tf.train.Saver()
 
@@ -418,7 +419,7 @@ def predict_arima_ann(date_time, prediction_type):
     error_of_ANN_ARIMA_3_labels  = pd.DataFrame(error_of_ANN_ARIMA_3_labels)
     error_of_ANN_ARIMA_3_labels.index = forwared_date_time[:-1]
     # print(error_of_ANN_ARIMA_3_labels)
-    error_of_ANN_ARIMA_3_labels.to_csv(date_time[:10]+'.csv')
+    #error_of_ANN_ARIMA_3_labels.to_csv(date_time[:10]+'.csv')
 
     labels_mix_final = pd.DataFrame(labels_mix_final)
     labels_mix_final.index = forwared_date_time[:-1]

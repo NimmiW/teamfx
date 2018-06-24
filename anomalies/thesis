@@ -1,0 +1,60 @@
+import pandas as pd
+get_percentage =[]
+new_data = []
+to_datetime = []
+Counter =[]
+def detect_anomalies(input_directory="static/anomalies/merged_local_outlier_factor_file.csv",
+                     output_directory="static/anomalies/anomalies.csv"):
+    anomaly_percentage = 2  # example 2%
+    data = pd.read_csv(input_directory)
+    data.index = data.Index
+    data = data.sort_index()
+
+    number_of_time_points = len(data)
+
+    amount_of_anomalies = get_percentage(anomaly_percentage, number_of_time_points)
+
+    # sorting by lof descending order
+    sorted_data = new_data.sort_values(by=['lof'], ascending=False)
+
+    # get the dates with highest lof values
+    anomalies = sorted_data[0:amount_of_anomalies]
+
+    # get abnormal dates
+    abnormal_dates = anomalies.index.values.tolist()
+
+    abnormal_dates = list(map(lambda x: to_datetime(x).replace(minute=0, second=0, microsecond=0), abnormal_dates))
+    print(anomalies)
+
+    anomalies['DateTime'] = anomalies.index.values
+    anomalies['DateHour'] = anomalies['DateTime'].apply(
+        lambda x: to_datetime(x).replace(minute=0, second=0, microsecond=0))
+    print(anomalies)
+    lof_average_per_date = anomalies.groupby('DateHour', as_index=False)['lof'].sum()
+    print(lof_average_per_date)
+    print(abnormal_dates)
+
+    abnormal_dates_and_counter = Counter(abnormal_dates)
+
+    tmp = pd.DataFrame.from_dict(abnormal_dates_and_counter, orient='index').reset_index()
+    count = pd.DataFrame()
+    count['DateHour'] = tmp['index']
+    count['Count'] = tmp.iloc[:, -1]
+
+    count = count.sort_values(by=['DateHour'])
+    count.index = count['DateHour']
+    count = count.drop(['DateHour'], axis=1)
+    print("length of lof_average_per_date: " + str(len(lof_average_per_date['lof'].values)))
+    print("length of count: " + str(len(count['Count'].values)))
+    count['Average_lof'] = lof_average_per_date['lof'].values
+    count['Ranking_Factor'] = count['Average_lof'] / (count['Count'] * count['Count'])
+    count = count.sort_values(by=['Ranking_Factor'])
+
+    number_of_time_points = len(count)
+
+    amount_of_anomalies = get_percentage(anomaly_percentage, number_of_time_points)
+
+    count = count.head(amount_of_anomalies)
+
+
+

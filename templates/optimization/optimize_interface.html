@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Strategy Optimization</title>
+    <!-- Bootstrap core CSS-->
+    <link href="{{url_for('static', filename='theme/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="{{url_for('static', filename='theme/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet"
+          type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="{{url_for('static', filename='theme/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="{{url_for('static', filename='theme/css/sb-admin.css')}}" rel="stylesheet">
+    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>
+    <!--Font Awesome (added because you use icons in your prepend/append)-->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <!-- Inline CSS based on choices in "Settings" tab -->
+    <style>
+        .bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}
+
+    </style>
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="/">TeamFx</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <a class="nav-link" href="/">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#backtestingComponents"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-history"></i>
+                    <span class="nav-link-text">Backtesting</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="backtestingComponents">
+                    <li>
+                        <a href="/backtesting/">Module</a>
+                    </li>
+                    <li>
+                        <a href="/backtesting/input">Backtest</a>
+                    </li>
+                    <li>
+                        <a href="/backtesting/evaluate">Evaluate</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Optimize">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#optimizeComponents"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-clock-o"></i>
+                    <span class="nav-link-text">Optimization</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="optimizeComponents">
+                    <li>
+                        <a href="/optimization/">Module</a>
+                    </li>
+                    <li>
+                        <a href="/optimization/input">Optimize</a>
+                    </li>
+                    <li>
+                        <a href="/optimization/evaluate">Evaluate</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Anomalies">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#anomaliesComponents"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-calendar-times-o "></i>
+                    <span class="nav-link-text">Black Regions</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="anomaliesComponents">
+                    <li>
+                        <a href="/anomalies/">Module</a>
+                    </li>
+                    <li>
+                        <a href="/anomalies/input">Detect Black regions</a>
+                    </li>
+                    <li>
+                        <a href="/anomalies/evaluate">Evaluate</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Predict">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#predictComponents"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-line-chart"></i>
+                    <span class="nav-link-text">Prediction</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="predictComponents">
+                    <li>
+                        <a href="/predict/">Module</a>
+                    </li>
+                    <li>
+                        <a href="/predict/input">predict</a>
+                    </li>
+                    <li>
+                        <a href="/predict/evaluate">Evaluate</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/login">
+                    <i class="fa fa-fw fa-sign-out"></i>Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Optimization</li>
+        </ol>
+        <div class="row">
+            <div class="col-12">
+                <h1>Trading Strategy Optimizer</h1>
+            </div>
+        </div>
+        </br>
+        <div class="container">
+            <div class="row">
+                <div class="col-7 card">
+                    <div class="card-body">
+                        <form action="/optimization/strategyOptimizer" method="post">
+                            <div class="row">
+                                <b><label for="Trading Strategy">Trading Strategy:</label></b>
+                                <select class="form-control" name="strategy" onchange="changeDiv(value)">
+                                    <option disabled selected value> Select Trading Strategy</option>
+                                    <option value="Moving Average">Moving Average Crossover Strategy</option>
+
+                                    <option value="MACD">MACD</option>
+
+                                    <option value="Bollinger Band">Bollinger Bands</option>
+
+                                    <option value="Stochastic">Stochastic Strategy</option>
+
+                                    <option value="RSI">Relative Strength Index (RSI)</option>
+
+                                </select>
+                            </div>
+                            </br>
+                            <div class="row">
+                                <b><label for="currency">Currency:</label></b>
+                                <select class="form-control" name="currency_pair">
+                                    <option value="EURUSD">EUR/USD</option>
+                                    <option value="EURGBP">EUR/GBP</option>
+                                    <option value="EURCHF">EUR/CHF</option>
+                                    <option value="AUDUSD">AUD/USD</option>
+                                </select>
+                            </div>
+                            </br>
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="from">From:</label></b>
+                                        <div class="bootstrap-iso">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="form-group ">
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon">
+                                                                    <i class="fa fa-calendar">
+                                                                    </i>
+                                                                </div>
+                                                                <input class="form-control" id="from_date" name="from_date"
+                                                                       placeholder="yyyy.mm.dd" type="text"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <b><label for="to">To:</label></b>
+                                        <div class="bootstrap-iso">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="form-group ">
+                                                        <div class="col-sm-10">
+                                                            <div class="input-group">
+                                                                <div class="input-group-addon">
+                                                                    <i class="fa fa-calendar">
+                                                                    </i>
+                                                                </div>
+                                                                <input class="form-control" id="to_date" name="to_date"
+                                                                       placeholder="yyyy.mm.dd" type="text"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Div Moving Average-->
+                            <div id="Moving Average" style="display:none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="initial">Initial</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="final">Final</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="increment">Increment</label></b>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="smap">Short Moving Average Period</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minShortMA" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxShortMA" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepShortMA" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="lmap">Long Moving Average Period</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minLongMA" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control"  name="maxLongMA" value="50"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepLongMA" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="stoploss">Stop-Loss</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minStopLoss" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxStopLoss" value="20"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepStopLoss" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="takeprofit">Take-Profit</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minTakeProfit" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxTakeProfit" value="100"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepTakeProfit" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--Div Fuzzy Moving Average-->
+                            <div id="Fuzzy Moving Average" style="display:none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="initial">Initial</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="final">Final</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="increment">Increment</label></b>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="fsmap">Short Moving Average Period</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fminShortMA" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fmaxShortMA" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fstepShortMA" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="flmap">Long Moving Average Period</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fminLongMA" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control"  name="fmaxLongMA" value="50"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fstepLongMA" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="fstoploss">Stop-Loss</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fminStopLoss" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fmaxStopLoss" value="20"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fstepStopLoss" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="ftakeprofit">Take-Profit</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fminTakeProfit" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fmaxTakeProfit" value="100"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="fstepTakeProfit" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--Div MACD-->
+                            <div id="MACD" style="display:none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="initial">Initial</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="final">Final</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="increment">Increment</label></b>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="smap">Short Moving Average Period</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minShortMAMacd" value="2"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxShortMAMacd" value="30"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepShortMAMacd" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="lmap">Long Moving Average Period</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minLongMAMacd" value="20"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxLongMAMacd" value="50"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepLongMAMacd" value="2"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="signalLine">Signal Line</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minSignalLineMacd" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxSignalLineMacd" value="20"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepSignalLineMacd" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="stoploss">Stop-Loss</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minStopLossMacd" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxStopLossMacd" value="20"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepStopLossMacd" value="2"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="takeprofit">Take-Profit</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minTakeProfitMacd" value="20"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxTakeProfitMacd" value="1000"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepTakeProfitMacd" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Div Bollinger-->
+                            <div id="Bollinger Band" style="display:none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="initial">Initial</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="final">Final</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="increment">Increment</label></b>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="map">Moving Average Period</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minMAPeriod" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxMAPeriod" value="50"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepMAPeriod" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="sd">Standard Deviation</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minStdDev" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxStdDev" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepStdDev" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="stoploss">Stop-Loss</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minStopLoss" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxStopLoss" value="40"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepStopLoss" value="2"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="takeprofit">Take-Profit</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minTakeProfit" value="200"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxTakeProfit" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepTakeProfit" value="1000"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Div Stochastic-->
+                            <div id="Stochastic" style="display:none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="initial">Initial</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="final">Final</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="increment">Increment</label></b>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="k_period">%K Period</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minK_periods" value="7"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxK_periods" value="21"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepK_periods" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="%d_period">%D Period</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minD_periods" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxD_periods" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepD_periods" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="higher_line">Higher Line</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="min_higher_lines" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="max_higher_lines" value="20"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="step_higher_lines" value="2"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="lower_line">Lower Line</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="min_lower_lines" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="max_lower_lines" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="step_lower_lines" value="2"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="stoploss">Stop-Loss</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minStopLosss" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxStopLosss" value="50"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepStopLosss" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="takeprofit">Take-Profit</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minTakeProfits" value="100"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxTakeProfits" value="1000"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepTakeProfits" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Div RSI-->
+                            <div id="RSI" style="display:none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="initial">Initial</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="final">Final</label></b>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <center>
+                                            <b><label for="increment">Increment</label></b>
+                                        </center>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="higher_linersi">Higher Line</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="min_higher_line_rsi" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="max_higher_line_rsi" value="100"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="step_higher_line_rsi" value="5"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="lower_linersi">Lower Line</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="min_lower_line_rsi" value="1"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="max_lower_line_rsi" value="50"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="step_lower_line_rsi" value="5"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="stoplossrsi">Stop-Loss</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minStopLoss_rsi" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxStopLoss_rsi" value="50"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepStopLoss_rsi" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <b><label for="takeprofitrsi">Take-Profit</label></b>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="minTakeProfit_rsi" value="100"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="maxTakeProfit_rsi" value="1000"
+                                               style="height: 30px;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="number" class="form-control" name="stepTakeProfit_rsi" value="10"
+                                               style="height: 30px;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <input class="btn btn-primary" type="submit" value="Optimize"/>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © TeamFx 2018</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/login">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{url_for('static', filename='theme/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='theme/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{{url_for('static', filename='theme/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{{url_for('static', filename='theme/js/sb-admin.min.js')}}"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+    <script>
+	$(document).ready(function(){
+		var date_input=$('input[name="from_date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'yyyy.mm.dd',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	})
+
+	$(document).ready(function(){
+		var date_input=$('input[name="to_date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'yyyy.mm.dd',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	})
+
+
+    </script>
+    <script>
+        function changeDiv(value) {
+            if(value==="Moving Average"){
+                document.getElementById('Moving Average').style.display = "block";
+                document.getElementById('Fuzzy Moving Average').style.display = "none"
+                document.getElementById('MACD').style.display = "none";
+                document.getElementById('Bollinger Band').style.display = "none";
+                document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+            }
+            if(value==="Fuzzy Moving Average"){
+                document.getElementById('Fuzzy Moving Average').style.display = "block";
+                document.getElementById('Moving Average').style.display = "none";
+                document.getElementById('MACD').style.display = "none";
+                document.getElementById('Bollinger Band').style.display = "none";
+                document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+            }
+            if(value==="MACD"){
+                document.getElementById('MACD').style.display = "block";
+                document.getElementById('Moving Average').style.display = "none";
+                document.getElementById('Fuzzy Moving Average').style.display = "none"
+                document.getElementById('Bollinger Band').style.display = "none";
+                document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+            }
+            if(value==="Bollinger Band"){
+                document.getElementById('Bollinger Band').style.display = "block";
+                document.getElementById('Moving Average').style.display = "none";
+                document.getElementById('Fuzzy Moving Average').style.display = "none"
+                document.getElementById('MACD').style.display = "none";
+                document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+            }
+            if(value==="Stochastic"){
+                document.getElementById('Stochastic').style.display = "block";
+                document.getElementById('Bollinger Band').style.display = "none";
+                document.getElementById('Moving Average').style.display = "none";
+                document.getElementById('Fuzzy Moving Average').style.display = "none"
+                document.getElementById('MACD').style.display = "none";
+                document.getElementById('RSI').style.display = "none";
+            }
+            if(value==="RSI"){
+                document.getElementById('RSI').style.display = "block";
+                document.getElementById('Stochastic').style.display = "none";
+                document.getElementById('Bollinger Band').style.display = "none";
+                document.getElementById('Moving Average').style.display = "none";
+                document.getElementById('Fuzzy Moving Average').style.display = "none"
+                document.getElementById('MACD').style.display = "none";
+            }
+        }
+
+    </script>
+</div>
+</body>
+
+</html>
+
+
+

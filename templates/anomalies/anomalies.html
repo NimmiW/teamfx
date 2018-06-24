@@ -155,22 +155,30 @@
         <div class="row">
             <div class="col-12">
                 <h1>Detect Anomalies</h1>
-                <h1>Local Outlier Factor Reducer</h1>
                 <p> Anormalies are detected beased on the local outlier factor.</p>
             </div>
         </div>
 
         <div class="container">
-            <p>The detected anomalies are shown below.</p>
-            {{anomalies | safe}}
-            <br/>
-            <form class="form-group" action="/anomalies/plotresults" method="post">
-                <input type="hidden" name = "currency" value="{{currency}}">
-                <input type="hidden" name="year" value="{{year}}">
-                <input type="hidden" name="from_month" value="{{from_month}}">
-                <input type="hidden" name="to_month" value="{{to_month}}">
-                <button class="btn btn-lg btn-success" type="submit">Plot</button>
-            </form>
+            <div class="row">
+                <div class="col-6 ">
+
+                        <p>The detected anomalies are shown below.</p>
+                        {{anomalies | safe}}
+                        <br/>
+                        <form class="form-group" action="/anomalies/plotresults" method="post">
+                            <input type="hidden" name = "currency" value="{{currency}}">
+                            <input type="hidden" name="year" value="{{year}}">
+                            <input type="hidden" name="from_month" value="{{from_month}}">
+                            <input type="hidden" name="to_month" value="{{to_month}}">
+                            <button class="btn btn-lg btn-success" type="submit">Plot</button>
+                        </form>
+
+                </div>
+                <div class="col-6 ">
+                        <img class="card-img-top" src="{{url_for('static', filename='anomalies/down_Arrow.png')}}" alt="Card image cap">
+                </div>
+            </div>
         </div>
     </div>
     <!-- /.container-fluid-->
