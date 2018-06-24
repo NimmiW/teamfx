@@ -3,9 +3,10 @@ import plotly.plotly.plotly as py
 import pandas as pd
 import json
 from datetime import timedelta
+import anomalies.config as config
 
 def get_visualize_view(threshold,nneighbours,page="none"):
-    root = "D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/"
+    root = config.ROOT
 
     if(page == 'anomaly_detection'):
 
@@ -22,8 +23,6 @@ def get_visualize_view(threshold,nneighbours,page="none"):
         currency_pair = request.form['currency_pair']
         start_year = start_date.split('-')[0]
         end_year = end_date.split('-')[0]
-
-
 
 
 
@@ -58,7 +57,7 @@ def get_visualize_view(threshold,nneighbours,page="none"):
     shapes = []
 
     #anormalies = pd.read_csv("static/anomalies/all_anomalies.csv")
-    anormalies = pd.read_csv(root + 'static/anomalies/detected_black_regions/'+str(threshold) + '_' + str(nneighbours) + '_' + currency_pair + '_' + start_year+'_all_anomalies.csv')
+    anormalies = pd.read_csv(root + 'static/anomalies/detected_black_regions/'+str(threshold) + '_' + str(nneighbours) + '_' + currency_pair + '_all_anomalies.csv')
 
     anormalies['Time'] = anormalies['DateHour'].apply(lambda x: pd.to_datetime(x))
     anormalies.index = anormalies.Time

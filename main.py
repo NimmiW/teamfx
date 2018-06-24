@@ -92,6 +92,8 @@ def get_input():
 @app.route("/anomalies/selectfeatures", methods = ['POST', 'GET'])
 def feature_selecion():
 
+    config.ANOMALY_PERCENTAGE = int(request.form["threshold"])
+
     year, from_month, to_month, currency, length,ids, graphJSON\
         = feature_selection.feature_selecion()
     #eturn render_template('anomalies/feature_selection.html',
@@ -141,7 +143,7 @@ def plot_results():
 def visualize_anormalies():
     if (request.form['page'] == 'anomalies_visualize_page'):
 
-        threshold = config.ANOMALY_PERCENTAGE
+        threshold = request.form["threshold"]
         nneighbours = config.NEAREST_NEIGHBOURS
         ids, graphJSON = anomlies_visualize.get_visualize_view(threshold,nneighbours)
         print(ids)
@@ -201,6 +203,7 @@ def backtestingInput():
     # anomalies_result_visualization.plot_results()
     return render_template('backtesting/input.html')
 
+
 @app.route("/app", methods = ['GET','POST'])
 def overall_backtesting():
 
@@ -214,6 +217,7 @@ def overall_backtesting():
                            ids=ids,
                            graphJSON=graphJSON, returns = returns, returngraphJSON = returngraphJSON, idsreturn= idsreturn
                         )
+
 
 @app.route("/backtesting/visualize", methods = ['GET','POST'])
 def postInput():
@@ -258,8 +262,7 @@ def evaluate():
     return render_template('backtesting/evaluation.html',status="with_data",sharp_ratio = sharp_ratio,cagr = cagr,
                            max_daily_drawdown =max_daily_drawdown,graphJSON=graph, ids = ids )
 
-
-
+    
 
 
 #--------------------------------------------------------optimization Routes----------------------------------------------------#

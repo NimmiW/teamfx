@@ -35,7 +35,7 @@ ax1 = fig.add_subplot(111)
 
 def refreshGraphData(self):
 
-       line = open("D:/coursework/L4S2/GroupProject/repo/TeamFxPortal/backtesting/backtester/RealTimedata.csv").read()
+       line = open(config.ROOT+"backtesting/backtester/RealTimedata.csv").read()
        csv_rows = line.split()
        print(csv_rows)
        xvalue = []
@@ -68,7 +68,7 @@ def app(blackregion=False, mode = "backtesting"):
     higherLine = request.form["higher_line"]
     lowerLine = request.form["lower_line"]
 
-    bars = pd.read_csv("E:/BackupVersion1/coursework/L4S2/GroupProject/repo/TeamFxPortal/backtesting/backtester/hourData.csv")
+    bars = pd.read_csv(config.ROOT+"backtesting/backtester/hourData.csv")
     #bars.index = to_datetime(bars['Date'] + ' ' + bars['Time'])
     #bars['Time'] = bars['Time'].apply(lambda x: pd.to_datetime(x) - pd.timedelta(hours=7.5))
 
@@ -87,7 +87,7 @@ def app(blackregion=False, mode = "backtesting"):
         black_regions.index = black_regions["DateHour"]
         black_regions = black_regions.index
         print(black_regions)
-        bars = pd.read_csv("E:/BackupVersion1/coursework/L4S2/GroupProject/repo/TeamFxPortal/static/data/EURUSD/DAT_MT_EURUSD_M1_2016.csv")
+        bars = pd.read_csv(config.ROOT+"static/data/EURUSD/DAT_MT_EURUSD_M1_2016.csv")
 
         bars['Time'] = bars[['Date', 'Time']].apply(lambda x: ' '.join(x), axis=1)
         bars['Time'] = bars['Time'].apply(lambda x: to_datetime(x) - timedelta(hours=2))

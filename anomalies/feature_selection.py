@@ -241,7 +241,23 @@ def feature_selecion():
                 ),
             ],
             layout=dict(
-                title='Price'
+                title='Price',
+                xaxis=dict(
+                    title='Time',
+                    titlefont=dict(
+                        # family='Courier New, monospace',
+                        size=18,
+                        color='#7f7f7f'
+                    )
+                ),
+                yaxis=dict(
+                    title='Price',
+                    titlefont=dict(
+                        # family='Courier New, monospace',
+                        size=18,
+                        color='#7f7f7f'
+                    )
+                )
             )
         ),
         dict(
@@ -253,7 +269,23 @@ def feature_selecion():
                 ),
             ],
             layout=dict(
-                title='Gradients of Condisional Heteroskedasiticity'
+                title='Gradients of Condisional Heteroskedasiticity',
+                xaxis=dict(
+                    title='Time',
+                    titlefont=dict(
+                        # family='Courier New, monospace',
+                        size=18,
+                        color='#7f7f7f'
+                    )
+                ),
+                yaxis=dict(
+                    title='Gradient of Cconditional Heteroskedasticity',
+                    titlefont=dict(
+                        # family='Courier New, monospace',
+                        size=18,
+                        color='#7f7f7f'
+                    )
+                )
             )
         ),
         dict(
@@ -265,8 +297,25 @@ def feature_selecion():
                     mode = 'markers'
                 ),
             ],
-            layout=dict(
-                title='Scattler plot of prices and conditional volatility'
+
+            layout = dict(
+                title='Scatter plot of prices and Gradients of conditional volatility',
+                xaxis=dict(
+                    title='Gradient of Cconditional Heteroskedasticity ',
+                    titlefont=dict(
+                        # family='Courier New, monospace',
+                        size=18,
+                        color='#7f7f7f'
+                    )
+                ),
+                yaxis=dict(
+                    title='Price',
+                    titlefont=dict(
+                        # family='Courier New, monospace',
+                        size=18,
+                        color='#7f7f7f'
+                    )
+                )
             )
         ),
     ]
