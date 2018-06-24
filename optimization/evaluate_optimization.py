@@ -30,6 +30,10 @@ def calculateRisk(individual,strategy):
         stoploss_pip = individual[3]
         takeprofit_pip = individual[4]
 
+    elif (strategy == "Stochastic"):
+        stoploss_pip = individual[4]
+        takeprofit_pip = individual[5]
+
 
     inv_return = Application.optimize(individual,strategy)
 

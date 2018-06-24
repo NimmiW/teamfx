@@ -163,15 +163,15 @@
                                 <select class="form-control" name="strategy" onchange="changeDiv(value)">
                                     <option disabled selected value> Select Trading Strategy</option>
                                     <option value="Moving Average">Moving Average Crossover Strategy</option>
-                                    <option value="Fuzzy Moving Average">Fuzzy Moving Average Crossover Strategy</option>
+
                                     <option value="MACD">MACD</option>
-                                    <option value="fuzzy_macd">Fuzzy MACD</option>
+
                                     <option value="Bollinger Band">Bollinger Bands</option>
-                                    <option value="fuzzy_bollinger">Fuzzy Bollinger Bands</option>
-                                    <option value="stochastic">Stochastic Strategy</option>
-                                    <option value="fuzzy_stochastic">Fuzzy Stochastic Strategy</option>
+
+                                    <option value="Stochastic">Stochastic Strategy</option>
+
                                     <option value="rsi">Relative Strength Index (RSI)</option>
-                                    <option value="fuzzy_rsi">Fuzzy Relative Strength Index (RSI)</option>
+
                                 </select>
                             </div>
                             </br>
@@ -415,128 +415,67 @@
                             </div>
 
                             <!--Div Stochastic-->
-                            <div id="stochastic" style="display:none;">
-                                <div class="row">
-                                    <div class="col-md-6">
+                            <div id="Stochastic" style="display:none;">
 
-                                    </div>
-                                    <div class="col-md-2">
-                                        <center>
-                                            <b><label for="initial">Initial</label></b>
-                                        </center>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <center>
-                                            <b><label for="final">Final</label></b>
-                                        </center>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <center>
-                                            <b><label for="increment">Increment</label></b>
-                                        </center>
-                                    </div>
-                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b><label for="k_period">%K Period</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="minK_period"
+                                        <input type="number" class="form-control" name="K_periods"
                                                style="height: 30px;">
                                     </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="maxK_period"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="stepK_period"
-                                               style="height: 30px;">
-                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b><label for="%d_period">%D Period</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="minD_period"
+                                        <input type="number" class="form-control" name="D_periods"
                                                style="height: 30px;">
                                     </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="maxD_period"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="stepD_period"
-                                               style="height: 30px;">
-                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b><label for="higher_line">Higher Line</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="min_higher_line"
+                                        <input type="number" class="form-control" name="higher_lines"
                                                style="height: 30px;">
                                     </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="max_higher_line"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="step_higher_line"
-                                               style="height: 30px;">
-                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b><label for="lower_line">Lower Line</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="min_lower_line"
+                                        <input type="number" class="form-control" name="lower_lines"
                                                style="height: 30px;">
                                     </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="max_lower_line"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="step_lower_line"
-                                               style="height: 30px;">
-                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b><label for="stoploss">Stop-Loss</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="minStopLoss"
+                                        <input type="number" class="form-control" name="StopLosss"
                                                style="height: 30px;">
                                     </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="maxStopLoss"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="stepStopLoss"
-                                               style="height: 30px;">
-                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b><label for="takeprofit">Take-Profit</label></b>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="number" class="form-control" name="minTakeProfit"
+                                        <input type="number" class="form-control" name="TakeProfits"
                                                style="height: 30px;">
                                     </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="maxTakeProfit"
-                                               style="height: 30px;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="number" class="form-control" name="stepTakeProfit"
-                                               style="height: 30px;">
-                                    </div>
+
                                 </div>
                             </div
 
@@ -636,31 +575,31 @@
                 document.getElementById('Fuzzy Moving Average').style.display = "none";
                 document.getElementById('MACD').style.display = "none";
                 document.getElementById('Bollinger Band').style.display = "none";
-                document.getElementById('stochastic').style.display = "none";
+                document.getElementById('Stochastic').style.display = "none";
             }
             if(value==="Fuzzy Moving Average"){
                 document.getElementById('Fuzzy Moving Average').style.display = "block";
                 document.getElementById('Moving Average').style.display = "none";
                 document.getElementById('MACD').style.display = "none";
                 document.getElementById('Bollinger Band').style.display = "none";
-                document.getElementById('stochastic').style.display = "none";
+                document.getElementById('Stochastic').style.display = "none";
             }
             if(value==="MACD"){
                 document.getElementById('MACD').style.display = "block";
                 document.getElementById('Moving Average').style.display = "none";
                 document.getElementById('Fuzzy Moving Average').style.display = "none";
                 document.getElementById('Bollinger Band').style.display = "none";
-                document.getElementById('stochastic').style.display = "none";
+                document.getElementById('Stochastic').style.display = "none";
             }
             if(value==="Bollinger Band"){
                 document.getElementById('Bollinger Band').style.display = "block";
                 document.getElementById('Moving Average').style.display = "none";
                 document.getElementById('Fuzzy Moving Average').style.display = "none";
                 document.getElementById('MACD').style.display = "none";
-                document.getElementById('stochastic').style.display = "none";
+                document.getElementById('Stochastic').style.display = "none";
             }
-            if(value==="stochastic"){
-                document.getElementById('stochastic').style.display = "block";
+            if(value==="Stochastic"){
+                document.getElementById('Stochastic').style.display = "block";
                 document.getElementById('Bollinger Band').style.display = "none";
                 document.getElementById('Moving Average').style.display = "none";
                 document.getElementById('Fuzzy Moving Average').style.display = "none";

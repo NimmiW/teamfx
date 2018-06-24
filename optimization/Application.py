@@ -53,13 +53,13 @@ def optimize(individual,strategy):
       strategy = FuzzyMACDStrategy(symbol, bars, short_window=short, long_window=long)
       signals = strategy.generate_signals()
    if (strategyType == "Stochastic"):
-      strategy = StochasticStrategy(symbol, bars, short_window=short, long_window=long)
+      strategy = StochasticStrategy(symbol, bars,individual[0], individual[1], individual[2], individual[3])
       signals = strategy.generate_signals()
    if (strategyType == "Fuzzy Stochastic"):
       strategy = FuzzyStochasticStrategy(symbol, bars, short_window=short, long_window=long)
       signals = strategy.generate_signals()
    if (strategyType == "RSI"):
-      strategy = RSIStrategy(symbol, bars, short_window=short, long_window=long)
+      strategy = RSIStrategy(symbol, bars, rup, rdown)
       signals = strategy.generate_signals()
    if (strategyType == "Fuzzy RSI"):
       strategy = FuzzyRSIStrategy(symbol, bars, short_window=short, long_window=long)

@@ -29,9 +29,13 @@ def fitness(individual,strategy):
         stoploss_pip = individual[3]
         takeprofit_pip = individual[4]
 
+    elif (strategy == "Stochastic"):
+        stoploss_pip = individual[4]
+        takeprofit_pip = individual[5]
+
 
     inv_return = Application.optimize(individual,strategy)
-    print("output inv_return",inv_return)
+
     #inv_return.to_csv('without.csv', encoding='utf-8')
 
 

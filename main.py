@@ -12,6 +12,7 @@ from backtesting.backtester import application
 from optimization.Strategies import StrategyOptimizer_MA
 from optimization.Strategies import StrategyOptimizer_MACD
 from optimization.Strategies import Strategy_Optimizer_Bollinger
+from optimization.Strategies import Strategy_Optimizer_Stochastic
 from optimization.Strategies import Strategy_Optimizer_FMA
 from optimization import Risk_Calculator
 from optimization import signal_Generator
@@ -248,8 +249,11 @@ def optimize():
     elif (strategy == 'Bollinger Band'):
         strategyNum = 3
         returns = Strategy_Optimizer_Bollinger.initialize()
-    elif (strategy == 'Fuzzy Moving Average'):
+    elif (strategy == 'Stochastic'):
         strategyNum = 4
+        returns = Strategy_Optimizer_Stochastic.initialize()
+    elif (strategy == 'Fuzzy Moving Average'):
+        strategyNum = 5
         returns = Strategy_Optimizer_FMA.initialize()
 
     top10 = returns[:10]

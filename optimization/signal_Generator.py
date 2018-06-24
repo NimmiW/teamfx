@@ -53,6 +53,8 @@ def app(parameter,strategy):
         strategyType = "Moving Average"
     elif (strategy == "2"):
         strategyType = "MACD"
+    elif (strategy == "4"):
+        strategyType = "Stochastic"
     #strategyType = request.form["strategy"]
 
     if(strategyType == "Moving Average" ):
@@ -74,7 +76,7 @@ def app(parameter,strategy):
        strategy = FuzzyMACDStrategy(symbol, bars, short, long,signalLine )
        signals = strategy.generate_signals()
     if (strategyType == "Stochastic"):
-       strategy = StochasticStrategy(symbol, bars,K_period,D_period, higherLine, lowerLine)
+       strategy = StochasticStrategy(symbol, bars,parameter[0], parameter[1], parameter[2],parameter[3])
        signals = strategy.generate_signals()
     if (strategyType == "Fuzzy Stochastic"):
        strategy = FuzzyStochasticStrategy(symbol, bars,K_period,D_period, higherLine, lowerLine)
