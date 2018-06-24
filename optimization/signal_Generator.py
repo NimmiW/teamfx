@@ -57,7 +57,7 @@ def app(parameter,strategy):
         strategyType = "Stochastic"
     elif (strategy == "5"):
         strategyType = "RSI"
-    #strategyType = request.form["strategy"]
+
 
     if(strategyType == "Moving Average" ):
         strategy = MovingAverageCrossStrategy(symbol, bars, parameter[0], parameter[1])
